@@ -6,7 +6,7 @@ export default function Card({ ch, tier }: { ch: Char; tier?: string }) {
   return (
     <div className="card">
       <div className="avatarWrap">
-        <img src={`/avatars/${ch.id}.jpg`} alt={ch.name ?? ''} />
+        <img src={`${import.meta.env.BASE_URL}avatars/${ch.id}.jpg`} alt={ch.name ?? ''} />
       </div>
       <div className="info">
         <div className="title">{ch.name}</div>
