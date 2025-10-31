@@ -11,17 +11,11 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "lib": ["ES2022", "DOM"],
-    "types": ["node", "jest"],
+    "types": ["node", "jest", "vite/client"],
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true
   },
-  "include": [
-    "src/**/*",
-    "src/client/**/*",
-    "scripts/fetchChars.ts",
-    "scripts/extractTiers.ts",
-    "scripts/fetchAvatars.ts"
-  ],
+  "include": ["src/**/*", "src/client/**/*", "scripts/*"],
   "exclude": ["node_modules", "dist"]
 }
