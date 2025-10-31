@@ -1,5 +1,6 @@
 import { generateCharTiers } from '../src/server/extractor';
 import fs from 'fs';
+import { jest } from '@jest/globals';
 
 describe('generateCharTiers', () => {
   const originalFetch = (global as any).fetch;
@@ -30,9 +31,14 @@ describe('generateCharTiers', () => {
 
     const gvizText = `/*OK*/google.visualization.Query.setResponse(${JSON.stringify(tableObj)});`;
 
-    (global as any).fetch = jest.fn().mockResolvedValue({ ok: true, text: async () => gvizText });
+    (global as any).fetch = (jest.fn() as any).mockResolvedValue({
+      ok: true,
+      text: async () => gvizText,
+    });
 
-    const writeSpy = jest.spyOn(fs, 'writeFileSync').mockImplementation(() => undefined as any);
+    const writeSpy = (jest.spyOn(fs, 'writeFileSync') as any).mockImplementation(
+      () => undefined as any,
+    );
 
     const outPath = await generateCharTiers('dummy-sheet-id');
 

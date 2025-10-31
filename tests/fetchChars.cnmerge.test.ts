@@ -1,4 +1,5 @@
 import { fetchChars } from '../src/server/fetchChars';
+import { jest } from '@jest/globals';
 
 describe('fetchChars CN merge', () => {
   it('appends CN-only chars with name set from CN', async () => {
@@ -31,7 +32,7 @@ describe('fetchChars CN merge', () => {
     const originalFetch = (global as any).fetch;
     // mock fetch: first call EN, second call CN
     let call = 0;
-    (global as any).fetch = jest.fn().mockImplementation(() => {
+    (global as any).fetch = (jest.fn() as any).mockImplementation(() => {
       call += 1;
       if (call === 1) return Promise.resolve({ ok: true, json: async () => enSample });
       return Promise.resolve({ ok: true, json: async () => cnSample });

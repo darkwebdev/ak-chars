@@ -4,6 +4,7 @@ import {
   buildCharMapFromMatrix,
   fetchSheet,
 } from '../src/server/extractor';
+import { jest } from '@jest/globals';
 
 describe('extractor', () => {
   it('builds char->tier map from alternating rows', () => {
@@ -56,7 +57,10 @@ describe('extractor', () => {
     const wrapped = `google.visualization.Query.setResponse(${JSON.stringify({
       table: fakeTable,
     })});`;
-    (global as any).fetch = jest.fn().mockResolvedValue({ ok: true, text: async () => wrapped });
+    (global as any).fetch = (jest.fn() as any).mockResolvedValue({
+      ok: true,
+      text: async () => wrapped,
+    });
 
     const table = await fetchSheet('sheet-id', 'SheetName');
     expect(table).toEqual(fakeTable);

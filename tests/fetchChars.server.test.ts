@@ -2,6 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { fetchChars } from '../src/server/fetchChars';
+import { jest } from '@jest/globals';
 
 describe('fetchChars server', () => {
   const tmpRoot = path.join(os.tmpdir(), `ak-chars-fetchchars-${Date.now()}`);
@@ -33,7 +34,7 @@ describe('fetchChars server', () => {
     };
 
   const originalFetch = (global as any).fetch;
-  (global as any).fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => sample });
+  (global as any).fetch = (jest.fn() as any).mockResolvedValue({ ok: true, json: async () => sample });
 
   const chars = await fetchChars();
   const outPath = path.join(tmpRoot, 'chars.json');

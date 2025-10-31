@@ -2,6 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { fetchAvatars } from '../src/server/fetchAvatars';
+import { jest } from '@jest/globals';
 
 function makePngBuffer() {
   // Minimal valid PNG header + IHDR chunk to avoid pngjs parsing in tests if read directly.
@@ -25,15 +26,15 @@ describe('fetchAvatars server', () => {
     const chars = [{ id: 'one' }, { id: 'two' }, { id: 'three' }, { id: 'four' }];
 
     const originalFetch = (global as any).fetch;
-    (global as any).fetch = jest
-      .fn()
-      .mockImplementation(async () => ({ ok: true, arrayBuffer: async () => makePngBuffer() }));
+    (global as any).fetch = (jest.fn() as any).mockImplementation(async () => ({
+      ok: true,
+      arrayBuffer: async () => makePngBuffer(),
+    }));
 
     await fetchAvatars({
       chars,
       outDir: path.join(tmpRoot, 'avatars'),
       limit: 2,
-      concurrency: 2,
     });
 
     const files = fs.readdirSync(path.join(tmpRoot, 'avatars'));

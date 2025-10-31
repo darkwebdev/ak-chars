@@ -17,7 +17,7 @@ export async function fetchChars(): Promise<Char[]> {
   try {
     const resCn = await fetch(urlCn);
     if (resCn.ok) {
-      const objCn = (await resCn.json()) as unknown as Record<string, RawChar>;
+      const objCn = (await resCn.json()) as Record<string, RawChar>;
       const charsCn = transformCharacterTable(objCn);
 
       // Build set of existing ids from EN
@@ -26,26 +26,26 @@ export async function fetchChars(): Promise<Char[]> {
       // Append chars present in CN but missing in EN.
       for (const c of charsCn) {
         if (!existing.has(c.id)) {
-          const entry: Partial<Char> & Record<string, unknown> = { ...c };
+          const entry: Partial<Char> = { ...c };
           // Prefer the raw CN `appellation` (if present) for name,
           // otherwise fall back to the transformed `name`.
-          const raw = (objCn && typeof objCn === 'object' && (objCn as any)[c.id]) || null;
+          const raw = objCn ? objCn[c.id] : undefined;
           if (
             raw &&
             typeof raw === 'object' &&
-            'appellation' in (raw as any) &&
-            typeof (raw as any).appellation === 'string'
+            'appellation' in raw &&
+            typeof raw.appellation === 'string'
           ) {
-            entry.name = (raw as any).appellation;
-          } else if ((c as any).name) {
-            entry.name = (c as any).name;
+            entry.name = raw.appellation;
+          } else if (c.name) {
+            entry.name = c.name;
           }
           console.log(`Appending CN-only char: [${entry.id}] ${entry.name}`);
-          chars.push(entry as any);
+          chars.push(entry as Char);
         }
       }
     }
-  } catch (e) {
+  } catch {
     // If CN fetch fails, continue with EN-only data
     // (don't throw - supplemental data is optional)
   }

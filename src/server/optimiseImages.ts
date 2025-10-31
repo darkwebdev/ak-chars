@@ -25,7 +25,14 @@ export async function optimizeImage(
       const png = PNG.sync.read(inputBuf) as { data: Buffer; width: number; height: number };
       console.log('png read OK', { width: png.width, height: png.height });
       const { data, width, height } = png;
-      const encoded = jpegJs.encode({ data, width, height }, 80);
+      // jpeg-js expects RGB pixel data (no alpha). Strip alpha channel if present.
+      const rgb = Buffer.allocUnsafe((data.length / 4) * 3);
+      for (let i = 0, j = 0; i < data.length; i += 4, j += 3) {
+        rgb[j] = data[i];
+        rgb[j + 1] = data[i + 1];
+        rgb[j + 2] = data[i + 2];
+      }
+      const encoded = jpegJs.encode({ data: rgb, width, height }, 80);
       // ensure public/images output dir exists and write there
       fs.mkdirSync(path.dirname(output), { recursive: true });
       fs.writeFileSync(output, encoded.data);

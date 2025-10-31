@@ -26,9 +26,7 @@ export default function App() {
   );
 
   const [profession, setProfession] = useState(() => {
-    const profs = (
-      Array.from(new Set(charsData.map((c: any) => c.profession).filter(Boolean))) as string[]
-    ).sort();
+    const profs = (Array.from(new Set(chars.map((c) => c.profession).filter(Boolean))) as string[]).sort();
     return profs[0] || '';
   });
   // Extract and sort tier names dynamically, supporting modifiers like + and -

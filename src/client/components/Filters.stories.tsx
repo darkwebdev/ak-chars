@@ -11,9 +11,6 @@ export const Default = () => (
     rarity={''}
     setRarity={() => {}}
     rarities={['1', '3', '5']}
-    profession={''}
-    setProfession={() => {}}
-    professions={['Guard', 'Medic']}
     tierFilter={''}
     setTierFilter={() => {}}
     tiersList={['S', 'A', 'B']}
