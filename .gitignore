@@ -1,7 +1,10 @@
 .DS_Store
 .devserver.pid
-.vscode
-node_modules
-tmp
-temp
+.vscode/
+node_modules/
+tmp/
+temp/
 *.log
+dist/
+.env/
+coverage/

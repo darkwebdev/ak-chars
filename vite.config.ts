@@ -37,10 +37,11 @@ export default defineConfig({
   server: {
     port: 5193,
     fs: {
-      allow: ['..', '../..', '../../..'],
+      allow: ['..', '../..'],
     },
   },
   build: {
     outDir: path.resolve(__dirname, 'dist'),
   },
+  publicDir: path.resolve(__dirname, 'public'),
 });
