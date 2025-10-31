@@ -1,4 +1,7 @@
-/.DS_Store
-/.devserver.pid
-/.vscode
-/devserver.log
+.DS_Store
+.devserver.pid
+.vscode
+node_modules
+tmp
+temp
+*.log
