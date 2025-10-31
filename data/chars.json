@@ -1,0 +1,2725 @@
+[
+  {
+    "id": "char_285_medic2",
+    "name": "Lancet-2",
+    "rarity": "TIER_1",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_286_cast3",
+    "name": "Castle-3",
+    "rarity": "TIER_1",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_376_therex",
+    "name": "THRM-EX",
+    "rarity": "TIER_1",
+    "profession": "SPECIAL",
+    "subProfessionId": "executor"
+  },
+  {
+    "id": "char_4000_jnight",
+    "name": "'Justice Knight'",
+    "rarity": "TIER_1",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_4077_palico",
+    "name": "Terra Research Commission",
+    "rarity": "TIER_1",
+    "profession": "SNIPER",
+    "subProfessionId": "bombarder"
+  },
+  {
+    "id": "char_4091_ulika",
+    "name": "U-Official",
+    "rarity": "TIER_1",
+    "profession": "SUPPORT",
+    "subProfessionId": "bard"
+  },
+  {
+    "id": "char_4093_frston",
+    "name": "Friston-3",
+    "rarity": "TIER_1",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_4136_phonor",
+    "name": "PhonoR-0",
+    "rarity": "TIER_1",
+    "profession": "SUPPORT",
+    "subProfessionId": "ritualist"
+  },
+  {
+    "id": "char_4188_confes",
+    "name": "CONFESS-47",
+    "rarity": "TIER_1",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_502_nblade",
+    "name": "Yato",
+    "rarity": "TIER_2",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_500_noirc",
+    "name": "Noir Corne",
+    "rarity": "TIER_2",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_503_rang",
+    "name": "Rangers",
+    "rarity": "TIER_2",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_501_durin",
+    "name": "Durin",
+    "rarity": "TIER_2",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_009_12fce",
+    "name": "12F",
+    "rarity": "TIER_2",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_123_fang",
+    "name": "Fang",
+    "rarity": "TIER_3",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_240_wyvern",
+    "name": "Vanilla",
+    "rarity": "TIER_3",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_192_falco",
+    "name": "Plume",
+    "rarity": "TIER_3",
+    "profession": "PIONEER",
+    "subProfessionId": "charger"
+  },
+  {
+    "id": "char_208_melan",
+    "name": "Melantha",
+    "rarity": "TIER_3",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_281_popka",
+    "name": "Popukar",
+    "rarity": "TIER_3",
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
+  },
+  {
+    "id": "char_209_ardign",
+    "name": "Cardigan",
+    "rarity": "TIER_3",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_122_beagle",
+    "name": "Beagle",
+    "rarity": "TIER_3",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_284_spot",
+    "name": "Spot",
+    "rarity": "TIER_3",
+    "profession": "TANK",
+    "subProfessionId": "guardian"
+  },
+  {
+    "id": "char_124_kroos",
+    "name": "Kroos",
+    "rarity": "TIER_3",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_211_adnach",
+    "name": "Adnachiel",
+    "rarity": "TIER_3",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_121_lava",
+    "name": "Lava",
+    "rarity": "TIER_3",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_120_hibisc",
+    "name": "Hibiscus",
+    "rarity": "TIER_3",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_212_ansel",
+    "name": "Ansel",
+    "rarity": "TIER_3",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_210_stward",
+    "name": "Steward",
+    "rarity": "TIER_3",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_278_orchid",
+    "name": "Orchid",
+    "rarity": "TIER_3",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_141_nights",
+    "name": "Haze",
+    "rarity": "TIER_4",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_109_fmout",
+    "name": "Gitano",
+    "rarity": "TIER_4",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_253_greyy",
+    "name": "Greyy",
+    "rarity": "TIER_4",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_328_cammou",
+    "name": "Click",
+    "rarity": "TIER_4",
+    "profession": "CASTER",
+    "subProfessionId": "funnel"
+  },
+  {
+    "id": "char_469_indigo",
+    "name": "Indigo",
+    "rarity": "TIER_4",
+    "profession": "CASTER",
+    "subProfessionId": "mystic"
+  },
+  {
+    "id": "char_4004_pudd",
+    "name": "Pudding",
+    "rarity": "TIER_4",
+    "profession": "CASTER",
+    "subProfessionId": "chain"
+  },
+  {
+    "id": "char_235_jesica",
+    "name": "Jessica",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_126_shotst",
+    "name": "Meteor",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_190_clour",
+    "name": "Vermeil",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_133_mm",
+    "name": "May",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_118_yuki",
+    "name": "Shirayuki",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "aoesniper"
+  },
+  {
+    "id": "char_440_pinecn",
+    "name": "Pinecone",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "reaperrange"
+  },
+  {
+    "id": "char_302_glaze",
+    "name": "Ambriel",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "longrange"
+  },
+  {
+    "id": "char_366_acdrop",
+    "name": "Aciddrop",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "closerange"
+  },
+  {
+    "id": "char_4062_totter",
+    "name": "Totter",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "siegesniper"
+  },
+  {
+    "id": "char_4100_caper",
+    "name": "Caper",
+    "rarity": "TIER_4",
+    "profession": "SNIPER",
+    "subProfessionId": "loopshooter"
+  },
+  {
+    "id": "char_198_blackd",
+    "name": "Courier",
+    "rarity": "TIER_4",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_149_scave",
+    "name": "Scavenger",
+    "rarity": "TIER_4",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_290_vigna",
+    "name": "Vigna",
+    "rarity": "TIER_4",
+    "profession": "PIONEER",
+    "subProfessionId": "charger"
+  },
+  {
+    "id": "char_151_myrtle",
+    "name": "Myrtle",
+    "rarity": "TIER_4",
+    "profession": "PIONEER",
+    "subProfessionId": "bearer"
+  },
+  {
+    "id": "char_452_bstalk",
+    "name": "Beanstalk",
+    "rarity": "TIER_4",
+    "profession": "PIONEER",
+    "subProfessionId": "tactician"
+  },
+  {
+    "id": "char_130_doberm",
+    "name": "Dobermann",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "instructor"
+  },
+  {
+    "id": "char_289_gyuki",
+    "name": "Matoimaru",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_159_peacok",
+    "name": "Conviction",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_193_frostl",
+    "name": "Frostleaf",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_127_estell",
+    "name": "Estelle",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
+  },
+  {
+    "id": "char_185_frncat",
+    "name": "Mousse",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "artsfghter"
+  },
+  {
+    "id": "char_301_cutter",
+    "name": "Cutter",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "sword"
+  },
+  {
+    "id": "char_337_utage",
+    "name": "Utage",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "musha"
+  },
+  {
+    "id": "char_271_spikes",
+    "name": "Arene",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_4067_lolxh",
+    "name": "Luo Xiaohei",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_4063_quartz",
+    "name": "Quartz",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "crusher"
+  },
+  {
+    "id": "char_491_humus",
+    "name": "Humus",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "reaper"
+  },
+  {
+    "id": "char_445_wscoot",
+    "name": "Windscoot",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "librator"
+  },
+  {
+    "id": "char_237_gravel",
+    "name": "Gravel",
+    "rarity": "TIER_4",
+    "profession": "SPECIAL",
+    "subProfessionId": "executor"
+  },
+  {
+    "id": "char_272_strong",
+    "name": "Jaye",
+    "rarity": "TIER_4",
+    "profession": "SPECIAL",
+    "subProfessionId": "merchant"
+  },
+  {
+    "id": "char_236_rope",
+    "name": "Rope",
+    "rarity": "TIER_4",
+    "profession": "SPECIAL",
+    "subProfessionId": "hookmaster"
+  },
+  {
+    "id": "char_117_myrrh",
+    "name": "Myrrh",
+    "rarity": "TIER_4",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_187_ccheal",
+    "name": "Gavial",
+    "rarity": "TIER_4",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_298_susuro",
+    "name": "Sussurro",
+    "rarity": "TIER_4",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_181_flower",
+    "name": "Perfumer",
+    "rarity": "TIER_4",
+    "profession": "MEDIC",
+    "subProfessionId": "ringhealer"
+  },
+  {
+    "id": "char_385_finlpp",
+    "name": "Purestream",
+    "rarity": "TIER_4",
+    "profession": "MEDIC",
+    "subProfessionId": "healer"
+  },
+  {
+    "id": "char_4041_chnut",
+    "name": "Chestnut",
+    "rarity": "TIER_4",
+    "profession": "MEDIC",
+    "subProfessionId": "wandermedic"
+  },
+  {
+    "id": "char_199_yak",
+    "name": "Matterhorn",
+    "rarity": "TIER_4",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_150_snakek",
+    "name": "Cuora",
+    "rarity": "TIER_4",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_381_bubble",
+    "name": "Bubble",
+    "rarity": "TIER_4",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_4130_luton",
+    "name": "Lutonada",
+    "rarity": "TIER_4",
+    "profession": "TANK",
+    "subProfessionId": "unyield"
+  },
+  {
+    "id": "char_196_sunbr",
+    "name": "Gummy",
+    "rarity": "TIER_4",
+    "profession": "TANK",
+    "subProfessionId": "guardian"
+  },
+  {
+    "id": "char_260_durnar",
+    "name": "Dur-nar",
+    "rarity": "TIER_4",
+    "profession": "TANK",
+    "subProfessionId": "artsprotector"
+  },
+  {
+    "id": "char_110_deepcl",
+    "name": "Deepcolor",
+    "rarity": "TIER_4",
+    "profession": "SUPPORT",
+    "subProfessionId": "summoner"
+  },
+  {
+    "id": "char_183_skgoat",
+    "name": "Earthspirit",
+    "rarity": "TIER_4",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_258_podego",
+    "name": "Podenco",
+    "rarity": "TIER_4",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_484_robrta",
+    "name": "Roberta",
+    "rarity": "TIER_4",
+    "profession": "SUPPORT",
+    "subProfessionId": "craftsman"
+  },
+  {
+    "id": "char_355_ethan",
+    "name": "Ethan",
+    "rarity": "TIER_4",
+    "profession": "SPECIAL",
+    "subProfessionId": "stalker"
+  },
+  {
+    "id": "char_277_sqrrel",
+    "name": "Shaw",
+    "rarity": "TIER_4",
+    "profession": "SPECIAL",
+    "subProfessionId": "pusher"
+  },
+  {
+    "id": "char_4107_vrdant",
+    "name": "Verdant",
+    "rarity": "TIER_4",
+    "profession": "SPECIAL",
+    "subProfessionId": "dollkeeper"
+  },
+  {
+    "id": "char_4165_ctrail",
+    "name": "Contrail",
+    "rarity": "TIER_4",
+    "profession": "SPECIAL",
+    "subProfessionId": "skywalker"
+  },
+  {
+    "id": "char_128_plosis",
+    "name": "Ptilopsis",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "ringhealer"
+  },
+  {
+    "id": "char_275_breeze",
+    "name": "Breeze",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "ringhealer"
+  },
+  {
+    "id": "char_4163_rosesa",
+    "name": "Rose Salt",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "ringhealer"
+  },
+  {
+    "id": "char_115_headbr",
+    "name": "Zima",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_102_texas",
+    "name": "Texas",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_349_chiave",
+    "name": "Chiave",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_488_buildr",
+    "name": "Poncirus",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_4023_rfalcn",
+    "name": "Kestrel",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_261_sddrag",
+    "name": "Reed",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "charger"
+  },
+  {
+    "id": "char_496_wildmn",
+    "name": "Wild Mane",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "charger"
+  },
+  {
+    "id": "char_1036_fang2",
+    "name": "Fang the Fire-Sharpened",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "charger"
+  },
+  {
+    "id": "char_401_elysm",
+    "name": "Elysium",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "bearer"
+  },
+  {
+    "id": "char_4119_wanqin",
+    "name": "Wanqing",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "bearer"
+  },
+  {
+    "id": "char_476_blkngt",
+    "name": "Blacknight",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "tactician"
+  },
+  {
+    "id": "char_4147_mitm",
+    "name": "Mitm",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "tactician"
+  },
+  {
+    "id": "char_497_ctable",
+    "name": "Cantabile",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "agent"
+  },
+  {
+    "id": "char_4017_puzzle",
+    "name": "Puzzle",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "agent"
+  },
+  {
+    "id": "char_4144_chilc",
+    "name": "Chilchuck",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "agent"
+  },
+  {
+    "id": "char_4052_surfer",
+    "name": "Surfer",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "agent"
+  },
+  {
+    "id": "char_308_swire",
+    "name": "Swire",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "instructor"
+  },
+  {
+    "id": "char_265_sophia",
+    "name": "Whislash",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "instructor"
+  },
+  {
+    "id": "char_4106_bryota",
+    "name": "Bryophyta",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "instructor"
+  },
+  {
+    "id": "char_4125_rdoc",
+    "name": "Doc",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "instructor"
+  },
+  {
+    "id": "char_106_franka",
+    "name": "Franka",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_131_flameb",
+    "name": "Flamebringer",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_154_morgan",
+    "name": "Morgan",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_4142_laios",
+    "name": "Laios",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_155_tiger",
+    "name": "Indra",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "fighter"
+  },
+  {
+    "id": "char_415_flint",
+    "name": "Flint",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "fighter"
+  },
+  {
+    "id": "char_157_dagda",
+    "name": "Dagda",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "fighter"
+  },
+  {
+    "id": "char_140_whitew",
+    "name": "Lappland",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_294_ayer",
+    "name": "Ayerscarpe",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_194_leto",
+    "name": "Leto",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_4083_chimes",
+    "name": "Wind Chimes",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "crusher"
+  },
+  {
+    "id": "char_252_bibeak",
+    "name": "Bibeak",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "sword"
+  },
+  {
+    "id": "char_459_tachak",
+    "name": "Tachanka",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "sword"
+  },
+  {
+    "id": "char_143_ghost",
+    "name": "Specter",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
+  },
+  {
+    "id": "char_356_broca",
+    "name": "Broca",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
+  },
+  {
+    "id": "char_4126_fuze",
+    "name": "Fuze",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
+  },
+  {
+    "id": "char_274_astesi",
+    "name": "Astesia",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "artsfghter"
+  },
+  {
+    "id": "char_333_sidero",
+    "name": "Sideroca",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "artsfghter"
+  },
+  {
+    "id": "char_475_akafyu",
+    "name": "Akafuyu",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "musha"
+  },
+  {
+    "id": "char_1030_noirc2",
+    "name": "Rathalos S Noir Corne",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "musha"
+  },
+  {
+    "id": "char_421_crow",
+    "name": "La Pluma",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "reaper"
+  },
+  {
+    "id": "char_4066_highmo",
+    "name": "Highmore",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "reaper"
+  },
+  {
+    "id": "char_486_takila",
+    "name": "Tequila",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "librator"
+  },
+  {
+    "id": "char_4131_odda",
+    "name": "Odda",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "hammer"
+  },
+  {
+    "id": "char_4187_graceb",
+    "name": "Gracebearer",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "primguard"
+  },
+  {
+    "id": "char_129_bluep",
+    "name": "Blue Poison",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_204_platnm",
+    "name": "Platinum",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_367_swllow",
+    "name": "GreyThroat",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_365_aprl",
+    "name": "April",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_1021_kroos2",
+    "name": "Kroos the Keen Glint",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_498_inside",
+    "name": "Insider",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_219_meteo",
+    "name": "Meteorite",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "aoesniper"
+  },
+  {
+    "id": "char_379_sesa",
+    "name": "Sesa",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "aoesniper"
+  },
+  {
+    "id": "char_4078_bdhkgt",
+    "name": "Jieyun",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "aoesniper"
+  },
+  {
+    "id": "char_279_excu",
+    "name": "Executor",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "reaperrange"
+  },
+  {
+    "id": "char_346_aosta",
+    "name": "Aosta",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "reaperrange"
+  },
+  {
+    "id": "char_002_amiya",
+    "name": "Amiya",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_405_absin",
+    "name": "Absinthe",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_411_tomimi",
+    "name": "Tomimi",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_466_qanik",
+    "name": "Qanipalaat",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_166_skfire",
+    "name": "Skyfire",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_306_leizi",
+    "name": "Leizi",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "chain"
+  },
+  {
+    "id": "char_135_halo",
+    "name": "Astgenne",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "chain"
+  },
+  {
+    "id": "char_344_beewax",
+    "name": "Beeswax",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "phalanx"
+  },
+  {
+    "id": "char_373_lionhd",
+    "name": "Leonhardt",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_341_sntlla",
+    "name": "Santalla",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_388_mint",
+    "name": "Mint",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "phalanx"
+  },
+  {
+    "id": "char_338_iris",
+    "name": "Iris",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "mystic"
+  },
+  {
+    "id": "char_297_hamoni",
+    "name": "Harmonie",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "mystic"
+  },
+  {
+    "id": "char_4110_delphn",
+    "name": "Delphine",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "mystic"
+  },
+  {
+    "id": "char_1011_lava2",
+    "name": "Lava the Purgatory",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_489_serum",
+    "name": "Corroserum",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "blastcaster"
+  },
+  {
+    "id": "char_446_aroma",
+    "name": "Aroma",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "blastcaster"
+  },
+  {
+    "id": "char_4013_kjera",
+    "name": "Kjera",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "funnel"
+  },
+  {
+    "id": "char_4040_rockr",
+    "name": "Rockrock",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "funnel"
+  },
+  {
+    "id": "char_4054_malist",
+    "name": "Minimalist",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "funnel"
+  },
+  {
+    "id": "char_499_kaitou",
+    "name": "Diamante",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "primcaster"
+  },
+  {
+    "id": "char_4081_warmy",
+    "name": "Warmy",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "primcaster"
+  },
+  {
+    "id": "char_4198_christ",
+    "name": "Miss.Christine",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "primcaster"
+  },
+  {
+    "id": "char_4164_tecno",
+    "name": "Tecno",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "soulcaster"
+  },
+  {
+    "id": "char_242_otter",
+    "name": "Mayer",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "summoner"
+  },
+  {
+    "id": "char_336_folivo",
+    "name": "Scene",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "summoner"
+  },
+  {
+    "id": "char_4140_lasher",
+    "name": "Sand Reckoner",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "summoner"
+  },
+  {
+    "id": "char_108_silent",
+    "name": "Silence",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_171_bldsk",
+    "name": "Warfarin",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_345_folnic",
+    "name": "Folinic",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_348_ceylon",
+    "name": "Ceylon",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "healer"
+  },
+  {
+    "id": "char_436_whispr",
+    "name": "Whisperain",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "healer"
+  },
+  {
+    "id": "char_4173_nowell",
+    "name": "Nowell",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "healer"
+  },
+  {
+    "id": "char_402_tuye",
+    "name": "Tuye",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_473_mberry",
+    "name": "Mulberry",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "wandermedic"
+  },
+  {
+    "id": "char_449_glider",
+    "name": "Honeyberry",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "wandermedic"
+  },
+  {
+    "id": "char_4114_harold",
+    "name": "Harold",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "wandermedic"
+  },
+  {
+    "id": "char_1024_hbisc2",
+    "name": "Hibiscus the Purifier",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "incantationmedic"
+  },
+  {
+    "id": "char_494_vendla",
+    "name": "Vendela",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "incantationmedic"
+  },
+  {
+    "id": "char_4071_peper",
+    "name": "Paprika",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "chainhealer"
+  },
+  {
+    "id": "char_4139_papyrs",
+    "name": "Papyrus",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "chainhealer"
+  },
+  {
+    "id": "char_148_nearl",
+    "name": "Nearl",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "guardian"
+  },
+  {
+    "id": "char_226_hmau",
+    "name": "Hung",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "guardian"
+  },
+  {
+    "id": "char_4109_baslin",
+    "name": "Bassline",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "guardian"
+  },
+  {
+    "id": "char_4143_sensi",
+    "name": "Senshi",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "guardian"
+  },
+  {
+    "id": "char_144_red",
+    "name": "Projekt Red",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "executor"
+  },
+  {
+    "id": "char_243_waaifu",
+    "name": "Waai Fu",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "executor"
+  },
+  {
+    "id": "char_214_kafka",
+    "name": "Kafka",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "executor"
+  },
+  {
+    "id": "char_455_nothin",
+    "name": "Mr. Nothing",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "merchant"
+  },
+  {
+    "id": "char_4155_talr",
+    "name": "Figurino",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "merchant"
+  },
+  {
+    "id": "char_107_liskam",
+    "name": "Liskarm",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "shotprotector"
+  },
+  {
+    "id": "char_4137_udflow",
+    "name": "Underflow",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "shotprotector"
+  },
+  {
+    "id": "char_201_moeshd",
+    "name": "Croissant",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_325_bison",
+    "name": "Bison",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_163_hpsts",
+    "name": "Vulcan",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "unyield"
+  },
+  {
+    "id": "char_378_asbest",
+    "name": "Asbestos",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "artsprotector"
+  },
+  {
+    "id": "char_4025_aprot2",
+    "name": "Shalem",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "artsprotector"
+  },
+  {
+    "id": "char_4047_pianst",
+    "name": "Czerny",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "artsprotector"
+  },
+  {
+    "id": "char_457_blitz",
+    "name": "Blitz",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "shotprotector"
+  },
+  {
+    "id": "char_304_zebra",
+    "name": "Heavyrain",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_431_ashlok",
+    "name": "Ashlock",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "fortress"
+  },
+  {
+    "id": "char_493_firwhl",
+    "name": "Firewhistle",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "fortress"
+  },
+  {
+    "id": "char_422_aurora",
+    "name": "Aurora",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "duelist"
+  },
+  {
+    "id": "char_464_cement",
+    "name": "Cement",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "duelist"
+  },
+  {
+    "id": "char_4148_philae",
+    "name": "Philae",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "primprotector"
+  },
+  {
+    "id": "char_145_prove",
+    "name": "Provence",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "closerange"
+  },
+  {
+    "id": "char_4006_melnte",
+    "name": "Melanite",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "closerange"
+  },
+  {
+    "id": "char_158_milu",
+    "name": "Firewatch",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "longrange"
+  },
+  {
+    "id": "char_218_cuttle",
+    "name": "Andreana",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "longrange"
+  },
+  {
+    "id": "char_4014_lunacu",
+    "name": "Lunacub",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "longrange"
+  },
+  {
+    "id": "char_363_toddi",
+    "name": "Toddifons",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "siegesniper"
+  },
+  {
+    "id": "char_4043_erato",
+    "name": "Erato",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "siegesniper"
+  },
+  {
+    "id": "char_1027_greyy2",
+    "name": "Greyy the Lightningbearer",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "bombarder"
+  },
+  {
+    "id": "char_4104_coldst",
+    "name": "Coldshot",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "hunter"
+  },
+  {
+    "id": "char_4177_brigid",
+    "name": "Brigid",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "loopshooter"
+  },
+  {
+    "id": "char_4015_spuria",
+    "name": "Spuria",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "geek"
+  },
+  {
+    "id": "char_173_slchan",
+    "name": "Cliffheart",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "hookmaster"
+  },
+  {
+    "id": "char_383_snsant",
+    "name": "Snowsant",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "hookmaster"
+  },
+  {
+    "id": "char_4105_almond",
+    "name": "Almond",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "hookmaster"
+  },
+  {
+    "id": "char_174_slbell",
+    "name": "Pramanix",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "underminer"
+  },
+  {
+    "id": "char_254_vodfox",
+    "name": "Shamare",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "underminer"
+  },
+  {
+    "id": "char_4079_haini",
+    "name": "Lucilla",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "underminer"
+  },
+  {
+    "id": "char_195_glassb",
+    "name": "Istina",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_326_glacus",
+    "name": "Glaucus",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_4032_provs",
+    "name": "Proviso",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_4122_grabds",
+    "name": "Grain Buds",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_433_windft",
+    "name": "Windflit",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "craftsman"
+  },
+  {
+    "id": "char_4162_cathy",
+    "name": "Catherine",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "craftsman"
+  },
+  {
+    "id": "char_4178_alanna",
+    "name": "Alanna",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "craftsman"
+  },
+  {
+    "id": "char_101_sora",
+    "name": "Sora",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "bard"
+  },
+  {
+    "id": "char_4045_heidi",
+    "name": "Heidi",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "bard"
+  },
+  {
+    "id": "char_343_tknogi",
+    "name": "Tsukinogi",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "blessing"
+  },
+  {
+    "id": "char_4019_ncdeer",
+    "name": "Nine-Colored Deer",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "blessing"
+  },
+  {
+    "id": "char_492_quercu",
+    "name": "Quercus",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "blessing"
+  },
+  {
+    "id": "char_4172_xingzh",
+    "name": "Xingzhu",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "blessing"
+  },
+  {
+    "id": "char_4102_threye",
+    "name": "Valarqvin",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "ritualist"
+  },
+  {
+    "id": "char_487_bobb",
+    "name": "Bobbing",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "ritualist"
+  },
+  {
+    "id": "char_215_mantic",
+    "name": "Manticore",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "stalker"
+  },
+  {
+    "id": "char_478_kirara",
+    "name": "Kirara",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "stalker"
+  },
+  {
+    "id": "char_241_panda",
+    "name": "FEater",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "pusher"
+  },
+  {
+    "id": "char_4036_forcer",
+    "name": "Enforcer",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "pusher"
+  },
+  {
+    "id": "char_451_robin",
+    "name": "Robin",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "traper"
+  },
+  {
+    "id": "char_458_rfrost",
+    "name": "Frost",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "traper"
+  },
+  {
+    "id": "char_4171_wulfen",
+    "name": "Wulfenite",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "traper"
+  },
+  {
+    "id": "char_369_bena",
+    "name": "Bena",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "dollkeeper"
+  },
+  {
+    "id": "char_4016_kazema",
+    "name": "Kazemaru",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "dollkeeper"
+  },
+  {
+    "id": "char_4124_iana",
+    "name": "Iana",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "dollkeeper"
+  },
+  {
+    "id": "char_4151_tinman",
+    "name": "Tin Man",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "alchemist"
+  },
+  {
+    "id": "char_103_angel",
+    "name": "Exusiai",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_332_archet",
+    "name": "Archetto",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_456_ash",
+    "name": "Ash",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "fastshot"
+  },
+  {
+    "id": "char_340_shwaz",
+    "name": "Schwarz",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "closerange"
+  },
+  {
+    "id": "char_4055_bgsnow",
+    "name": "Pozëmka",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "closerange"
+  },
+  {
+    "id": "char_430_fartth",
+    "name": "Fartooth",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "longrange"
+  },
+  {
+    "id": "char_4193_lemuen",
+    "name": "Lemuen",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "longrange"
+  },
+  {
+    "id": "char_113_cqbw",
+    "name": "W",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "aoesniper"
+  },
+  {
+    "id": "char_300_phenxi",
+    "name": "Fiammetta",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "aoesniper"
+  },
+  {
+    "id": "char_197_poca",
+    "name": "Rosa",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "siegesniper"
+  },
+  {
+    "id": "char_2012_typhon",
+    "name": "Typhon",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "siegesniper"
+  },
+  {
+    "id": "char_391_rosmon",
+    "name": "Rosmontis",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "bombarder"
+  },
+  {
+    "id": "char_1035_wisdel",
+    "name": "Wiš'adel",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "bombarder"
+  },
+  {
+    "id": "char_1013_chen2",
+    "name": "Ch'en the Holungday",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "reaperrange"
+  },
+  {
+    "id": "char_4117_ray",
+    "name": "Ray",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "hunter"
+  },
+  {
+    "id": "char_4138_narant",
+    "name": "Narantuya",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "loopshooter"
+  },
+  {
+    "id": "char_112_siege",
+    "name": "Siege",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_222_bpipe",
+    "name": "Bagpipe",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "charger"
+  },
+  {
+    "id": "char_362_saga",
+    "name": "Saga",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_4026_vulpis",
+    "name": "Vulpisfoglia",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_479_sleach",
+    "name": "Saileach",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "bearer"
+  },
+  {
+    "id": "char_420_flamtl",
+    "name": "Flametail",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "pioneer"
+  },
+  {
+    "id": "char_427_vigil",
+    "name": "Vigil",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "tactician"
+  },
+  {
+    "id": "char_249_mlyss",
+    "name": "Muelsyse",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "tactician"
+  },
+  {
+    "id": "char_4087_ines",
+    "name": "Ines",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "agent"
+  },
+  {
+    "id": "char_134_ifrit",
+    "name": "Ifrit",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "blastcaster"
+  },
+  {
+    "id": "char_213_mostma",
+    "name": "Mostima",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_180_amgoat",
+    "name": "Eyjafjalla",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_2013_cerber",
+    "name": "Ceobe",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_4027_heyak",
+    "name": "Ho'olheyak",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_4133_logos",
+    "name": "Logos",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_2015_dusk",
+    "name": "Dusk",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_4141_marcil",
+    "name": "Marcille",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_472_pasngr",
+    "name": "Passenger",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "chain"
+  },
+  {
+    "id": "char_426_billro",
+    "name": "Carnelian",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "phalanx"
+  },
+  {
+    "id": "char_4080_lin",
+    "name": "Lin",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "phalanx"
+  },
+  {
+    "id": "char_377_gdglow",
+    "name": "Goldenglow",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "funnel"
+  },
+  {
+    "id": "char_1038_whitw2",
+    "name": "Lappland the Decadenza",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "funnel"
+  },
+  {
+    "id": "char_4046_ebnhlz",
+    "name": "Ebenholz",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "mystic"
+  },
+  {
+    "id": "char_4146_nymph",
+    "name": "Nymph",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "primcaster"
+  },
+  {
+    "id": "char_1040_blaze2",
+    "name": "Blaze the Igniting Spark",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "primcaster"
+  },
+  {
+    "id": "char_450_necras",
+    "name": "Necrass",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "soulcaster"
+  },
+  {
+    "id": "char_206_gnosis",
+    "name": "Gnosis",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "underminer"
+  },
+  {
+    "id": "char_291_aglina",
+    "name": "Angelina",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_358_lisa",
+    "name": "Suzuran",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_248_mgllan",
+    "name": "Magallan",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "summoner"
+  },
+  {
+    "id": "char_1012_skadi2",
+    "name": "Skadi the Corrupting Heart",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "bard"
+  },
+  {
+    "id": "char_4134_cetsyr",
+    "name": "Civilight Eterna",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "bard"
+  },
+  {
+    "id": "char_1031_slent2",
+    "name": "Silence the Paradigmatic",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "blessing"
+  },
+  {
+    "id": "char_2023_ling",
+    "name": "Ling",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "summoner"
+  },
+  {
+    "id": "char_4072_ironmn",
+    "name": "Stainless",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "craftsman"
+  },
+  {
+    "id": "char_245_cello",
+    "name": "Virtuosa",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "ritualist"
+  },
+  {
+    "id": "char_250_phatom",
+    "name": "Phantom",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "executor"
+  },
+  {
+    "id": "char_1028_texas2",
+    "name": "Texas the Omertosa",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "executor"
+  },
+  {
+    "id": "char_1029_yato2",
+    "name": "Kirin R Yato",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "executor"
+  },
+  {
+    "id": "char_1502_crosly",
+    "name": "Crownslayer",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "executor"
+  },
+  {
+    "id": "char_322_lmlee",
+    "name": "Lee",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "merchant"
+  },
+  {
+    "id": "char_1033_swire2",
+    "name": "Swire the Elegant Wit",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "merchant"
+  },
+  {
+    "id": "char_400_weedy",
+    "name": "Weedy",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "pusher"
+  },
+  {
+    "id": "char_225_haak",
+    "name": "Aak",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "geek"
+  },
+  {
+    "id": "char_1041_angel2",
+    "name": "Exusiai the New Covenant",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "geek"
+  },
+  {
+    "id": "char_474_glady",
+    "name": "Gladiia",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "hookmaster"
+  },
+  {
+    "id": "char_437_mizuki",
+    "name": "Mizuki",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "stalker"
+  },
+  {
+    "id": "char_4132_ascln",
+    "name": "Ascalon",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "stalker"
+  },
+  {
+    "id": "char_1023_ghost2",
+    "name": "Specter the Unchained",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "dollkeeper"
+  },
+  {
+    "id": "char_4048_doroth",
+    "name": "Dorothy",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "traper"
+  },
+  {
+    "id": "char_4123_ela",
+    "name": "Ela",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "traper"
+  },
+  {
+    "id": "char_1039_thorn2",
+    "name": "Thorns the Lodestar",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "alchemist"
+  },
+  {
+    "id": "char_147_shining",
+    "name": "Shining",
+    "rarity": "TIER_6",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_179_cgbird",
+    "name": "Nightingale",
+    "rarity": "TIER_6",
+    "profession": "MEDIC",
+    "subProfessionId": "ringhealer"
+  },
+  {
+    "id": "char_003_kalts",
+    "name": "Kal'tsit",
+    "rarity": "TIER_6",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_4042_lumen",
+    "name": "Lumen",
+    "rarity": "TIER_6",
+    "profession": "MEDIC",
+    "subProfessionId": "healer"
+  },
+  {
+    "id": "char_1016_agoat2",
+    "name": "Eyjafjalla the Hvít Aska",
+    "rarity": "TIER_6",
+    "profession": "MEDIC",
+    "subProfessionId": "wandermedic"
+  },
+  {
+    "id": "char_1020_reed2",
+    "name": "Reed the Flame Shadow",
+    "rarity": "TIER_6",
+    "profession": "MEDIC",
+    "subProfessionId": "incantationmedic"
+  },
+  {
+    "id": "char_4179_monstr",
+    "name": "Mon3tr",
+    "rarity": "TIER_6",
+    "profession": "MEDIC",
+    "subProfessionId": "chainhealer"
+  },
+  {
+    "id": "char_136_hsguma",
+    "name": "Hoshiguma",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_202_demkni",
+    "name": "Saria",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "guardian"
+  },
+  {
+    "id": "char_423_blemsh",
+    "name": "Blemishine",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "guardian"
+  },
+  {
+    "id": "char_2025_shu",
+    "name": "Shu",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "guardian"
+  },
+  {
+    "id": "char_2014_nian",
+    "name": "Nian",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "protector"
+  },
+  {
+    "id": "char_311_mudrok",
+    "name": "Mudrock",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "unyield"
+  },
+  {
+    "id": "char_4065_judge",
+    "name": "Penance",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "unyield"
+  },
+  {
+    "id": "char_416_zumama",
+    "name": "Eunectes",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "duelist"
+  },
+  {
+    "id": "char_4039_horn",
+    "name": "Horn",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "fortress"
+  },
+  {
+    "id": "char_1034_jesca2",
+    "name": "Jessica the Liberated",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "shotprotector"
+  },
+  {
+    "id": "char_4194_rmixer",
+    "name": "Sankta Miksaparato",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "shotprotector"
+  },
+  {
+    "id": "char_2026_yu",
+    "name": "Yu",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "primprotector"
+  },
+  {
+    "id": "char_264_f12yin",
+    "name": "Mountain",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "fighter"
+  },
+  {
+    "id": "char_2024_chyue",
+    "name": "Chongyue",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "fighter"
+  },
+  {
+    "id": "char_172_svrash",
+    "name": "SilverAsh",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_293_thorns",
+    "name": "Thorns",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_4082_qiubai",
+    "name": "Qiubai",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_4088_hodrer",
+    "name": "Hoederer",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "crusher"
+  },
+  {
+    "id": "char_4145_ulpia",
+    "name": "Ulpianus",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "crusher"
+  },
+  {
+    "id": "char_4058_pepe",
+    "name": "Pepe",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "hammer"
+  },
+  {
+    "id": "char_010_chen",
+    "name": "Ch'en",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "sword"
+  },
+  {
+    "id": "char_4009_irene",
+    "name": "Irene",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "sword"
+  },
+  {
+    "id": "char_4116_blkkgt",
+    "name": "Degenbrecher",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "sword"
+  },
+  {
+    "id": "char_017_huang",
+    "name": "Blaze",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
+  },
+  {
+    "id": "char_1026_gvial2",
+    "name": "Gavial the Invincible",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
+  },
+  {
+    "id": "char_350_surtr",
+    "name": "Surtr",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "artsfghter"
+  },
+  {
+    "id": "char_4098_vvana",
+    "name": "Viviana",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "artsfghter"
+  },
+  {
+    "id": "char_1019_siege2",
+    "name": "Vina Victoria",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "artsfghter"
+  },
+  {
+    "id": "char_188_helage",
+    "name": "Hellagur",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "musha"
+  },
+  {
+    "id": "char_4121_zuole",
+    "name": "Zuo Le",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "musha"
+  },
+  {
+    "id": "char_485_pallas",
+    "name": "Pallas",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "instructor"
+  },
+  {
+    "id": "char_1014_nearl2",
+    "name": "Nearl the Radiant Knight",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_4011_lessng",
+    "name": "Lessing",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_1032_excu2",
+    "name": "Executor the Ex Foedere",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "reaper"
+  },
+  {
+    "id": "char_4010_etlchi",
+    "name": "Entelechia",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "reaper"
+  },
+  {
+    "id": "char_4064_mlynar",
+    "name": "Młynar",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "librator"
+  },
+  {
+    "id": "char_230_savage",
+    "name": "Savage",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
+  },
+  {
+    "id": "char_282_catap",
+    "name": "Catapult",
+    "rarity": "TIER_3",
+    "profession": "SNIPER",
+    "subProfessionId": "aoesniper"
+  },
+  {
+    "id": "char_283_midn",
+    "name": "Midnight",
+    "rarity": "TIER_3",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_137_brownb",
+    "name": "Beehunter",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "fighter"
+  },
+  {
+    "id": "char_347_jaksel",
+    "name": "Jackie",
+    "rarity": "TIER_4",
+    "profession": "WARRIOR",
+    "subProfessionId": "fighter"
+  },
+  {
+    "id": "char_164_nightm",
+    "name": "Nightmare",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "corecaster"
+  },
+  {
+    "id": "char_220_grani",
+    "name": "Grani",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "charger"
+  },
+  {
+    "id": "char_263_skadi",
+    "name": "Skadi",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "fearless"
+  },
+  {
+    "id": "char_4208_wintim",
+    "name": "Снегурочка",
+    "rarity": "TIER_4",
+    "profession": "PIONEER",
+    "subProfessionId": "agent"
+  },
+  {
+    "id": "char_4199_makiri",
+    "name": "Matsukiri",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "counsellor"
+  },
+  {
+    "id": "char_4185_amoris",
+    "name": "Yūtenji Nyamu",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "hammer"
+  },
+  {
+    "id": "char_4203_kichi",
+    "name": "Kichisei",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "reaperrange"
+  },
+  {
+    "id": "char_4196_reckpr",
+    "name": "Record Keeper",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_4207_branch",
+    "name": "Веточки",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "unyield"
+  },
+  {
+    "id": "char_4184_dolris",
+    "name": "Misumi Uika",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "bard"
+  },
+  {
+    "id": "char_4186_tmoris",
+    "name": "Yahata Umiri",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "stalker"
+  },
+  {
+    "id": "char_4183_mortis",
+    "name": "Wakaba Mutsumi",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "dollkeeper"
+  },
+  {
+    "id": "char_4191_tippi",
+    "name": "Tippi",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "skywalker"
+  },
+  {
+    "id": "char_4204_mantra",
+    "name": "Mantra",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "primcaster"
+  },
+  {
+    "id": "char_4195_radian",
+    "name": "Raidian",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "summoner"
+  },
+  {
+    "id": "char_4202_haruka",
+    "name": "Haruka",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "blessing"
+  },
+  {
+    "id": "char_1042_phatm2",
+    "name": "Tragodia",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "ritualist"
+  },
+  {
+    "id": "char_1044_hsgma2",
+    "name": "Hoshiguma the Breacher",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "artsprotector"
+  },
+  {
+    "id": "char_4182_oblvns",
+    "name": "Togawa Sakiko",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
+    "id": "char_1043_leizi2",
+    "name": "Leizi the Thunderbringer",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "librator"
+  }
+]

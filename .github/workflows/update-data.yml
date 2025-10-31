@@ -1,0 +1,48 @@
+name: Update data and avatars
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * *' # daily at 06:00 UTC
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install
+        run: yarn --frozen-lockfile
+
+      - name: Extract tiers
+        run: yarn extract-tiers
+
+      - name: Fetch chars
+        run: yarn fetch-chars
+
+      - name: Fetch avatars (limited concurrency)
+        # limit downloads in CI to avoid long runs; scripts accept --limit
+        run: yarn fetch-avatars -- --limit=5 --concurrency=4
+
+      - name: Optimize avatars
+        run: yarn optimize-avatars
+
+      - name: Commit and push data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data || true
+          if git diff --staged --quiet; then
+            echo 'No changes to commit'
+          else
+            git commit -m 'chore(data): refresh tiers/chars and avatars [skip ci]'
+            git push
+          fi
