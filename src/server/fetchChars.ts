@@ -20,12 +20,12 @@ export async function fetchChars(): Promise<Char[]> {
       const objCn = (await resCn.json()) as Record<string, RawChar>;
       const charsCn = transformCharacterTable(objCn);
 
-      // Build set of existing ids from EN
-      const existing = new Set(chars.map((c) => c.id));
+      // Build array of existing ids from EN
+      const existingIds = chars.map((c) => c.id);
 
       // Append chars present in CN but missing in EN.
       for (const c of charsCn) {
-        if (!existing.has(c.id)) {
+        if (!existingIds.includes(c.id)) {
           const entry: Partial<Char> = { ...c };
           // Prefer the raw CN `appellation` (if present) for name,
           // otherwise fall back to the transformed `name`.
