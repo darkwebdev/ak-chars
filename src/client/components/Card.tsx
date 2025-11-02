@@ -1,8 +1,11 @@
 import React from 'react';
-import Stars from './Stars';
+import { Stars } from './Stars';
 import { Char } from '../../types';
 
-export default function Card({
+// eslint-disable-next-line no-unused-vars
+type ToggleFn = (id: string) => void;
+
+export function Card({
   ch,
   tier,
   owned,
@@ -11,7 +14,7 @@ export default function Card({
   ch: Char;
   tier?: string;
   owned?: boolean;
-  onToggleOwned?: (id: string) => void;
+  onToggleOwned?: ToggleFn;
 }) {
   const handleClick = () => {
     if (!onToggleOwned) return;

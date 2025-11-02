@@ -109,3 +109,5 @@ Before starting a new task in the above plan, update progress in the plan.
 - Don't use NPM, use Yarn as specified in README.md.
 - Don't create obvious comments in the code.
 - Prefer extracting code into function with readable name over comments.
+- Import JSON files using 'import data from "./data.json"' syntax.
+- Prefer named exports over default exports.

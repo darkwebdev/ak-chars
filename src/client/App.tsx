@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Filters from './components/Filters';
-import SubprofessionGroup from './components/SubprofessionGroup';
+import { Filters } from './components/Filters';
+import { SubprofessionGroup } from './components/SubprofessionGroup';
 import { groupsWithMeta } from './utils/groupHelpers';
 import {
   getRarities,
@@ -9,13 +9,15 @@ import {
   filterChars,
   sortByTier,
 } from './utils/appHelpers';
-import ProfessionSidebar from './components/ProfessionSidebar';
-import useLocalStorage from './hooks/useLocalStorage';
+import { ProfessionSidebar } from './components/ProfessionSidebar';
+import { KroosterButton } from './components/KroosterButton';
+import { normalize as normalizeKrooster } from './utils/krooster';
+import { useLocalStorage } from './hooks/useLocalStorage';
 import charsData from '../../data/chars.json';
 import tiersData from '../../data/charTiers.json';
 import { Char } from '../types';
 
-export default function App() {
+export function App() {
   const [chars] = useState<Char[]>(charsData);
   const [tiers] = useState<Record<string, string>>(tiersData);
   const [rarity, setRarity] = useState('');
@@ -48,6 +50,25 @@ export default function App() {
       <div className="main-content">
         <header>
           <h1>Arknights Characters</h1>
+          <KroosterButton
+            kroosterNames={chars.map((c) => c.name || '')}
+            username="tibalt"
+            onApply={(matchedNames) => {
+              // Map visible krooster names to our char IDs using normalized name matching
+              const nameToId = new Map<string, string>();
+              for (const ch of chars) {
+                const n = ch.name || '';
+                nameToId.set(normalizeKrooster(n), ch.id);
+              }
+              const ids: string[] = [];
+              for (const mn of matchedNames) {
+                const id = nameToId.get(normalizeKrooster(mn));
+                if (id) ids.push(id);
+              }
+              // Replace owned list with krooster-derived ids
+              setOwnedIds(ids);
+            }}
+          />
           <Filters
             rarity={rarity}
             setRarity={setRarity}

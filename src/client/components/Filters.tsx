@@ -1,6 +1,9 @@
 import React from 'react';
 
-export default function Filters({
+// eslint-disable-next-line no-unused-vars
+type SetString = (v: string) => void;
+
+export function Filters({
   rarity,
   setRarity,
   rarities,
@@ -9,10 +12,11 @@ export default function Filters({
   tiersList,
 }: {
   rarity: string;
-  setRarity: (v: string) => void;
+  setRarity: SetString;
   rarities: string[];
   tierFilter: string;
-  setTierFilter: (v: string) => void;
+  setTierFilter: SetString;
+  // Note: parameter names in function types intentionally use underscore to avoid unused-var warnings
   tiersList: string[];
 }) {
   return (

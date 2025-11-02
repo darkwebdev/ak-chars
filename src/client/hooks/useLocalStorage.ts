@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // Simple generic localStorage hook for JSON-serializable values
-export default function useLocalStorage<T>(key: string, initial: T) {
+export function useLocalStorage<T>(key: string, initial: T) {
   const [state, setState] = useState<T>(() => {
     try {
       const raw = localStorage.getItem(key);

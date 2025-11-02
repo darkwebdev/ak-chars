@@ -2,7 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import { PNG } from 'pngjs';
-import optimise from '../src/server/optimiseImages';
+import { optimise } from '../src/server/optimiseImages';
 
 describe('optimiseImages', () => {
   it('converts PNG to JPG in a directory', async () => {

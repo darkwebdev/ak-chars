@@ -1,12 +1,15 @@
 import React from 'react';
 
+// eslint-disable-next-line no-unused-vars
+type SetString = (v: string) => void;
+
 type Props = {
   professions: string[];
   current: string;
-  onSelect: (p: string) => void;
+  onSelect: SetString;
 };
 
-export default function ProfessionSidebar({ professions, current, onSelect }: Props) {
+export function ProfessionSidebar({ professions, current, onSelect }: Props) {
   return (
     <aside className="profession-sidebar">
       <h3>Professions</h3>

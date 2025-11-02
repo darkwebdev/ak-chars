@@ -47,4 +47,3 @@ export function sortByTier(chars: Char[], tiers: Record<string, string>) {
   });
 }
 
-export default null;

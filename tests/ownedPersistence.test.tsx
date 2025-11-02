@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import App from '../src/client/App';
+import { App } from '../src/client/App';
 
 beforeEach(() => {
   // clear localStorage between tests
