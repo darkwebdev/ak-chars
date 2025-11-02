@@ -49,7 +49,7 @@ export async function optimizeImage(
   }
 }
 
-export default async function optimise(dirArg?: string) {
+export async function optimise(dirArg?: string) {
   const dirToUse = dirArg || process.argv[2];
   if (!dirToUse) {
     console.error('Usage: ts-node optimiseImages.ts <imagesDir>');

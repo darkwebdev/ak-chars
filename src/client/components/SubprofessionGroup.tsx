@@ -1,16 +1,19 @@
 import React from 'react';
-import Card from './Card';
+import { Card } from './Card';
 import type { Char } from '../../types';
+
+// eslint-disable-next-line no-unused-vars
+type ToggleFn = (id: string) => void;
 
 type Props = {
   name: string;
   chars: Char[];
   tiers: Record<string, string>;
   owned: string[];
-  onToggleOwned: (id: string) => void;
+  onToggleOwned: ToggleFn;
 };
 
-export default function SubprofessionGroup({ name, chars, tiers, owned, onToggleOwned }: Props) {
+export function SubprofessionGroup({ name, chars, tiers, owned, onToggleOwned }: Props) {
   const total = chars.length;
   const ownedCount = chars.filter((c) => owned.includes(c.id)).length;
 
