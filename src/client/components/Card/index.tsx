@@ -1,0 +1,67 @@
+import React from 'react';
+import { Stars } from '../Stars.tsx';
+import { Char } from '../../../types.js';
+import './style.css';
+
+// eslint-disable-next-line no-unused-vars
+type ToggleFn = (id: string) => void;
+
+export function Card({
+  ch,
+  tier,
+  owned,
+  onToggleOwned,
+}: {
+  ch: Char;
+  tier?: string;
+  owned?: boolean;
+  onToggleOwned?: ToggleFn;
+}) {
+  const handleClick = () => {
+    if (!onToggleOwned) return;
+    onToggleOwned(ch.id);
+  };
+
+  const getTierClass = (tierValue?: string) => {
+    if (!tierValue) return '';
+    const normalized = tierValue.toUpperCase();
+    if (normalized.startsWith('EX')) return 'tier-ex';
+    if (normalized.startsWith('S')) return 'tier-s';
+    if (normalized.startsWith('A')) return 'tier-a';
+    if (normalized.startsWith('B')) return 'tier-b';
+    if (normalized.startsWith('C')) return 'tier-c';
+    return 'tier-def';
+  };
+
+  return (
+    <div
+      className={`card ${owned ? 'owned' : ''}`}
+      role="button"
+      tabIndex={0}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      aria-pressed={owned ? 'true' : 'false'}
+      aria-label={`${ch.name} ${owned ? 'owned' : 'not owned'}`}
+    >
+      <div className="cardHeader">
+        <Stars rarity={(ch.rarity ?? undefined) as string | undefined} />
+      </div>
+      <div className="avatarWrap">
+        <img src={`${import.meta.env.BASE_URL}avatars/${ch.id}.png`} alt={ch.name ?? ''} />
+        {tier && <div className={`tierBadge ${getTierClass(tier)}`}>{tier}</div>}
+      </div>
+      <div className="cardBody">
+        <div className="title">{ch.name}</div>
+        <div className="meta">
+          <div className="profession">{ch.profession}</div>
+          <div className="subprofession">{ch.subProfessionId}</div>
+        </div>
+      </div>
+    </div>
+  );
+}

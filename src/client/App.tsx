@@ -51,20 +51,25 @@ export function App() {
         <header>
           <h1>Arknights Characters</h1>
           <KroosterButton
-            kroosterNames={chars.map((c) => c.name || '')}
-            username="tibalt"
-            onApply={(matchedNames) => {
+            chars={chars.map((c) => ({ id: c.id, name: c.name }))}
+            onApply={(matchedNames: string[]) => {
               // Map visible krooster names to our char IDs using normalized name matching
               const nameToId = new Map<string, string>();
               for (const ch of chars) {
-                const n = ch.name || '';
-                nameToId.set(normalizeKrooster(n), ch.id);
+                nameToId.set(normalizeKrooster(ch.name), ch.id);
               }
               const ids: string[] = [];
               for (const mn of matchedNames) {
                 const id = nameToId.get(normalizeKrooster(mn));
                 if (id) ids.push(id);
               }
+              console.log(
+                `KroosterButton: applying ${matchedNames.length} matched names to ${ids.length} IDs`,
+                {
+                  matchedNames,
+                  ids,
+                },
+              );
               // Replace owned list with krooster-derived ids
               setOwnedIds(ids);
             }}

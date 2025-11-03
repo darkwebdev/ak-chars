@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { optimizeImage } from '../src/server/optimiseImages';
+import { optimizeImage } from '../src/server/optimiseImages.js';
 
 function parseLimit(): number | undefined {
   const a = process.argv.slice(2).find((s) => s.startsWith('--limit='));
@@ -27,7 +27,7 @@ async function main(dirArg?: string) {
   for (const f of toProcess) {
     // do not parallelize to avoid memory spikes
     // eslint-disable-next-line no-await-in-loop
-    const ok = await optimizeImage(f, readFromDir, writeToDir);
+    const ok = await optimizeImage(f, readFromDir, writeToDir, 'png');
     if (ok) convertedCount += 1;
     else console.log('Skipped', f);
   }
@@ -35,14 +35,12 @@ async function main(dirArg?: string) {
   return convertedCount;
 }
 
-if (typeof require !== 'undefined' && require.main === module) {
-  main()
-    .then((n) => {
-      console.log(`Optimiser finished, converted ${n} file(s)`);
-      process.exit(0);
-    })
-    .catch((err) => {
-      console.error('Optimiser failed:', err && err.stack ? err.stack : err);
-      process.exit(1);
-    });
-}
+main()
+  .then((n) => {
+    console.log(`Optimiser finished, converted ${n} file(s)`);
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error('Optimiser failed:', err && err.stack ? err.stack : err);
+    process.exit(1);
+  });

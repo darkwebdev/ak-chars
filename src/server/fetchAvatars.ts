@@ -1,9 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import type { Char } from '../types';
+import type { Char } from '../types.d.ts';
 
-const BASE =
-  'https://raw.githubusercontent.com/akgcc/arkdata/main/assets/torappu/dynamicassets/arts/charavatars';
+const BASE = 'https://raw.githubusercontent.com/yuanyan3060/ArknightsGameResource/main/avatar';
 
 type Options = {
   chars: Char[];
@@ -11,7 +10,7 @@ type Options = {
   limit?: number;
 };
 
-export async function fetchAvatars({ chars, outDir = 'data/avatars', limit = 3 }: Options) {
+export async function fetchAvatars({ chars, outDir = 'data/avatars', limit = 10 }: Options) {
   if (!chars)
     throw new Error(
       'No chars provided. Use the script to read data/chars.json and pass chars array.',
@@ -21,8 +20,9 @@ export async function fetchAvatars({ chars, outDir = 'data/avatars', limit = 3 }
   if (!fs.existsSync(resolvedOut)) fs.mkdirSync(resolvedOut, { recursive: true });
 
   // Simplified sequential downloader: tests rely on small numbers and mocked fetch.
-  const max = typeof limit === 'number' ? Math.min(limit, chars.length) : chars.length;
-  for (let i = 0; i < max; i++) {
+  const desired = typeof limit === 'number' ? limit : chars.length;
+  let downloaded = 0;
+  for (let i = 0; i < chars.length && downloaded < desired; i++) {
     const char = chars[i];
     if (!char || !char.id) continue;
     const fileOut = path.join(resolvedOut, `${char.id}.png`);
@@ -36,6 +36,7 @@ export async function fetchAvatars({ chars, outDir = 'data/avatars', limit = 3 }
       }
       const ab = await res.arrayBuffer();
       fs.writeFileSync(fileOut, Buffer.from(ab));
+      downloaded++;
       // eslint-disable-next-line no-console
       console.log('Avatar saved to', fileOut);
     } catch (err: unknown) {

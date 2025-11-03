@@ -1,6 +1,6 @@
-import { fetchAvatars } from '../src/server/fetchAvatars';
-import chars from '../data/chars.json';
-import { Char } from '../src/types';
+import { fetchAvatars } from '../src/server/fetchAvatars.js';
+import chars from '../data/chars.json' with { type: 'json' };
+import { Char } from '../src/types.js';
 
 const arg = process.argv.find((s) => s.startsWith('--limit='));
 const limit = arg ? Number(arg.split('=')[1]) : undefined;
