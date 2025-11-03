@@ -20,20 +20,20 @@ jobs:
           node-version: '20'
 
       - name: Install
-        run: yarn --frozen-lockfile
+        run: CI=1 yarn --frozen-lockfile
 
       - name: Extract tiers
-        run: yarn extract-tiers
+        run: CI=1 yarn extract-tiers
 
       - name: Fetch chars
-        run: yarn fetch-chars
+        run: CI=1 yarn fetch-chars
 
       - name: Fetch avatars (limited concurrency)
         # limit downloads in CI to avoid long runs; scripts accept --limit
-        run: yarn fetch-avatars -- --limit=5 --concurrency=4
+        run: CI=1 yarn fetch-avatars -- --limit=5 --concurrency=4
 
       - name: Optimize avatars
-        run: yarn optimize-avatars
+        run: CI=1 yarn optimize-avatars
 
       - name: Commit and push data
         run: |
