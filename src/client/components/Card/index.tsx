@@ -53,15 +53,15 @@ export function Card({
       </div>
       <div className="avatarWrap">
         <img src={`${import.meta.env.BASE_URL}avatars/${ch.id}.png`} alt={ch.name ?? ''} />
-        {tier && <div className={`tierBadge ${getTierClass(tier)}`}>{tier}</div>}
       </div>
       <div className="cardBody">
         <div className="title">{ch.name}</div>
         <div className="meta">
-          <div className="profession">{ch.profession}</div>
-          <div className="subprofession">{ch.subProfessionId}</div>
+          {/* <div className="profession">{ch.profession}</div> */}
+          {/* <div className="subprofession">{ch.subProfessionId}</div> */}
         </div>
       </div>
+      {tier && <div className={`tierBadge ${getTierClass(tier)}`}>{tier}</div>}
     </div>
   );
 }

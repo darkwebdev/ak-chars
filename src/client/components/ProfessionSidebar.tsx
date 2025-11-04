@@ -12,7 +12,6 @@ type Props = {
 export function ProfessionSidebar({ professions, current, onSelect }: Props) {
   return (
     <aside className="profession-sidebar">
-      <h3>Professions</h3>
       <div className="profession-buttons">
         {professions.map((prof) => (
           <button

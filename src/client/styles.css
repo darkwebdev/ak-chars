@@ -21,20 +21,12 @@ body {
     position: fixed;
     left: 0;
     top: 0;
-    width: 200px;
     height: 100vh;
     background: var(--card);
     border-right: 1px solid #1f2a37;
     padding: 20px;
     overflow-y: auto;
     z-index: 10;
-}
-
-.profession-sidebar h3 {
-    margin: 0 0 16px 0;
-    color: var(--accent);
-    font-size: 16px;
-    font-weight: 600;
 }
 
 .profession-buttons {
@@ -97,7 +89,7 @@ select {
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 12px;
+    gap: 32px 12px;
     margin-top: 18px
 }
 

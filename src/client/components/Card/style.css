@@ -1,4 +1,5 @@
 .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -6,9 +7,19 @@
 }
 
 .cardHeader {
+    position: absolute;
     display: flex;
     justify-content: center;
-    min-height: 16px;
+    width: 100%;
+    height: 15%;
+    z-index: 1;
+    background: linear-gradient(180deg,
+            rgba(0, 0, 0, 0.5) 40%, transparent 100%);
+}
+
+.card.owned .cardHeader {
+    background: linear-gradient(180deg,
+            color-mix(in srgb, var(--accent) 30%, #000) 40%, transparent 100%);
 }
 
 .avatarWrap {
@@ -16,20 +27,18 @@
     aspect-ratio: 1;
     position: relative;
     background: rgba(0, 0, 0, 0.4);
-    border: 1px solid #123;
 }
 
 .card.owned .avatarWrap {
-    background: linear-gradient(45deg, color-mix(in srgb, var(--accent) 45%, transparent), color-mix(in srgb, var(--accent) 0%, transparent));
-    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 15%, transparent);
+    background: linear-gradient(45deg,
+            color-mix(in srgb, var(--accent) 45%, transparent),
+            color-mix(in srgb, var(--accent) 0%, transparent));
 }
 
 .avatarWrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 6px;
 }
 
 .tierBadge {
@@ -81,9 +90,19 @@
 }
 
 .cardBody {
+    position: absolute;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
+    padding-top: 5%;
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 60%, transparent 100%);
+}
+
+.card.owned .cardBody {
+    background: linear-gradient(0deg,
+            color-mix(in srgb, var(--accent) 20%, rgba(0, 0, 0, 0.7)) 50%, transparent 100%);
 }
 
 .title {
