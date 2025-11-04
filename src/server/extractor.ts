@@ -141,9 +141,5 @@ export async function generateCharTiers(sheetId: string, sheetName = 'The Tier L
   const map = buildCharMapFromMatrix(rows);
   // Backfill any unmapped data cells by scanning upward for nearest tier
   backfillTiersFromMatrix(rows, map);
-  const outDir = path.resolve(process.cwd(), 'data');
-  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
-  const outPath = path.join(outDir, 'charTiers.json');
-  fs.writeFileSync(outPath, JSON.stringify(map, null, 2), 'utf8');
-  return outPath;
+  return map;
 }

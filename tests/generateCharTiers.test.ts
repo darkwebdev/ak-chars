@@ -36,21 +36,7 @@ describe('generateCharTiers', () => {
       text: async () => gvizText,
     });
 
-    const writeSpy = (jest.spyOn(fs, 'writeFileSync') as any).mockImplementation(
-      () => undefined as any,
-    );
-
-    const outPath = await generateCharTiers('dummy-sheet-id');
-
-    expect(writeSpy).toHaveBeenCalled();
-    // inspect the content written
-    const [[calledPath, calledContent]] = writeSpy.mock.calls as unknown as [string, string][];
-    expect(
-      calledPath.endsWith('data/charTiers.json') || calledPath.endsWith('data\\charTiers.json'),
-    ).toBeTruthy();
-    const parsed = JSON.parse(calledContent as unknown as string);
-    expect(parsed).toEqual({ TestChar: 'S' });
-    // outPath should be the same path
-    expect(outPath).toContain('charTiers.json');
+    const map = await generateCharTiers('dummy-sheet-id');
+    expect(map).toEqual({ TestChar: 'S' });
   });
 });

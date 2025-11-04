@@ -14,5 +14,7 @@ export const Default = () => (
     tierFilter={''}
     setTierFilter={() => {}}
     tiersList={['S', 'A', 'B']}
+    groupBySubprof={true}
+    setGroupBySubprof={() => {}}
   />
 );

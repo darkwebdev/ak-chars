@@ -54,7 +54,7 @@ export function Card({
       <div className="avatarWrap">
         <img src={`${import.meta.env.BASE_URL}avatars/${ch.id}.png`} alt={ch.name ?? ''} />
       </div>
-      <div className="cardBody">
+      <div className="cardFooter">
         <div className="title">{ch.name}</div>
         <div className="meta">
           {/* <div className="profession">{ch.profession}</div> */}

@@ -1,4 +1,4 @@
-import { fetchAvatars } from '../src/server/fetchAvatars.js';
+import { fetchAvatars } from '../src/server/fetchAvatars';
 import chars from '../data/chars.json' with { type: 'json' };
 import { Char } from '../src/types.js';
 

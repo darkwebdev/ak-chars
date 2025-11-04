@@ -2604,6 +2604,13 @@
     "subProfessionId": "fearless"
   },
   {
+    "id": "char_4051_akkord",
+    "name": "Akkord",
+    "rarity": "TIER_4",
+    "profession": "CASTER",
+    "subProfessionId": "blastcaster"
+  },
+  {
     "id": "char_4208_wintim",
     "name": "Снегурочка",
     "rarity": "TIER_4",
@@ -2625,6 +2632,13 @@
     "subProfessionId": "hammer"
   },
   {
+    "id": "char_394_hadiya",
+    "name": "Hadiya",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "mercenary"
+  },
+  {
     "id": "char_4203_kichi",
     "name": "Kichisei",
     "rarity": "TIER_5",
@@ -2644,6 +2658,13 @@
     "rarity": "TIER_5",
     "profession": "TANK",
     "subProfessionId": "unyield"
+  },
+  {
+    "id": "char_4211_snhunt",
+    "name": "Snow Hunter",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "hunter"
   },
   {
     "id": "char_4184_dolris",
@@ -2674,11 +2695,32 @@
     "subProfessionId": "skywalker"
   },
   {
+    "id": "char_1045_svash2",
+    "name": "SilverAsh the Reignfrost",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "counsellor"
+  },
+  {
+    "id": "char_1046_sbell2",
+    "name": "Pramanix the Prerita",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "phalanx"
+  },
+  {
     "id": "char_4204_mantra",
     "name": "Mantra",
     "rarity": "TIER_6",
     "profession": "CASTER",
     "subProfessionId": "primcaster"
+  },
+  {
+    "id": "char_1047_halo2",
+    "name": "Astgenne the Lightchaser",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
   },
   {
     "id": "char_4195_radian",

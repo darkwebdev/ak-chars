@@ -15,19 +15,19 @@ async function main(dirArg?: string) {
   const readFromDir = dirArg || nonFlag || path.join(process.cwd(), 'data', 'avatars');
   const writeToDir = path.join(process.cwd(), 'public', 'avatars');
   if (!fs.existsSync(readFromDir)) {
-    console.error('Images directory not found:', readFromDir);
-    return 0;
+    fs.mkdirSync(readFromDir, { recursive: true });
   }
   const limit = parseLimit();
   const files = fs
     .readdirSync(readFromDir)
-    .filter((f) => ['.png', '.webp', '.gif', '.jpeg'].includes(path.extname(f).toLowerCase()));
+    .filter((f) => ['.png', '.webp', '.gif', '.jpeg'].includes(path.extname(f).toLowerCase()))
+    .map((f) => path.join(readFromDir, f));
   let convertedCount = 0;
   const toProcess = typeof limit === 'number' ? files.slice(0, limit) : files;
   for (const f of toProcess) {
     // do not parallelize to avoid memory spikes
     // eslint-disable-next-line no-await-in-loop
-    const ok = await optimizeImage(f, readFromDir, writeToDir, 'png');
+    const ok = await optimizeImage(f, writeToDir, 'png');
     if (ok) convertedCount += 1;
     else console.log('Skipped', f);
   }
