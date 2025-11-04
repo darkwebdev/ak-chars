@@ -1,0 +1,367 @@
+[
+  {
+    "subProfessionId": "notchar1",
+    "subProfessionName": "Operator attached unit",
+    "subProfessionCatagory": 1
+  },
+  {
+    "subProfessionId": "notchar2",
+    "subProfessionName": "No class trap",
+    "subProfessionCatagory": 2
+  },
+  {
+    "subProfessionId": "none1",
+    "subProfessionName": "Reserved 1",
+    "subProfessionCatagory": 3
+  },
+  {
+    "subProfessionId": "none2",
+    "subProfessionName": "Reserved 1",
+    "subProfessionCatagory": 4
+  },
+  {
+    "subProfessionId": "pioneer",
+    "subProfessionName": "Pioneer",
+    "subProfessionCatagory": 5
+  },
+  {
+    "subProfessionId": "charger",
+    "subProfessionName": "Charger",
+    "subProfessionCatagory": 6
+  },
+  {
+    "subProfessionId": "tactician",
+    "subProfessionName": "Tactician",
+    "subProfessionCatagory": 7
+  },
+  {
+    "subProfessionId": "bearer",
+    "subProfessionName": "Standard Bearer",
+    "subProfessionCatagory": 8
+  },
+  {
+    "subProfessionId": "centurion",
+    "subProfessionName": "Centurion",
+    "subProfessionCatagory": 9
+  },
+  {
+    "subProfessionId": "fighter",
+    "subProfessionName": "Fighter",
+    "subProfessionCatagory": 10
+  },
+  {
+    "subProfessionId": "artsfghter",
+    "subProfessionName": "Arts Fighter",
+    "subProfessionCatagory": 11
+  },
+  {
+    "subProfessionId": "instructor",
+    "subProfessionName": "Instructor",
+    "subProfessionCatagory": 12
+  },
+  {
+    "subProfessionId": "lord",
+    "subProfessionName": "Lord",
+    "subProfessionCatagory": 13
+  },
+  {
+    "subProfessionId": "sword",
+    "subProfessionName": "Swordmaster",
+    "subProfessionCatagory": 14
+  },
+  {
+    "subProfessionId": "musha",
+    "subProfessionName": "Soloblade",
+    "subProfessionCatagory": 15
+  },
+  {
+    "subProfessionId": "fearless",
+    "subProfessionName": "Dreadnought",
+    "subProfessionCatagory": 16
+  },
+  {
+    "subProfessionId": "reaper",
+    "subProfessionName": "Reaper",
+    "subProfessionCatagory": 17
+  },
+  {
+    "subProfessionId": "librator",
+    "subProfessionName": "Liberator",
+    "subProfessionCatagory": 18
+  },
+  {
+    "subProfessionId": "protector",
+    "subProfessionName": "Protector",
+    "subProfessionCatagory": 19
+  },
+  {
+    "subProfessionId": "guardian",
+    "subProfessionName": "Guardian",
+    "subProfessionCatagory": 20
+  },
+  {
+    "subProfessionId": "unyield",
+    "subProfessionName": "Juggernaut",
+    "subProfessionCatagory": 21
+  },
+  {
+    "subProfessionId": "artsprotector",
+    "subProfessionName": "Arts Protector",
+    "subProfessionCatagory": 22
+  },
+  {
+    "subProfessionId": "duelist",
+    "subProfessionName": "Duelist",
+    "subProfessionCatagory": 23
+  },
+  {
+    "subProfessionId": "fortress",
+    "subProfessionName": "Fortress",
+    "subProfessionCatagory": 24
+  },
+  {
+    "subProfessionId": "fastshot",
+    "subProfessionName": "Marksman",
+    "subProfessionCatagory": 25
+  },
+  {
+    "subProfessionId": "closerange",
+    "subProfessionName": "Heavyshooter",
+    "subProfessionCatagory": 26
+  },
+  {
+    "subProfessionId": "aoesniper",
+    "subProfessionName": "Artilleryman",
+    "subProfessionCatagory": 27
+  },
+  {
+    "subProfessionId": "longrange",
+    "subProfessionName": "Deadeye",
+    "subProfessionCatagory": 28
+  },
+  {
+    "subProfessionId": "reaperrange",
+    "subProfessionName": "Spreadshooter",
+    "subProfessionCatagory": 29
+  },
+  {
+    "subProfessionId": "siegesniper",
+    "subProfessionName": "Besieger",
+    "subProfessionCatagory": 30
+  },
+  {
+    "subProfessionId": "bombarder",
+    "subProfessionName": "Flinger",
+    "subProfessionCatagory": 31
+  },
+  {
+    "subProfessionId": "corecaster",
+    "subProfessionName": "Core Caster",
+    "subProfessionCatagory": 32
+  },
+  {
+    "subProfessionId": "splashcaster",
+    "subProfessionName": "Splash Caster",
+    "subProfessionCatagory": 33
+  },
+  {
+    "subProfessionId": "funnel",
+    "subProfessionName": "Mech-accord Caster",
+    "subProfessionCatagory": 34
+  },
+  {
+    "subProfessionId": "phalanx",
+    "subProfessionName": "Phalanx Caster",
+    "subProfessionCatagory": 35
+  },
+  {
+    "subProfessionId": "mystic",
+    "subProfessionName": "Mystic Caster",
+    "subProfessionCatagory": 36
+  },
+  {
+    "subProfessionId": "chain",
+    "subProfessionName": "Chain Caster",
+    "subProfessionCatagory": 37
+  },
+  {
+    "subProfessionId": "blastcaster",
+    "subProfessionName": "Blast Caster",
+    "subProfessionCatagory": 38
+  },
+  {
+    "subProfessionId": "physician",
+    "subProfessionName": "Medic",
+    "subProfessionCatagory": 39
+  },
+  {
+    "subProfessionId": "ringhealer",
+    "subProfessionName": "Multi-target Medic",
+    "subProfessionCatagory": 40
+  },
+  {
+    "subProfessionId": "healer",
+    "subProfessionName": "Therapist",
+    "subProfessionCatagory": 41
+  },
+  {
+    "subProfessionId": "wandermedic",
+    "subProfessionName": "Wandering Medic",
+    "subProfessionCatagory": 42
+  },
+  {
+    "subProfessionId": "slower",
+    "subProfessionName": "Decel Binder",
+    "subProfessionCatagory": 43
+  },
+  {
+    "subProfessionId": "underminer",
+    "subProfessionName": "Hexer",
+    "subProfessionCatagory": 44
+  },
+  {
+    "subProfessionId": "bard",
+    "subProfessionName": "Bard",
+    "subProfessionCatagory": 45
+  },
+  {
+    "subProfessionId": "blessing",
+    "subProfessionName": "Abjurer",
+    "subProfessionCatagory": 46
+  },
+  {
+    "subProfessionId": "summoner",
+    "subProfessionName": "Summoner",
+    "subProfessionCatagory": 47
+  },
+  {
+    "subProfessionId": "craftsman",
+    "subProfessionName": "Artificer",
+    "subProfessionCatagory": 48
+  },
+  {
+    "subProfessionId": "executor",
+    "subProfessionName": "Executor",
+    "subProfessionCatagory": 49
+  },
+  {
+    "subProfessionId": "pusher",
+    "subProfessionName": "Push Stroker",
+    "subProfessionCatagory": 50
+  },
+  {
+    "subProfessionId": "stalker",
+    "subProfessionName": "Ambusher",
+    "subProfessionCatagory": 51
+  },
+  {
+    "subProfessionId": "hookmaster",
+    "subProfessionName": "Hookmaster",
+    "subProfessionCatagory": 52
+  },
+  {
+    "subProfessionId": "geek",
+    "subProfessionName": "Geek",
+    "subProfessionCatagory": 53
+  },
+  {
+    "subProfessionId": "merchant",
+    "subProfessionName": "Merchant",
+    "subProfessionCatagory": 54
+  },
+  {
+    "subProfessionId": "traper",
+    "subProfessionName": "Trapmaster",
+    "subProfessionCatagory": 55
+  },
+  {
+    "subProfessionId": "dollkeeper",
+    "subProfessionName": "Dollkeeper",
+    "subProfessionCatagory": 56
+  },
+  {
+    "subProfessionId": "incantationmedic",
+    "subProfessionName": "Incantation Medic",
+    "subProfessionCatagory": 57
+  },
+  {
+    "subProfessionId": "agent",
+    "subProfessionName": "Agent",
+    "subProfessionCatagory": 58
+  },
+  {
+    "subProfessionId": "shotprotector",
+    "subProfessionName": "Sentry Protector",
+    "subProfessionCatagory": 59
+  },
+  {
+    "subProfessionId": "chainhealer",
+    "subProfessionName": "Chain Medic",
+    "subProfessionCatagory": 60
+  },
+  {
+    "subProfessionId": "crusher",
+    "subProfessionName": "Crusher",
+    "subProfessionCatagory": 61
+  },
+  {
+    "subProfessionId": "ritualist",
+    "subProfessionName": "Ritualist",
+    "subProfessionCatagory": 62
+  },
+  {
+    "subProfessionId": "hunter",
+    "subProfessionName": "Hunter",
+    "subProfessionCatagory": 63
+  },
+  {
+    "subProfessionId": "primcaster",
+    "subProfessionName": "Primal Caster",
+    "subProfessionCatagory": 64
+  },
+  {
+    "subProfessionId": "loopshooter",
+    "subProfessionName": "Loopshooter",
+    "subProfessionCatagory": 65
+  },
+  {
+    "subProfessionId": "hammer",
+    "subProfessionName": "Earthshaker",
+    "subProfessionCatagory": 66
+  },
+  {
+    "subProfessionId": "alchemist",
+    "subProfessionName": "Alchemist",
+    "subProfessionCatagory": 67
+  },
+  {
+    "subProfessionId": "primprotector",
+    "subProfessionName": "Primal Protector",
+    "subProfessionCatagory": 68
+  },
+  {
+    "subProfessionId": "skywalker",
+    "subProfessionName": "Skyranger",
+    "subProfessionCatagory": 69
+  },
+  {
+    "subProfessionId": "soulcaster",
+    "subProfessionName": "Shaper Caster",
+    "subProfessionCatagory": 70
+  },
+  {
+    "subProfessionId": "primguard",
+    "subProfessionName": "Primal Guard",
+    "subProfessionCatagory": 71
+  },
+  {
+    "subProfessionId": "counsellor",
+    "subProfessionName": "counsellor",
+    "subProfessionCatagory": 72
+  },
+  {
+    "subProfessionId": "mercenary",
+    "subProfessionName": "mercenary",
+    "subProfessionCatagory": 73
+  }
+]

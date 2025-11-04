@@ -6,21 +6,24 @@ import * as iq from 'image-q';
 import UPNG from 'upng-js';
 
 export async function optimizeImage(
-  file: string,
-  readFromDir: string,
+  filePath: string,
   writeToDir: string = path.resolve(process.cwd(), 'public', 'images'),
   outputFormat: 'jpg' | 'png' = 'png',
 ): Promise<boolean> {
-  const ext = path.extname(file).toLowerCase();
-  const base = path.basename(file, ext);
-  const input = path.join(readFromDir, file);
+  const ext = path.extname(filePath).toLowerCase();
+  const base = path.basename(filePath, ext);
+  const input = filePath;
   const outputExt = outputFormat === 'png' ? '.png' : '.jpg';
   const output = path.join(writeToDir, `${base}${outputExt}`);
   if (ext === '.jpg' || ext === '.jpeg') return false;
-  // If the public output already exists, nothing to do
-  if (fs.existsSync(output)) return false;
 
   try {
+    // If the output already exists, remove it so we overwrite
+    try {
+      if (fs.existsSync(output)) fs.unlinkSync(output);
+    } catch (_) {
+      // ignore removal errors and proceed
+    }
     if (ext === '.png') {
       const inputBuf = fs.readFileSync(input);
       const png = PNG.sync.read(inputBuf) as { data: Buffer; width: number; height: number };
@@ -50,6 +53,7 @@ export async function optimizeImage(
         const outputSize = buffer.length;
         const savingsPercent = (((inputSize - outputSize) / inputSize) * 100).toFixed(1);
         console.log(`Wrote PNG ${output} (${outputSize} bytes, ${savingsPercent}% savings)`);
+
         return true;
       }
 
@@ -65,6 +69,7 @@ export async function optimizeImage(
       fs.mkdirSync(path.dirname(output), { recursive: true });
       fs.writeFileSync(output, encoded.data);
       console.log('wrote JPG', output);
+
       return true;
     }
 
@@ -75,29 +80,4 @@ export async function optimizeImage(
     console.error('Failed to convert', input, msg);
     return false;
   }
-}
-
-export async function optimise(dirArg?: string) {
-  const dirToUse = dirArg || process.argv[2];
-  if (!dirToUse) {
-    console.error('Usage: ts-node optimiseImages.ts <imagesDir>');
-    return 0;
-  }
-  if (!fs.existsSync(dirToUse)) {
-    console.error('Images directory not found:', dirToUse);
-    return 0;
-  }
-  const files = fs.readdirSync(dirToUse);
-  let convertedCount = 0;
-  for (const f of files) {
-    const ext = path.extname(f).toLowerCase();
-    if (['.png', '.webp', '.gif', '.jpeg'].includes(ext)) {
-      // eslint-disable-next-line no-await-in-loop
-      const ok = await optimizeImage(f, dirToUse, undefined, 'png');
-      if (ok) convertedCount += 1;
-      else console.log('Skipped', f);
-    }
-  }
-  // console.log(`Optimiser: converted ${convertedCount} file(s) in ${dirToUse}`);
-  return convertedCount;
 }

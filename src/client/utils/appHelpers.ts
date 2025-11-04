@@ -24,14 +24,20 @@ export function filterChars(
   profession: string,
   tierFilter: string,
   tiers: Record<string, string>,
+  search?: string,
 ) {
+  const searchNorm = (search || '').trim().toLowerCase();
   return chars.filter((c) => {
     if (rarity && c.rarity !== rarity) return false;
-    if (profession && c.profession !== profession) return false;
+    if (profession && profession !== 'All' && c.profession !== profession) return false;
     const t = tiers[c.name || ''] || '';
     if (tierFilter) {
       if (!t) return false;
       if (!isTierEqualOrHigher(t, tierFilter)) return false;
+    }
+    if (searchNorm) {
+      const name = (c.name || '').toLowerCase();
+      if (!name.includes(searchNorm)) return false;
     }
     return true;
   });
@@ -46,4 +52,3 @@ export function sortByTier(chars: Char[], tiers: Record<string, string>) {
     return valB - valA;
   });
 }
-

@@ -10,6 +10,8 @@ export function Filters({
   tierFilter,
   setTierFilter,
   tiersList,
+  groupBySubprof,
+  setGroupBySubprof,
 }: {
   rarity: string;
   setRarity: SetString;
@@ -18,6 +20,8 @@ export function Filters({
   setTierFilter: SetString;
   // Note: parameter names in function types intentionally use underscore to avoid unused-var warnings
   tiersList: string[];
+  groupBySubprof: boolean;
+  setGroupBySubprof: (v: boolean) => void;
 }) {
   return (
     <div className="filters">
@@ -42,6 +46,14 @@ export function Filters({
             </option>
           ))}
         </select>
+      </label>
+      <label style={{ marginLeft: 12 }}>
+        <input
+          type="checkbox"
+          checked={groupBySubprof}
+          onChange={(e) => setGroupBySubprof(e.target.checked)}
+        />{' '}
+        Group by subprofession
       </label>
     </div>
   );

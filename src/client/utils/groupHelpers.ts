@@ -27,6 +27,15 @@ export function buildGroups(chars: Char[]) {
   }, {} as Record<string, Char[]>);
 }
 
+export function buildGroupsByKey(chars: Char[], keyFn: (ch: Char) => string) {
+  return chars.reduce((acc: Record<string, Char[]>, ch) => {
+    const key = keyFn(ch) || 'Other';
+    if (!acc[key]) acc[key] = [];
+    acc[key].push(ch);
+    return acc;
+  }, {} as Record<string, Char[]>);
+}
+
 export function groupsWithMeta(chars: Char[], tiers: Record<string, string>, ownedIds: string[]) {
   const groups = buildGroups(chars);
   const out: GroupMeta[] = Object.keys(groups).map((k) => {

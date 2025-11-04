@@ -24,3 +24,8 @@ export type Char = {
   profession?: string | null;
   subProfessionId?: string | null;
 };
+
+declare module '*.json' {
+  const value: any;
+  export default value;
+}
