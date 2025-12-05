@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Filters } from './components/Filters';
+import AuthPage from './components/AuthPage';
 import { SubprofessionGroup } from './components/SubprofessionGroup';
 import { groupsWithMeta, buildGroupsByKey } from './utils/groupHelpers';
 import {
@@ -9,9 +10,9 @@ import {
   filterChars,
   sortByTier,
 } from './utils/appHelpers';
-import { ProfessionSidebar } from './components/ProfessionSidebar';
-import { KroosterButton } from './components/KroosterButton';
-import { normalize as normalizeKrooster } from './utils/krooster';
+import { Sidebar } from './components/Sidebar';
+import { ThemeToggle } from './components/ThemeToggle';
+import { GraphQLRosterButton } from './components/GraphQLRosterButton';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import charsData from '../../data/chars.json';
 import tiersData from '../../data/charTiers.json';
@@ -48,9 +49,12 @@ export function App() {
   const sorted = sortByTier(filtered, tiers);
   let groups = groupsWithMeta(sorted, tiers, ownedIds);
 
-  // Build a lookup from subProfessionId -> subProfessionName
   const subprofLookup = new Map<string, string>();
-  for (const p of professionsData as Array<any>) {
+  const professionsArray = professionsData as unknown as Array<{
+    subProfessionId?: string;
+    subProfessionName?: string;
+  }>;
+  for (const p of professionsArray) {
     if (p && p.subProfessionId)
       subprofLookup.set(p.subProfessionId, p.subProfessionName || p.subProfessionId);
   }
@@ -66,7 +70,7 @@ export function App() {
           total: sorted.length,
           ownedCount: sorted.filter((c) => ownedIds.includes(c.id)).length,
           maxTierValue: 0,
-        } as any,
+        },
       ];
     } else {
       // Group by profession when showing all
@@ -77,7 +81,7 @@ export function App() {
         const ownedCount = arr.filter((c) => ownedIds.includes(c.id)).length;
         const maxTierValue = 0;
         // When showing all professions, we use profession names as keys (they are already readable)
-        return { key: k, chars: arr, total, ownedCount, maxTierValue } as any;
+        return { key: k, chars: arr, total, ownedCount, maxTierValue };
       });
       groups.sort((a, b) => a.key.localeCompare(b.key));
     }
@@ -90,17 +94,18 @@ export function App() {
         total: sorted.length,
         ownedCount: sorted.filter((c) => ownedIds.includes(c.id)).length,
         maxTierValue: 0,
-      } as any,
+      },
     ];
   }
 
-  return (
+  return window.location.pathname.endsWith('/auth') ? (
+    <AuthPage />
+  ) : (
     <div className="app-layout">
-      <ProfessionSidebar
-        professions={professionsWithAll}
-        current={profession}
-        onSelect={setProfession}
-      />
+      <div className="global-theme-toggle">
+        <ThemeToggle />
+      </div>
+      <Sidebar professions={professionsWithAll} current={profession} onSelect={setProfession} />
 
       <div className="main-content">
         <header>
@@ -114,28 +119,10 @@ export function App() {
               style={{ padding: '6px 8px', width: 260 }}
             />
           </div>
-          <KroosterButton
+          <GraphQLRosterButton
             chars={chars.map((c) => ({ id: c.id, name: c.name || '' }))}
-            onApply={(matchedNames: string[]) => {
-              // Map visible krooster names to our char IDs using normalized name matching
-              const nameToId = new Map<string, string>();
-              for (const ch of chars) {
-                if (ch.name) nameToId.set(normalizeKrooster(ch.name), ch.id);
-              }
-              const ids: string[] = [];
-              for (const mn of matchedNames) {
-                const id = nameToId.get(normalizeKrooster(mn));
-                if (id) ids.push(id);
-              }
-              console.log(
-                `KroosterButton: applying ${matchedNames.length} matched names to ${ids.length} IDs`,
-                {
-                  matchedNames,
-                  ids,
-                },
-              );
-              // Replace owned list with krooster-derived ids
-              setOwnedIds(ids);
+            onApply={(importedIds: string[]) => {
+              setOwnedIds(importedIds);
             }}
           />
           <Filters

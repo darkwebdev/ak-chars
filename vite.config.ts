@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import react from '@vitejs/plugin-react';
+import svgr from 'vite-plugin-svgr';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -11,6 +12,7 @@ export default defineConfig({
   root: path.resolve(__dirname, 'src', 'client'),
   plugins: [
     react(),
+    svgr(),
     {
       name: 'serve-data-directory',
       configureServer(server) {

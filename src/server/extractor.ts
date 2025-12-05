@@ -1,6 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-
 type TableCell = { v?: unknown; f?: unknown } | null;
 type TableRow = { c: TableCell[] };
 type Table = { cols: { label?: string; id?: string }[]; rows: TableRow[] };

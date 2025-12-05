@@ -21,7 +21,7 @@ export async function optimizeImage(
     // If the output already exists, remove it so we overwrite
     try {
       if (fs.existsSync(output)) fs.unlinkSync(output);
-    } catch (_) {
+    } catch {
       // ignore removal errors and proceed
     }
     if (ext === '.png') {
@@ -42,9 +42,10 @@ export async function optimizeImage(
         const quantizedData = outPointContainer.toUint8Array();
 
         // Use UPNG to encode as indexed PNG with better compression
-        // @ts-ignore - UPNG types are incomplete
-        const encoded = UPNG.encode([quantizedData.buffer], width, height, 256);
-        const buffer = Buffer.from(encoded);
+  // UPNG types are incomplete; assert the returned value shape
+  // @ts-expect-error intentional: UPNG types don't match runtime
+  const encoded = UPNG.encode([quantizedData.buffer], width, height, 256) as unknown;
+  const buffer = Buffer.from(encoded as ArrayBuffer);
 
         fs.mkdirSync(path.dirname(output), { recursive: true });
         fs.writeFileSync(output, buffer);

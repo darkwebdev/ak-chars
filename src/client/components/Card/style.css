@@ -4,7 +4,6 @@
     flex-direction: column;
     gap: 8px;
     width: 140px;
-    /* border: 2px solid transparent */
 
     &:hover {
         opacity: 0.5;
@@ -60,7 +59,7 @@
     width: 100%;
     aspect-ratio: 1;
     position: relative;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(100, 100, 100, 0.1);
 
     img {
         width: 100%;

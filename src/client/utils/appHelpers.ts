@@ -9,7 +9,7 @@ export function getRarities(chars: Char[]) {
 }
 
 export function getProfessions(chars: Char[]) {
-  return (uniqueStrings(chars.map((c) => c.profession)) as string[]).sort();
+  return (uniqueStrings(chars.map((c) => c.profession?.toLowerCase())) as string[]).sort();
 }
 
 export function getTiersList(tiers: Record<string, string>) {
@@ -29,7 +29,7 @@ export function filterChars(
   const searchNorm = (search || '').trim().toLowerCase();
   return chars.filter((c) => {
     if (rarity && c.rarity !== rarity) return false;
-    if (profession && profession !== 'All' && c.profession !== profession) return false;
+    if (profession && profession !== 'All' && c.profession?.toLowerCase() !== profession) return false;
     const t = tiers[c.name || ''] || '';
     if (tierFilter) {
       if (!t) return false;

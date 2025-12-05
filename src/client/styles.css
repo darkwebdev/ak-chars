@@ -1,8 +1,7 @@
-:root {
-    --bg: #0f1720;
-    --card: #0b1220;
-    --muted: #9aa6b2;
-    --accent: #6ee7b7;
+@import './theme/styles.css';
+
+body {
+    color: var(--text);
 }
 
 body {
@@ -17,46 +16,12 @@ body {
     min-height: 100vh;
 }
 
-.profession-sidebar {
+/* global theme toggle button fix positioned in top-right */
+.global-theme-toggle {
     position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    background: var(--card);
-    border-right: 1px solid #1f2a37;
-    padding: 20px;
-    overflow-y: auto;
-    z-index: 10;
-}
-
-.profession-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.profession-btn {
-    background: transparent;
-    border: 1px solid #1f2a37;
-    color: var(--muted);
-    padding: 10px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 14px;
-    transition: all 0.2s;
-}
-
-.profession-btn:hover {
-    background: #1f2a37;
-    color: #e6eef6;
-}
-
-.profession-btn.active {
-    background: var(--accent);
-    color: var(--bg);
-    border-color: var(--accent);
-    font-weight: 600;
+    top: 12px;
+    right: 12px;
+    z-index: 9999;
 }
 
 .main-content {

@@ -26,6 +26,18 @@ export type Char = {
 };
 
 declare module '*.json' {
-  const value: any;
+  const value: unknown;
   export default value;
+}
+
+export type Profession = (typeof Professions)[number];
+
+export type Rarity = 'TIER_1' | 'TIER_2' | 'TIER_3' | 'TIER_4' | 'TIER_5' | 'TIER_6';
+
+// Allow importing SVGs as React components (svgr / vite-plugin-svgr)
+declare module '*.svg' {
+  import type { FunctionComponent, SVGProps } from 'react';
+  const SvgComponent: FunctionComponent<SVGProps<SVGSVGElement>>;
+  export default SvgComponent;
+  export { SvgComponent as ReactComponent };
 }

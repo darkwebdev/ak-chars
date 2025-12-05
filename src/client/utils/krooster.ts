@@ -87,24 +87,19 @@ function generateNameVariants(name: string): string[] {
 }
 
 /**
- * Browser-side parser: fetches the krooster page for `username`, extracts
- * character IDs from __NEXT_DATA__ JSON, and returns the subset of provided
- * `names` whose IDs are present in the roster.
+ * Parse a Krooster page HTML string and return matched character names from
+ * the provided chars list. This can be used when the browser cannot fetch the
+ * Krooster page due to CORS — users can paste the page HTML and we parse it
+ * locally.
  */
-export async function fetchKroosterBrowser(
-  username: string,
+export function parseKroosterHtml(
+  html: string,
   chars: Array<{ id: string; name: string }>,
-): Promise<string[]> {
-  const url = `https://www.krooster.com/u/${encodeURIComponent(username)}`;
-  const res = await fetch(url, { headers: { 'User-Agent': 'ak-chars-browser/1.0' } });
-  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
-  const html = await res.text();
-
+): string[] {
   // Extract character IDs from __NEXT_DATA__ JSON
   const rosterIds = extractRosterIds(html);
 
   if (rosterIds.length === 0) {
-    // Fallback to old name-based parsing for test cases
     const doc = removeHidden(html);
     const kroosterNames = extractCharacterNames(doc);
 
@@ -122,11 +117,9 @@ export async function fetchKroosterBrowser(
         }
       }
 
-      console.log(`Krooster: matched ${matched.length} of ${chars.length} names (fallback)`);
       return matched;
     }
 
-    // Final fallback: text content search
     const textContent = doc.body?.textContent || '';
     const normPage = normalize(textContent);
     const matched: string[] = [];
@@ -141,17 +134,95 @@ export async function fetchKroosterBrowser(
       }
     }
 
-    console.log(`Krooster: matched ${matched.length} of ${chars.length} names (text fallback)`);
     return matched;
   }
 
-  // Use ID-based matching (primary method)
   const rosterIdSet = new Set(rosterIds);
-  const matched = chars.filter((char) => rosterIdSet.has(char.id)).map((char) => char.name);
+  return chars.filter((char) => rosterIdSet.has(char.id)).map((char) => char.name);
+}
 
-  console.log(`Krooster: matched ${matched.length} of ${chars.length} characters by ID`);
-  console.log('[Krooster Debug] Roster IDs count:', rosterIds.length);
-  console.log('[Krooster Debug] First 10 IDs:', rosterIds.slice(0, 10));
+/**
+ * Browser-side parser: fetches the krooster page for `username`, extracts
+ * character IDs from __NEXT_DATA__ JSON, and returns the subset of provided
+ * `names` whose IDs are present in the roster.
+ */
+export async function fetchKroosterBrowser(
+  username: string,
+  chars: Array<{ id: string; name: string }>,
+  // Optional proxy string. If provided, the krooster URL will be embedded into
+  // the proxy. If the proxy contains the substring "{url}" it will be
+  // replaced with encodeURIComponent(kroosterUrl). Otherwise the encoded URL
+  // will be appended to the proxy string.
+  proxy?: string,
+): Promise<string[]> {
+  const url = `https://www.krooster.com/network/lookup/${encodeURIComponent(username)}`;
+  // Build ordered list of proxies to try. If the caller supplied a proxy (from
+  // the UI), try it first, then fall back to built-in proxies.
+  const builtInProxies = [
+    'https://api.allorigins.win/raw?url=',
+    'https://api.allorigins.cf/raw?url=',
+    'https://thingproxy.freeboard.io/fetch/',
+  ];
 
-  return matched;
+  const proxiesToTry: string[] = [];
+  if (proxy && proxy.trim()) proxiesToTry.push(proxy.trim());
+  for (const p of builtInProxies) {
+    if (!proxiesToTry.includes(p)) proxiesToTry.push(p);
+  }
+
+  // Shuffle proxiesToTry so we pick a random order each run. This uses a
+  // Fisher-Yates shuffle in-place.
+  for (let i = proxiesToTry.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = proxiesToTry[i];
+    proxiesToTry[i] = proxiesToTry[j];
+    proxiesToTry[j] = tmp;
+  }
+
+  // Helper to turn a proxy prefix/template into a final fetch URL for target
+  const buildFetchUrl = (proxyPrefix: string, target: string) => {
+    if (!proxyPrefix) return target;
+    if (proxyPrefix.includes('{url}'))
+      return proxyPrefix.replace('{url}', encodeURIComponent(target));
+    return proxyPrefix + encodeURIComponent(target);
+  };
+
+  let lastErr: unknown = null;
+  // Try proxies in randomized order. If none succeed, try direct fetch as a last resort.
+  const trySequence = [...proxiesToTry, ''];
+  for (const p of trySequence) {
+    const fetchUrl = p ? buildFetchUrl(p, url) : url;
+    try {
+      console.log(`[Krooster] attempting fetch via: ${fetchUrl}`);
+      const res = await fetch(fetchUrl, { headers: { 'User-Agent': 'ak-chars-browser/1.0' } });
+      if (!res.ok) {
+        // Treat non-2xx responses as failures and continue to next proxy
+        console.warn(`[Krooster] fetch failed ${fetchUrl}: ${res.status}`);
+        lastErr = new Error(`Failed to fetch ${fetchUrl}: ${res.status}`);
+        continue;
+      }
+      const html = await res.text();
+      const parsed = parseKroosterHtml(html, chars);
+      console.log(`[Krooster] matched ${parsed.length} of ${chars.length} characters`);
+      return parsed;
+    } catch (e: unknown) {
+      // Network/CORS error — remember and continue to next proxy
+      console.warn(`[Krooster] fetch error for ${fetchUrl}:`, e);
+      lastErr = e;
+      continue;
+    }
+  }
+
+  // If we reach here all attempts failed
+  const msg = lastErr instanceof Error ? lastErr.message : String(lastErr);
+  if (
+    msg === 'TypeError: Failed to fetch' ||
+    msg.includes('NetworkError') ||
+    msg.includes('Failed to fetch')
+  ) {
+    throw new Error(
+      'Unable to fetch Krooster page (network/CORS). Tried multiple proxies; consider supplying a different proxy or running a server-side proxy.',
+    );
+  }
+  throw lastErr;
 }
