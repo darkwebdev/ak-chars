@@ -32,7 +32,7 @@ const meta: Meta<typeof ProfessionButton> = {
 export default meta;
 
 const Template: StoryFn<typeof ProfessionButton> = (args) => (
-  // cast to any to allow empty string to represent undefined (shows "All")
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   <ProfessionButton {...(args as any)} />
 );
 

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Filters } from './components/Filters';
-import AuthPage from './components/AuthPage';
 import { SubprofessionGroup } from './components/SubprofessionGroup';
 import { groupsWithMeta, buildGroupsByKey } from './utils/groupHelpers';
 import {
@@ -98,9 +97,7 @@ export function App() {
     ];
   }
 
-  return window.location.pathname.endsWith('/auth') ? (
-    <AuthPage />
-  ) : (
+  return (
     <div className="app-layout">
       <div className="global-theme-toggle">
         <ThemeToggle />

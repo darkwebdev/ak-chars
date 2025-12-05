@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stars } from '../Stars.tsx';
+import { Stars } from '../Stars';
 import { Char } from '../../../types.js';
 import './style.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Filters } from './Filters';
+import { Filters } from './index';
 
 export default {
   title: 'Components/Filters',
