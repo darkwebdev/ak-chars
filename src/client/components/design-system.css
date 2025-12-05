@@ -1,0 +1,56 @@
+.ds-container {
+    padding: 24px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, Arial;
+}
+
+.ds-typography .muted {
+    color: var(--muted);
+}
+
+/* Token grid styles */
+.ds-token-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.ds-token-item {
+    padding: 8px;
+    background: color-mix(in srgb, var(--card) 96%, transparent);
+    border-radius: 8px;
+}
+
+.ds-token-swatch {
+    height: 48px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ds-token-name {
+    font-size: 12px;
+}
+
+.ds-token-var {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.ds-token-swatch-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.ds-token-sample {
+    height: 48px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.ds-token-code {
+    font-size: 12px;
+    color: var(--muted);
+}

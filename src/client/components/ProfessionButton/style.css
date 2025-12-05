@@ -1,0 +1,67 @@
+.profession-btn {
+    background: var(--black);
+    border: none;
+    color: var(--grey);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    display: flex;
+    height: 100%;
+    aspect-ratio: 1.3 / 1;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+
+    /* icon wrapper */
+    .profession-icon {
+        display: inline-flex;
+        width: 50%;
+        height: 50%;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        color: inherit;
+        fill: currentColor;
+        stroke: currentColor;
+    }
+
+    /* svg inside the icon fills the wrapper and preserves its ratio */
+    .profession-icon svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    &:hover {
+        color: #e6eef6;
+    }
+
+    &.active {
+        position: relative;
+        overflow: hidden;
+        color: var(--accent);
+        font-weight: 700;
+    }
+
+    &.active::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 100%;
+        background: linear-gradient(90deg,
+                color-mix(in srgb, var(--accent) 55%, transparent),
+                color-mix(in srgb, var(--accent) 0%, transparent) 50%);
+        pointer-events: none;
+        border-left: 4px solid var(--accent);
+    }
+}
+
+.profession-text {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
