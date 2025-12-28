@@ -35,7 +35,7 @@
     }
 
     &:hover {
-        color: #e6eef6;
+        color: var(--text);
     }
 
     &.active {
