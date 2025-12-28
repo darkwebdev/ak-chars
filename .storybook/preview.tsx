@@ -18,4 +18,11 @@ export const decorators: Preview['decorators'] = [
 
 export const parameters: Preview['parameters'] = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  backgrounds: {
+    disable: true,
+    grid: {
+      disable: true,
+    },
+  },
+  layout: 'fullscreen',
 };

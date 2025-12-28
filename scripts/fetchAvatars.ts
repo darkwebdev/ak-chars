@@ -1,6 +1,11 @@
 import { fetchAvatars } from '../src/server/fetchAvatars';
-import chars from '../data/chars.json' with { type: 'json' };
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { Char } from '../src/types.js';
+
+const chars = JSON.parse(
+  readFileSync(join(process.cwd(), 'data', 'chars.json'), 'utf-8')
+) as Char[];
 
 const arg = process.argv.find((s) => s.startsWith('--limit='));
 const limit = arg ? Number(arg.split('=')[1]) : undefined;

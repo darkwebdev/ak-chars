@@ -5,8 +5,9 @@
     gap: 8px;
     width: 140px;
 
-    &:hover {
-        opacity: 0.5;
+    &:hover .avatarWrap {
+        outline: 3px solid var(--accent);
+        outline-offset: -3px;
     }
 }
 
@@ -20,15 +21,9 @@
     background: linear-gradient(180deg,
             rgba(0, 0, 0, 0.5) 40%, transparent 100%);
 
-    .card.owned &,
-    .card:hover & {
+    .card.owned & {
         background: linear-gradient(180deg,
-                color-mix(in srgb, var(--accent) 30%, #000) 40%, transparent 100%);
-    }
-
-    .card.owned:hover & {
-        background: linear-gradient(180deg,
-                rgba(0, 0, 0, 0.5) 40%, transparent 100%);
+                color-mix(in srgb, var(--accent) 50%, rgba(0, 0, 0, 0.5)) 40%, transparent 100%);
     }
 }
 
@@ -42,17 +37,10 @@
     bottom: 0;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 60%, transparent 100%);
 
-    .card.owned &,
-    .card:hover & {
+    .card.owned & {
         background: linear-gradient(0deg,
-                color-mix(in srgb, var(--accent) 20%, rgba(0, 0, 0, 0.7)) 50%, transparent 100%);
+                color-mix(in srgb, var(--accent) 40%, rgba(0, 0, 0, 0.7)) 60%, transparent 100%);
     }
-
-    .card.owned:hover & {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 60%, transparent 100%);
-
-    }
-
 }
 
 .avatarWrap {
@@ -60,6 +48,12 @@
     aspect-ratio: 1;
     position: relative;
     background: rgba(100, 100, 100, 0.1);
+
+    .card.owned & {
+        background: linear-gradient(135deg,
+            color-mix(in srgb, var(--accent) 60%, rgba(0, 0, 0, 0.6)),
+            color-mix(in srgb, var(--accent) 40%, rgba(0, 0, 0, 0.6)));
+    }
 
     img {
         width: 100%;
@@ -69,17 +63,6 @@
         .card:active & {
             filter: brightness(0.8);
         }
-    }
-
-    .card.owned &,
-    .card:hover & {
-        background: linear-gradient(45deg,
-                color-mix(in srgb, var(--accent) 45%, transparent),
-                color-mix(in srgb, var(--accent) 0%, transparent));
-    }
-
-    .card.owned:hover & {
-        background: rgba(0, 0, 0, 0.4);
     }
 }
 
@@ -135,6 +118,7 @@
     font-weight: 700;
     font-size: 14px;
     text-align: center;
+    color: #fff;
 }
 
 .meta {

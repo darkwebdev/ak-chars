@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import themeRaw from '../theme/styles.css?raw';
-import '../styles.css';
+import themeRaw from '../../theme/styles.css?raw';
+import '../../styles.css';
 import './design-system.css';
 
 function generateTokenList(): string[] {

@@ -1,13 +1,9 @@
 @import './theme/styles.css';
 
 body {
-    color: var(--text);
-}
-
-body {
     font-family: Inter, system-ui, Arial;
     background: var(--bg);
-    color: #e6eef6;
+    color: var(--text);
     margin: 0
 }
 
@@ -47,9 +43,9 @@ header {
 }
 
 select {
-    background: #0b1220;
-    color: var(--muted);
-    border: 1px solid #1f2a37;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--muted);
     padding: 6px 8px
 }
 

@@ -3,6 +3,7 @@
     background: var(--bg);
     color: var(--text);
     font-family: Inter, system-ui, Arial;
+    min-height: 100vh;
 }
 
 .ds-typography .muted {
