@@ -658,6 +658,13 @@
     "subProfessionId": "pioneer"
   },
   {
+    "id": "char_4199_makiri",
+    "name": "Matsukiri",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "counsellor"
+  },
+  {
     "id": "char_261_sddrag",
     "name": "Reed",
     "rarity": "TIER_5",
@@ -1015,6 +1022,13 @@
     "subProfessionId": "reaperrange"
   },
   {
+    "id": "char_4203_kichi",
+    "name": "Kichisei",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "reaperrange"
+  },
+  {
     "id": "char_002_amiya",
     "name": "Amiya",
     "rarity": "TIER_5",
@@ -1220,6 +1234,13 @@
   {
     "id": "char_345_folnic",
     "name": "Folinic",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "physician"
+  },
+  {
+    "id": "char_4196_reckpr",
+    "name": "Record Keeper",
     "rarity": "TIER_5",
     "profession": "MEDIC",
     "subProfessionId": "physician"
@@ -1771,6 +1792,13 @@
     "subProfessionId": "alchemist"
   },
   {
+    "id": "char_4191_tippi",
+    "name": "Tippi",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "skywalker"
+  },
+  {
     "id": "char_103_angel",
     "name": "Exusiai",
     "rarity": "TIER_6",
@@ -2093,6 +2121,13 @@
     "subProfessionId": "summoner"
   },
   {
+    "id": "char_4195_radian",
+    "name": "Raidian",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "summoner"
+  },
+  {
     "id": "char_1012_skadi2",
     "name": "Skadi the Corrupting Heart",
     "rarity": "TIER_6",
@@ -2114,6 +2149,13 @@
     "subProfessionId": "blessing"
   },
   {
+    "id": "char_4202_haruka",
+    "name": "Haruka",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "blessing"
+  },
+  {
     "id": "char_2023_ling",
     "name": "Ling",
     "rarity": "TIER_6",
@@ -2130,6 +2172,13 @@
   {
     "id": "char_245_cello",
     "name": "Virtuosa",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "ritualist"
+  },
+  {
+    "id": "char_1042_phatm2",
+    "name": "Tragodia",
     "rarity": "TIER_6",
     "profession": "SUPPORT",
     "subProfessionId": "ritualist"
@@ -2380,6 +2429,13 @@
     "subProfessionId": "primprotector"
   },
   {
+    "id": "char_1044_hsgma2",
+    "name": "Hoshiguma the Breacher",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "artsprotector"
+  },
+  {
     "id": "char_264_f12yin",
     "name": "Mountain",
     "rarity": "TIER_6",
@@ -2548,6 +2604,13 @@
     "subProfessionId": "librator"
   },
   {
+    "id": "char_1043_leizi2",
+    "name": "Leizi the Thunderbringer",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "librator"
+  },
+  {
     "id": "char_230_savage",
     "name": "Savage",
     "rarity": "TIER_5",
@@ -2618,11 +2681,11 @@
     "subProfessionId": "agent"
   },
   {
-    "id": "char_4199_makiri",
-    "name": "Matsukiri",
+    "id": "char_4166_varkis",
+    "name": "Varkáris",
     "rarity": "TIER_5",
-    "profession": "PIONEER",
-    "subProfessionId": "counsellor"
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
   },
   {
     "id": "char_4185_amoris",
@@ -2639,18 +2702,11 @@
     "subProfessionId": "mercenary"
   },
   {
-    "id": "char_4203_kichi",
-    "name": "Kichisei",
+    "id": "char_4213_skybx",
+    "name": "Skybox",
     "rarity": "TIER_5",
     "profession": "SNIPER",
-    "subProfessionId": "reaperrange"
-  },
-  {
-    "id": "char_4196_reckpr",
-    "name": "Record Keeper",
-    "rarity": "TIER_5",
-    "profession": "MEDIC",
-    "subProfessionId": "physician"
+    "subProfessionId": "skybreaker"
   },
   {
     "id": "char_4207_branch",
@@ -2674,6 +2730,13 @@
     "subProfessionId": "bard"
   },
   {
+    "id": "char_1022_flwr2",
+    "name": "Perfumer the Distilled",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "blessing"
+  },
+  {
     "id": "char_4186_tmoris",
     "name": "Yahata Umiri",
     "rarity": "TIER_5",
@@ -2686,13 +2749,6 @@
     "rarity": "TIER_5",
     "profession": "SPECIAL",
     "subProfessionId": "dollkeeper"
-  },
-  {
-    "id": "char_4191_tippi",
-    "name": "Tippi",
-    "rarity": "TIER_5",
-    "profession": "SPECIAL",
-    "subProfessionId": "skywalker"
   },
   {
     "id": "char_1045_svash2",
@@ -2723,32 +2779,18 @@
     "subProfessionId": "slower"
   },
   {
-    "id": "char_4195_radian",
-    "name": "Raidian",
+    "id": "char_4212_nasti",
+    "name": "Nasti",
     "rarity": "TIER_6",
     "profession": "SUPPORT",
-    "subProfessionId": "summoner"
+    "subProfessionId": "craftsman"
   },
   {
-    "id": "char_4202_haruka",
-    "name": "Haruka",
+    "id": "char_4056_titi",
+    "name": "Titi",
     "rarity": "TIER_6",
-    "profession": "SUPPORT",
-    "subProfessionId": "blessing"
-  },
-  {
-    "id": "char_1042_phatm2",
-    "name": "Tragodia",
-    "rarity": "TIER_6",
-    "profession": "SUPPORT",
-    "subProfessionId": "ritualist"
-  },
-  {
-    "id": "char_1044_hsgma2",
-    "name": "Hoshiguma the Breacher",
-    "rarity": "TIER_6",
-    "profession": "TANK",
-    "subProfessionId": "artsprotector"
+    "profession": "MEDIC",
+    "subProfessionId": "incantationmedic"
   },
   {
     "id": "char_4182_oblvns",
@@ -2758,10 +2800,10 @@
     "subProfessionId": "lord"
   },
   {
-    "id": "char_1043_leizi2",
-    "name": "Leizi the Thunderbringer",
-    "rarity": "TIER_6",
-    "profession": "WARRIOR",
-    "subProfessionId": "librator"
+    "id": "char_4214_cairn",
+    "name": "Cairn",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "primprotector"
   }
 ]
