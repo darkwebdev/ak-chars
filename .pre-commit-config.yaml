@@ -1,0 +1,46 @@
+# Pre-commit Hook Configuration
+# This helps prevent accidentally committing sensitive data
+#
+# To use:
+# 1. Install pre-commit: pip install pre-commit
+# 2. Install hooks: pre-commit install
+# 3. Run manually: pre-commit run --all-files
+
+repos:
+  # Detect secrets, private keys, tokens
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: |
+          (?x)^(
+            tests/fixtures/.*\.json|
+            .*\.lock|
+            yarn.lock|
+            package-lock.json
+          )$
+
+  # Check for common security issues
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      - id: check-merge-conflict
+      - id: check-json
+      - id: check-yaml
+      - id: detect-private-key
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+
+  # Python-specific security checks
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.5
+    hooks:
+      - id: bandit
+        args: ['-c', 'pyproject.toml']
+        additional_dependencies: ['bandit[toml]']
+
+# Additional configuration
+fail_fast: false
