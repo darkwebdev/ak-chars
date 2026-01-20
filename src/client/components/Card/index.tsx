@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stars } from '../Stars';
 import { Char } from '../../../types.js';
+import { getBaseUrl } from '../../utils/env';
 import './style.css';
 
 // eslint-disable-next-line no-unused-vars
@@ -52,7 +53,7 @@ export function Card({
         <Stars rarity={(ch.rarity ?? undefined) as string | undefined} />
       </div>
       <div className="avatarWrap">
-        <img src={`${import.meta.env.BASE_URL}avatars/${ch.id}.png`} alt={ch.name ?? ''} />
+        <img src={`${getBaseUrl()}avatars/${ch.id}.png`} alt={ch.name ?? ''} />
       </div>
       <div className="cardFooter">
         <div className="title">{ch.name}</div>

@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { composeStories } from '@storybook/react';
-import '@testing-library/jest-dom';
 import * as stories from './ProfessionButton.stories';
 
 const { Default, Active, WithIcon, WithActiveIcon } = composeStories(stories);

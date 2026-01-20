@@ -1,12 +1,14 @@
 import { ApolloClient, InMemoryCache, HttpLink, gql } from '@apollo/client';
 
-interface ImportMeta {
-  env: {
-    VITE_API_BASE?: string;
-  };
+function getApiBase(): string {
+  if (typeof process !== 'undefined' && process.env?.NODE_ENV === 'test') {
+    return 'http://localhost:8000';
+  }
+  // @ts-expect-error - import.meta.env is a Vite feature
+  return import.meta.env?.VITE_API_BASE || 'http://localhost:8000';
 }
 
-const API_BASE = ((import.meta as unknown) as ImportMeta).env?.VITE_API_BASE || 'http://localhost:8000';
+const API_BASE = getApiBase();
 
 export const graphqlClient = new ApolloClient({
   link: new HttpLink({
