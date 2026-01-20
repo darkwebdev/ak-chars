@@ -1,5 +1,9 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+
+// Mock graphqlClient to avoid import.meta issues
+jest.mock('../src/client/utils/graphqlClient');
+
 import { App } from '../src/client/App';
 
 beforeEach(() => {
@@ -11,8 +15,10 @@ test('clicking a card toggles owned and persists to localStorage', async () => {
   render(<App />);
 
   // Wait for at least one card to be rendered
-  const card = await screen.findByRole('button');
-  if (!card) throw new Error('No card rendered');
+  const cards = await screen.findAllByRole('button');
+  // Find the first card that has aria-pressed attribute (character cards)
+  const card = cards.find(button => button.hasAttribute('aria-pressed'));
+  if (!card) throw new Error('No character card rendered');
 
   // Initially not owned
   expect(card.getAttribute('aria-pressed')).toBe('false');

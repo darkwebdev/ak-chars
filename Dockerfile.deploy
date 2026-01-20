@@ -1,0 +1,17 @@
+# Deployment container with flyctl
+FROM debian:bookworm-slim
+
+# Install flyctl
+RUN apt-get update && \
+    apt-get install -y curl && \
+    curl -L https://fly.io/install.sh | sh && \
+    apt-get clean
+
+ENV PATH="/root/.fly/bin:$PATH"
+
+WORKDIR /app
+
+# Copy project files
+COPY . .
+
+CMD ["flyctl", "deploy"]

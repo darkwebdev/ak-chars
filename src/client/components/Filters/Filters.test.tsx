@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { composeStories } from '@storybook/react';
-import '@testing-library/jest-dom';
 import * as stories from './Filters.stories';
 
 const { Default } = composeStories(stories);

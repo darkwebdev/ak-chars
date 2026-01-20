@@ -12,7 +12,7 @@ Run the project's test suite
 
 When this skill is invoked:
 
-1. Source nvm and enable corepack (required for yarn in this project)
+1. Source nvm and enable corepack for yarn v1.x
 2. Determine which test suite to run:
    - `yarn test` - Run Jest unit/component tests (default)
    - `yarn test:e2e` - Run Playwright end-to-end tests

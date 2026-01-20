@@ -21,14 +21,20 @@ logger = logging.getLogger('ak-chars.server')
 app = FastAPI(title='ak-chars-auth')
 
 # Configure CORS
+import os
+allowed_origins = [
+    "http://localhost:5173",
+    "http://localhost:5193",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5193",
+]
+# Add production origin if CORS_ORIGIN env var is set
+if os.getenv("CORS_ORIGIN"):
+    allowed_origins.append(os.getenv("CORS_ORIGIN"))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:5193",
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:5193",
-    ],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
