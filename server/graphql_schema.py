@@ -119,6 +119,30 @@ class UserStatus:
     exp: int
     social_point: int
     uid: str
+
+
+@strawberry.type
+class Player:
+    """Player information from search/expand."""
+    player_id: str
+    nick_name: Optional[str] = None
+    level: Optional[int] = None
+    avatar: Optional[str] = None
+    # Add more fields as needed from arkprts player data
+
+
+@strawberry.type
+class PlayerSearchResult:
+    """Result from player search."""
+    ok: bool
+    players: List[Player]
+
+
+@strawberry.type
+class PlayerExpandResult:
+    """Result from player expand."""
+    ok: bool
+    players: List[Player]
     
     @strawberry.field
     def display_name(self) -> str:
@@ -297,10 +321,10 @@ class Query:
         """Get authenticated user's status (equivalent to GET /my/status)."""
         user_data = await get_user_data_with_auth(channel_uid, yostar_token, server)
         status_data = user_data.get('status', {})
-        
+
         if not status_data:
             return None
-        
+
         return UserStatus(
             nick_name=status_data.get('nickName', ''),
             nick_number=status_data.get('nickNumber', ''),
@@ -309,6 +333,81 @@ class Query:
             social_point=status_data.get('socialPoint', 0),
             uid=status_data.get('uid', ''),
         )
+
+    @strawberry.field
+    async def search_players(
+        self,
+        nickname: str,
+        server: str = "en",
+        limit: int = 10
+    ) -> PlayerSearchResult:
+        """Search for players by nickname (equivalent to POST /players/search)."""
+        try:
+            from .ark_client import search_players as search_players_fn
+            players_data = await search_players_fn(nickname, server=server, limit=limit)
+
+            players = [
+                Player(
+                    player_id=p.get('playerId', p.get('uid', '')),
+                    nick_name=p.get('nickName'),
+                    level=p.get('level'),
+                    avatar=p.get('avatar')
+                )
+                for p in players_data
+            ]
+
+            return PlayerSearchResult(ok=True, players=players)
+        except Exception as e:
+            return PlayerSearchResult(ok=False, players=[])
+
+    @strawberry.field
+    async def expand_players(
+        self,
+        ids: List[str],
+        server: str = "en"
+    ) -> PlayerExpandResult:
+        """Get detailed player information (equivalent to POST /players/expand)."""
+        try:
+            from .ark_client import expand_player_ids
+            players_data = await expand_player_ids(ids, server=server)
+
+            players = [
+                Player(
+                    player_id=p.get('playerId', p.get('uid', '')),
+                    nick_name=p.get('nickName'),
+                    level=p.get('level'),
+                    avatar=p.get('avatar')
+                )
+                for p in players_data
+            ]
+
+            return PlayerExpandResult(ok=True, players=players)
+        except Exception as e:
+            return PlayerExpandResult(ok=False, players=[])
+
+    @strawberry.field
+    async def get_player(
+        self,
+        player_id: str,
+        server: str = "en"
+    ) -> Optional[Player]:
+        """Get a single player's details (equivalent to GET /characters/{player_id})."""
+        try:
+            from .ark_client import expand_player_ids
+            players_data = await expand_player_ids([player_id], server=server)
+
+            if not players_data:
+                return None
+
+            p = players_data[0]
+            return Player(
+                player_id=p.get('playerId', p.get('uid', '')),
+                nick_name=p.get('nickName'),
+                level=p.get('level'),
+                avatar=p.get('avatar')
+            )
+        except Exception:
+            return None
 
 
 @strawberry.type

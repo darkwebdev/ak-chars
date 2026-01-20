@@ -13,6 +13,7 @@ from strawberry.fastapi import GraphQLRouter
 
 from .auth import router as auth_router
 from .players import router as players_router
+from .fixtures import router as fixtures_router
 from .graphql_schema import schema
 
 logging.basicConfig(level=logging.INFO)
@@ -136,6 +137,7 @@ async def log_requests(request: Request, call_next: Callable):
 # Mount API routers
 app.include_router(auth_router)
 app.include_router(players_router)
+app.include_router(fixtures_router)
 
 # Mount GraphQL endpoint with CORS support
 graphql_app = GraphQLRouter(
