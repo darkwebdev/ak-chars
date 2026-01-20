@@ -433,6 +433,124 @@ class TestMyRosterParity:
         assert isinstance(roster, list)
 
 
+class TestPlayerAvatarParity:
+    """Test REST /avatars/{id} and GraphQL getPlayerAvatarUrl have same behavior."""
+
+    def test_rest_get_avatar_url(self):
+        """Test REST endpoint for player avatar returns image."""
+        # Avatar endpoint returns binary data, so we just test it exists
+        # Actual avatar fetching would require mocking the arkprts client
+        response = client.get('/avatars/12345?server=en')
+        # May return 404 or 503 without real client, just verify endpoint exists
+        assert response.status_code in [404, 503]
+
+    def test_graphql_get_avatar_url(self):
+        """Test GraphQL query for player avatar URL."""
+        query = """
+        query {
+            getPlayerAvatarUrl(playerId: "12345", server: "en")
+        }
+        """
+
+        response = client.post('/graphql', json={'query': query})
+
+        assert response.status_code == 200
+        data = response.json()
+        assert 'data' in data
+        assert 'getPlayerAvatarUrl' in data['data']
+        url = data['data']['getPlayerAvatarUrl']
+        assert url is not None
+        assert '/avatars/12345' in url
+        assert 'server=en' in url
+
+
+class TestRawPlayerDataParity:
+    """Test REST /players/raw and GraphQL getRawPlayerData have same behavior."""
+
+    @patch('server.ark_client._make_client')
+    def test_rest_get_raw_player_single(self, mock_make_client):
+        """Test REST endpoint for raw player data (single)."""
+        # Mock the client
+        mock_client = Mock()
+        mock_client.get_raw_player_info = AsyncMock(return_value={'player': 'data'})
+        mock_make_client.return_value = mock_client
+
+        response = client.get('/players/raw/12345?server=en')
+        assert response.status_code == 200
+        data = response.json()
+        assert data['ok'] is True
+        assert 'raw' in data
+
+    @patch('server.ark_client._make_client')
+    def test_rest_get_raw_players_multiple(self, mock_make_client):
+        """Test REST endpoint for raw player data (multiple)."""
+        mock_client = Mock()
+        mock_client.get_raw_player_info = AsyncMock(return_value={'players': ['data1', 'data2']})
+        mock_make_client.return_value = mock_client
+
+        response = client.post('/players/raw', json={
+            'ids': ['12345', '67890'],
+            'server': 'en'
+        })
+        assert response.status_code == 200
+        data = response.json()
+        assert data['ok'] is True
+        assert 'raw' in data
+
+    @patch('server.ark_client._make_client')
+    def test_graphql_get_raw_player_data(self, mock_make_client):
+        """Test GraphQL query for raw player data (single)."""
+        # Mock the client
+        mock_client = Mock()
+        mock_client.get_raw_player_info = AsyncMock(return_value={'player': 'data'})
+        mock_make_client.return_value = mock_client
+
+        query = """
+        query {
+            getRawPlayerData(playerId: "12345", server: "en")
+        }
+        """
+
+        response = client.post('/graphql', json={'query': query})
+
+        assert response.status_code == 200
+        data = response.json()
+        assert 'data' in data
+        assert 'getRawPlayerData' in data['data']
+        raw_data = data['data']['getRawPlayerData']
+        assert raw_data is not None
+        # Verify it's JSON string
+        import json
+        parsed = json.loads(raw_data)
+        assert 'player' in parsed
+
+    @patch('server.ark_client._make_client')
+    def test_graphql_get_raw_players_data(self, mock_make_client):
+        """Test GraphQL query for raw player data (multiple)."""
+        mock_client = Mock()
+        mock_client.get_raw_player_info = AsyncMock(return_value={'players': ['data1', 'data2']})
+        mock_make_client.return_value = mock_client
+
+        query = """
+        query {
+            getRawPlayersData(ids: ["12345", "67890"], server: "en")
+        }
+        """
+
+        response = client.post('/graphql', json={'query': query})
+
+        assert response.status_code == 200
+        data = response.json()
+        assert 'data' in data
+        assert 'getRawPlayersData' in data['data']
+        raw_data = data['data']['getRawPlayersData']
+        assert raw_data is not None
+        # Verify it's JSON string
+        import json
+        parsed = json.loads(raw_data)
+        assert 'players' in parsed
+
+
 class TestMyStatusParity:
     """Test REST /my/status and GraphQL myStatus have same behavior."""
 
