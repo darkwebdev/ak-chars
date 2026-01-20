@@ -46,9 +46,6 @@ build/
 *.key
 *.p12
 *.pfx
-*-ca.crt
-netskope-certs.crt
-ebay-root-ca.crt
 
 # Deployment artifacts
 deploy-package.tar.gz
