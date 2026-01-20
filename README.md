@@ -11,11 +11,35 @@ yarn
 # run tests
 yarn test
 
+# run smoke tests (verify production deployment)
+yarn test:smoke
+
 # run
 yarn dev
 ```
 
 We use Yarn for this project. Please run `yarn` / `yarn <script>` instead of `npm`.
+
+## Testing
+
+**Unit Tests:**
+```bash
+yarn test
+```
+
+**Smoke Tests (Production API):**
+```bash
+yarn test:smoke
+```
+
+Smoke tests verify the deployed API server at https://ak-chars-api.fly.dev by checking:
+- Server health and responsiveness
+- GraphQL endpoint functionality
+- Authentication endpoints
+- Input validation
+- CORS configuration
+
+Run smoke tests after deployment to verify everything is working correctly.
 
 ## Deployment (GitHub Pages)
 

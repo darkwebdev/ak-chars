@@ -8,6 +8,7 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:headed": "playwright test --headed",
+    "test:smoke": "bash -c '. .venv/bin/activate && python smoke-test.py'",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
