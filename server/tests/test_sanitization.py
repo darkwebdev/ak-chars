@@ -13,19 +13,19 @@ class TestSanitizeSensitiveData:
     """Tests for sanitize_sensitive_data function."""
     
     def test_sanitize_json_with_tokens(self):
-        """Test that tokens are redacted in JSON."""
+        """Test that tokens and emails are redacted in JSON."""
         input_json = json.dumps({
             "channel_uid": "abc123xyz",
             "yostar_token": "supersecrettoken",
             "email": "user@example.com"
         })
-        
+
         result = sanitize_sensitive_data(input_json)
         result_data = json.loads(result)
-        
+
         assert result_data["channel_uid"] == "***REDACTED***"
         assert result_data["yostar_token"] == "***REDACTED***"
-        assert result_data["email"] == "user@example.com"
+        assert result_data["email"] == "***REDACTED***"
     
     def test_sanitize_nested_json(self):
         """Test sanitization of nested JSON structures."""
@@ -40,14 +40,14 @@ class TestSanitizeSensitiveData:
                 }
             }
         })
-        
+
         result = sanitize_sensitive_data(input_json)
         result_data = json.loads(result)
-        
+
         assert result_data["data"]["channel_uid"] == "***REDACTED***"
         assert result_data["data"]["token"] == "***REDACTED***"
         assert result_data["data"]["user"]["api_key"] == "***REDACTED***"
-        assert result_data["data"]["user"]["email"] == "test@example.com"
+        assert result_data["data"]["user"]["email"] == "***REDACTED***"
     
     def test_sanitize_list_of_objects(self):
         """Test sanitization of arrays containing objects."""
@@ -98,7 +98,7 @@ class TestSanitizeSensitiveData:
         sensitive_fields = [
             "yostar_token", "token", "channel_uid", "channelUid",
             "password", "secret", "api_key", "apiKey",
-            "code", "authorization", "auth"
+            "code", "authorization", "auth", "email"
         ]
         
         for field in sensitive_fields:

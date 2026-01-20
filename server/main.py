@@ -49,7 +49,7 @@ def sanitize_sensitive_data(text: str) -> str:
         sensitive_fields = {
             'yostar_token', 'token', 'channel_uid', 'channelUid',
             'password', 'secret', 'api_key', 'apiKey',
-            'code', 'authorization', 'auth'
+            'code', 'authorization', 'auth', 'email'
         }
         
         def mask_dict(obj):
@@ -67,8 +67,8 @@ def sanitize_sensitive_data(text: str) -> str:
         return json.dumps(masked)
     except Exception:
         patterns = [
-            (r'"(yostar_token|token|channel_uid|channelUid|password|secret|api_key|apiKey|code|authorization)"\s*:\s*"[^"]*"', r'"\1": "***REDACTED***"'),
-            (r"'(yostar_token|token|channel_uid|channelUid|password|secret|api_key|apiKey|code|authorization)'\s*:\s*'[^']*'", r"'\1': '***REDACTED***'"),
+            (r'"(yostar_token|token|channel_uid|channelUid|password|secret|api_key|apiKey|code|authorization|email)"\s*:\s*"[^"]*"', r'"\1": "***REDACTED***"'),
+            (r"'(yostar_token|token|channel_uid|channelUid|password|secret|api_key|apiKey|code|authorization|email)'\s*:\s*'[^']*'", r"'\1': '***REDACTED***'"),
         ]
         for pattern, replacement in patterns:
             text = re.sub(pattern, replacement, text, flags=re.IGNORECASE)
