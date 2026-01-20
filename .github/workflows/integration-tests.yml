@@ -26,26 +26,18 @@ jobs:
           pip install --upgrade pip
           pip install -r server/requirements.txt
 
-      - name: Start API server
+      - name: Verify production server is ready
         run: |
-          cd server
-          uvicorn main:app --host 127.0.0.1 --port 8000 &
-          sleep 5
-        env:
-          USE_FIXTURES: false
-          PYTHONUNBUFFERED: 1
-
-      - name: Wait for server to be ready
-        run: |
-          timeout 30 bash -c 'until curl -f http://127.0.0.1:8000/health 2>/dev/null; do sleep 1; done' || true
+          curl -f https://ak-chars-api.fly.dev/graphql \
+            -H "Content-Type: application/json" \
+            -d '{"query": "{ __typename }"}'
 
       - name: Run integration tests
         env:
-          USE_FIXTURES: false
           TEST_ACCOUNT_EMAIL: ${{ secrets.TEST_ACCOUNT_EMAIL }}
           TEST_ACCOUNT_EMAIL_PASSWORD: ${{ secrets.TEST_ACCOUNT_EMAIL_PASSWORD }}
           TEST_ACCOUNT_SERVER: en
-          API_BASE_URL: http://127.0.0.1:8000
+          API_BASE_URL: https://ak-chars-api.fly.dev
         run: |
           pytest tests/integration/ -v -m integration --timeout=300 --tb=short
 
