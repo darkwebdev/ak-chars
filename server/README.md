@@ -28,6 +28,47 @@ python-dotenv):
 
 **Important:** Copy `.env.example` to `.env` and fill in your values. Never commit `.env`.
 
+## Production Deployment
+
+The server is deployed to Fly.io at **https://ak-chars-api.fly.dev**
+
+Deployment is automated via GitHub Actions on every push to `main` (see `.github/workflows/fly-deploy.yml`).
+
+**Production endpoints:**
+
+```bash
+# GraphQL playground (interactive)
+open https://ak-chars-api.fly.dev/graphql
+
+# Get game authentication code
+curl -X POST https://ak-chars-api.fly.dev/auth/game-code \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your-email@example.com","server":"en"}'
+
+# Exchange code for credentials
+curl -X POST https://ak-chars-api.fly.dev/auth/game-token \
+  -H "Content-Type: application/json" \
+  -d '{"email":"your-email@example.com","code":"123456","server":"en"}'
+
+# Get your operator roster
+curl -X POST https://ak-chars-api.fly.dev/my/roster \
+  -H "Content-Type: application/json" \
+  -d '{"channel_uid":"...","yostar_token":"...","server":"en"}'
+```
+
+**Deployment configuration:**
+
+- Platform: Fly.io (London region)
+- No cold starts (`auto_stop_machines = false`)
+- Automatic deployment via GitHub Actions
+- Configuration: See `fly.toml` and `Dockerfile` in repository root
+
+**To deploy manually** (requires `FLY_API_TOKEN` environment variable):
+
+```bash
+flyctl deploy
+```
+
 ## Developer notes
 
 - If you have an `arkprts` package installed and a mismatched client API the
