@@ -65,7 +65,7 @@ async def my_roster(req: MyRosterRequest):
         
         data = await get_user_data(req.channel_uid, req.yostar_token, req.server)
         chars = data.get('user', {}).get('troop', {}).get('chars', {})
-        logger.info('Fetched roster for channel_uid=%s (%d operators)', req.channel_uid[:8] + '...', len(chars))
+        logger.info('Fetched roster for server=%s (%d operators)', req.server, len(chars))
         return {'ok': True, 'chars': chars}
     except Exception as e:
         logger.exception('Error fetching roster: %s', e)
@@ -90,7 +90,7 @@ async def my_status(req: MyStatusRequest):
         
         data = await get_user_data(req.channel_uid, req.yostar_token, req.server)
         status = data.get('user', {}).get('status', {})
-        logger.info('Fetched user status for channel_uid=%s', req.channel_uid[:8] + '...')
+        logger.info('Fetched user status for server=%s', req.server)
         return {'ok': True, 'status': status}
     except Exception as e:
         logger.exception('Error fetching user status: %s', e)
@@ -106,7 +106,7 @@ async def game_code(payload: GameCodeRequest):
     """
     try:
         await send_game_auth_code(payload.email, payload.server)
-        logger.info('Sent game auth code to %s for server %s', payload.email, payload.server)
+        logger.info('Sent game auth code for server %s', payload.server)
         return {'ok': True, 'message': 'Code sent to email'}
     except Exception as e:
         logger.exception('Error sending game auth code: %s', e)
@@ -126,7 +126,7 @@ async def game_token(payload: GameTokenRequest):
     """
     try:
         channel_uid, token = await get_game_token_from_code(payload.email, payload.code, payload.server)
-        logger.info('Generated game token for %s', payload.email)
+        logger.info('Generated game token for server %s', payload.server)
         return {
             'ok': True,
             'channel_uid': channel_uid,
