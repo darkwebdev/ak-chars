@@ -128,6 +128,7 @@ class Player:
     nick_name: Optional[str] = None
     level: Optional[int] = None
     avatar: Optional[str] = None
+    avatar_url: Optional[str] = None  # URL to avatar image
     # Add more fields as needed from arkprts player data
 
 
@@ -404,8 +405,70 @@ class Query:
                 player_id=p.get('playerId', p.get('uid', '')),
                 nick_name=p.get('nickName'),
                 level=p.get('level'),
-                avatar=p.get('avatar')
+                avatar=p.get('avatar'),
+                avatar_url=f"/avatars/{p.get('playerId', p.get('uid', ''))}?server={server}"
             )
+        except Exception:
+            return None
+
+    @strawberry.field
+    async def get_player_avatar_url(
+        self,
+        player_id: str,
+        server: str = "en"
+    ) -> Optional[str]:
+        """Get player avatar URL (equivalent to GET /avatars/{player_id}).
+
+        Returns the URL to fetch the avatar image via REST endpoint.
+        GraphQL doesn't natively support binary data, so this returns a URL
+        that can be used to fetch the actual image bytes.
+        """
+        return f"/avatars/{player_id}?server={server}"
+
+    @strawberry.field
+    async def get_raw_player_data(
+        self,
+        player_id: str,
+        server: str = "en"
+    ) -> Optional[str]:
+        """Get raw player data (equivalent to GET /players/raw/{player_id}).
+
+        Returns the full raw upstream JSON payload for a single player.
+        Useful for debugging and accessing complete player data.
+        """
+        try:
+            from .ark_client import _make_client
+            client = _make_client()
+
+            if not hasattr(client, 'get_raw_player_info'):
+                return None
+
+            import json
+            raw = await client.get_raw_player_info([player_id], server=server)
+            return json.dumps(raw)
+        except Exception:
+            return None
+
+    @strawberry.field
+    async def get_raw_players_data(
+        self,
+        ids: List[str],
+        server: str = "en"
+    ) -> Optional[str]:
+        """Get raw player data for multiple players (equivalent to POST /players/raw).
+
+        Returns the full raw upstream JSON payload for multiple players.
+        """
+        try:
+            from .ark_client import _make_client
+            client = _make_client()
+
+            if not hasattr(client, 'get_raw_player_info'):
+                return None
+
+            import json
+            raw = await client.get_raw_player_info(ids, server=server)
+            return json.dumps(raw)
         except Exception:
             return None
 

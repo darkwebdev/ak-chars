@@ -344,18 +344,103 @@ response = await fetch('http://127.0.0.1:8000/graphql', {
 const roster = await response.json();
 ```
 
+## Player Search and Expand
+
+### Search players by nickname
+
+```graphql
+{
+  searchPlayers(nickname: "TestDoctor", server: "en", limit: 10) {
+    ok
+    players {
+      playerId
+      nickName
+      level
+      avatar
+    }
+  }
+}
+```
+
+### Expand player IDs to get details
+
+```graphql
+{
+  expandPlayers(ids: ["12345", "67890"], server: "en") {
+    ok
+    players {
+      playerId
+      nickName
+      level
+      avatar
+    }
+  }
+}
+```
+
+### Get single player
+
+```graphql
+{
+  getPlayer(playerId: "12345", server: "en") {
+    playerId
+    nickName
+    level
+    avatar
+    avatarUrl
+  }
+}
+```
+
+## Player Avatars and Raw Data
+
+### Get player avatar URL
+
+```graphql
+{
+  getPlayerAvatarUrl(playerId: "12345", server: "en")
+}
+```
+
+This returns a URL string that can be used to fetch the avatar image via the REST endpoint.
+
+### Get raw player data
+
+```graphql
+{
+  getRawPlayerData(playerId: "12345", server: "en")
+}
+```
+
+Returns the full raw upstream JSON payload as a string for debugging and accessing complete player data.
+
+### Get raw data for multiple players
+
+```graphql
+{
+  getRawPlayersData(ids: ["12345", "67890"], server: "en")
+}
+```
+
 ## REST vs GraphQL Endpoints
 
-All REST endpoints are now available via GraphQL:
+Complete parity between REST and GraphQL - every endpoint is available in both:
 
-| REST Endpoint          | GraphQL Equivalent                       | Type     |
-| ---------------------- | ---------------------------------------- | -------- |
-| `GET /operators`       | `query { operators { ... } }`            | Query    |
-| `GET /user/status`     | `query { userStatus { ... } }`           | Query    |
-| `POST /auth/send-code` | `mutation { sendAuthCode(...) { ... } }` | Mutation |
-| `POST /auth/get-token` | `mutation { getAuthToken(...) { ... } }` | Mutation |
-| `GET /my/roster`       | `query { myRoster(...) { ... } }`        | Query    |
-| `GET /my/status`       | `query { myStatus(...) { ... } }`        | Query    |
+| REST Endpoint                  | GraphQL Equivalent                          | Type     |
+| ------------------------------ | ------------------------------------------- | -------- |
+| `GET /fixtures/operators`      | `query { operators { ... } }`               | Query    |
+| `GET /fixtures/operator/{id}`  | `query { operator(charId: "...") { ... } }` | Query    |
+| `GET /fixtures/user-status`    | `query { userStatus { ... } }`              | Query    |
+| `POST /players/search`         | `query { searchPlayers(...) { ... } }`      | Query    |
+| `POST /players/expand`         | `query { expandPlayers(...) { ... } }`      | Query    |
+| `GET /characters/{id}`         | `query { getPlayer(...) { ... } }`          | Query    |
+| `GET /avatars/{id}`            | `query { getPlayerAvatarUrl(...) }`         | Query    |
+| `GET /players/raw/{id}`        | `query { getRawPlayerData(...) }`           | Query    |
+| `POST /players/raw`            | `query { getRawPlayersData(...) }`          | Query    |
+| `POST /auth/game-code`         | `mutation { sendAuthCode(...) { ... } }`    | Mutation |
+| `POST /auth/game-token`        | `mutation { getAuthToken(...) { ... } }`    | Mutation |
+| `POST /my/roster`              | `query { myRoster(...) { ... } }`           | Query    |
+| `POST /my/status`              | `query { myStatus(...) { ... } }`           | Query    |
 
 **Advantages of GraphQL:**
 
