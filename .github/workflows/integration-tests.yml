@@ -26,6 +26,11 @@ jobs:
           pip install --upgrade pip
           pip install -r server/requirements.txt
 
+      - name: Set up credentials cache
+        run: |
+          mkdir -p tests/integration
+          echo '${{ secrets.CACHED_CREDENTIALS }}' > tests/integration/.credentials_cache.json
+
       - name: Verify production server is ready
         run: |
           curl -f https://ak-chars-api.fly.dev/graphql \
