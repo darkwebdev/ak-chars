@@ -23,6 +23,8 @@ jobs:
 
       - name: Build
         run: CI=1 yarn build
+        env:
+          VITE_API_BASE: https://ak-chars-api.fly.dev
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
