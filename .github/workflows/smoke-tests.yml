@@ -1,0 +1,46 @@
+name: Smoke Tests
+
+on:
+  # Run after deployment completes
+  workflow_run:
+    workflows: ["Fly Deploy"]
+    types:
+      - completed
+
+  # Run daily at 9 AM UTC
+  schedule:
+    - cron: '0 9 * * *'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  smoke-test:
+    name: Run smoke tests
+    runs-on: ubuntu-latest
+
+    # Only run if deployment succeeded (or on schedule/manual)
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install httpx
+
+      - name: Run smoke tests
+        run: |
+          python smoke-test.py
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::Smoke tests failed for production deployment"
+          exit 1
