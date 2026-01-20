@@ -1,11 +1,60 @@
-.DS_Store
-.devserver.pid
-.vscode/
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+.nyc_output
+*.log
+
+# Production
+build/
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# Certificates and keys (IMPORTANT: Never commit these)
+*.crt
+*.pem
+*.key
+*.p12
+*.pfx
+*-ca.crt
+netskope-certs.crt
+ebay-root-ca.crt
+
+# Deployment artifacts
+deploy-package.tar.gz
+*.output
+
+# Temporary files
 tmp/
 temp/
-*.log
-dist/
-.env/
-coverage/
-.idea/
+*.tmp
