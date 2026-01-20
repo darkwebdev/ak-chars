@@ -1,0 +1,65 @@
+name: Integration Tests
+
+on:
+  schedule:
+    # Run daily at 9 AM UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    # Allow manual trigger from Actions tab
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r server/requirements.txt
+
+      - name: Start API server
+        run: |
+          cd server
+          uvicorn main:app --host 127.0.0.1 --port 8000 &
+          sleep 5
+        env:
+          USE_FIXTURES: false
+          PYTHONUNBUFFERED: 1
+
+      - name: Wait for server to be ready
+        run: |
+          timeout 30 bash -c 'until curl -f http://127.0.0.1:8000/health 2>/dev/null; do sleep 1; done' || true
+
+      - name: Run integration tests
+        env:
+          USE_FIXTURES: false
+          TEST_ACCOUNT_EMAIL: ${{ secrets.TEST_ACCOUNT_EMAIL }}
+          TEST_ACCOUNT_EMAIL_PASSWORD: ${{ secrets.TEST_ACCOUNT_EMAIL_PASSWORD }}
+          TEST_ACCOUNT_SERVER: en
+          API_BASE_URL: http://127.0.0.1:8000
+        run: |
+          pytest tests/integration/ -v -m integration --timeout=300 --tb=short
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: integration-test-results
+          path: |
+            .pytest_cache/
+            htmlcov/
+          retention-days: 7
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::Integration tests failed. Check the logs for details."
