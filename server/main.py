@@ -26,8 +26,10 @@ import os
 allowed_origins = [
     "http://localhost:5173",
     "http://localhost:5193",
+    "http://localhost:5194",
     "http://127.0.0.1:5173",
     "http://127.0.0.1:5193",
+    "http://127.0.0.1:5194",
 ]
 # Add production origin if CORS_ORIGIN env var is set
 if os.getenv("CORS_ORIGIN"):

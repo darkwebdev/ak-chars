@@ -31,6 +31,7 @@ export function App() {
 
   const [search, setSearch] = useState('');
   const [groupBySubprof, setGroupBySubprof] = useLocalStorage<boolean>('groupBySubprof', true);
+  const [showOnlyOwned, setShowOnlyOwned] = useState(false);
 
   const [ownedIds, setOwnedIds] = useLocalStorage<string[]>('ownedChars', []);
 
@@ -45,7 +46,8 @@ export function App() {
   const tiersList = getTiersList(tiers);
 
   const filtered = filterChars(chars, rarity, profession, tierFilter, tiers, search);
-  const sorted = sortByTier(filtered, tiers);
+  const filteredByOwned = showOnlyOwned ? filtered.filter((c) => ownedIds.includes(c.id)) : filtered;
+  const sorted = sortByTier(filteredByOwned, tiers);
   let groups = groupsWithMeta(sorted, tiers, ownedIds);
 
   const subprofLookup = new Map<string, string>();
@@ -131,6 +133,8 @@ export function App() {
             tiersList={tiersList}
             groupBySubprof={groupBySubprof}
             setGroupBySubprof={setGroupBySubprof}
+            showOnlyOwned={showOnlyOwned}
+            setShowOnlyOwned={setShowOnlyOwned}
           />
         </header>
         <main>
@@ -152,6 +156,11 @@ export function App() {
             })}
           </div>
         </main>
+        <footer style={{ padding: '24px', textAlign: 'center' }}>
+          <a href="/ak-chars/history" style={{ textDecoration: 'none', color: 'var(--text-color)' }}>
+            History →
+          </a>
+        </footer>
       </div>
     </div>
   );

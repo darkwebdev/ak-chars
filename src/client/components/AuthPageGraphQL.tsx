@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useSendAuthCode, useGetAuthToken, useGetMyRoster, useGetMyStatus } from '../utils/graphqlHooks';
 
 export function AuthPage() {
@@ -9,6 +9,8 @@ export function AuthPage() {
   const [code, setCode] = useState('');
   const [channelUid, setChannelUid] = useState<string | null>(localStorage.getItem('ak_channel_uid'));
   const [yostarToken, setYostarToken] = useState<string | null>(localStorage.getItem('ak_yostar_token'));
+
+  const codeInputRef = useRef<HTMLInputElement>(null);
 
   const { sendCode, loading: sendingCode, error: sendError } = useSendAuthCode();
   const { getToken, loading: verifying, error: verifyError } = useGetAuthToken();
@@ -24,6 +26,7 @@ export function AuthPage() {
       await sendCode(email, 'en');
       setRequested(true);
       setMessage('Code sent — check your email (or server logs in dev).');
+      setTimeout(() => codeInputRef.current?.focus(), 0);
     } catch (e: unknown) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setMessage(`Error: ${(e as any)?.message || String(e)}`);
@@ -103,8 +106,14 @@ export function AuthPage() {
             <p>Enter the 6-digit code you received</p>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
               <input
+                ref={codeInputRef}
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && code && !verifying) {
+                    handleVerifyCode();
+                  }
+                }}
                 placeholder="123456"
                 style={{ padding: 8 }}
               />
