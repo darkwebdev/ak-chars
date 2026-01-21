@@ -13,6 +13,8 @@ type Props = {
   tiersList: string[];
   groupBySubprof: boolean;
   setGroupBySubprof: (_v: boolean) => void;
+  showOnlyOwned: boolean;
+  setShowOnlyOwned: (_v: boolean) => void;
 };
 
 export const Filters: FC<Props> = ({
@@ -24,6 +26,8 @@ export const Filters: FC<Props> = ({
   tiersList,
   groupBySubprof,
   setGroupBySubprof,
+  showOnlyOwned,
+  setShowOnlyOwned,
 }: Props) => (
   <div className="filters">
     <label>
@@ -55,6 +59,14 @@ export const Filters: FC<Props> = ({
         onChange={(e) => setGroupBySubprof(e.target.checked)}
       />{' '}
       Group by subprofession
+    </label>
+    <label style={{ marginLeft: 12 }}>
+      <input
+        type="checkbox"
+        checked={showOnlyOwned}
+        onChange={(e) => setShowOnlyOwned(e.target.checked)}
+      />{' '}
+      Show only owned
     </label>
   </div>
 );
