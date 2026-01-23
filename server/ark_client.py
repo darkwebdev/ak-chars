@@ -137,36 +137,36 @@ async def search_players(nickname: str, server: str = 'en', limit: int | None = 
 
 async def send_game_auth_code(email: str, server: str = 'en') -> bool:
     """Send authentication code to email via Yostar.
-    
+
     Returns True if code was sent successfully.
     """
     if not arkprts:
         raise RuntimeError('arkprts package not installed')
-    
+
     YostarAuth = getattr(arkprts, 'YostarAuth', None)
     if YostarAuth is None:
         raise RuntimeError('arkprts.YostarAuth not found - authentication not supported')
-    
+
     # Create auth instance for the server
-    auth = YostarAuth.create(server=server)
+    auth = YostarAuth(server)
     await auth.send_email_code(email)
     return True
 
 
 async def get_game_token_from_code(email: str, code: str, server: str = 'en') -> tuple[str, str]:
     """Get Yostar authentication token using email and code.
-    
+
     Returns tuple of (channel_uid, yostar_token).
     """
     if not arkprts:
         raise RuntimeError('arkprts package not installed')
-    
+
     YostarAuth = getattr(arkprts, 'YostarAuth', None)
     if YostarAuth is None:
         raise RuntimeError('arkprts.YostarAuth not found - authentication not supported')
-    
+
     # Create auth instance and get token
-    auth = YostarAuth.create(server=server)
+    auth = YostarAuth(server)
     channel_uid, token = await auth.get_token_from_email_code(email=email, code=code)
     return channel_uid, token
 
