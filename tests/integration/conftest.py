@@ -145,7 +145,7 @@ async def api_client(api_base_url):
         yield client
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 async def game_credentials(api_base_url, mail_tm_client, mail_tm_token, test_email, test_server):
     """Authenticate once and cache credentials to avoid rate limiting.
 
