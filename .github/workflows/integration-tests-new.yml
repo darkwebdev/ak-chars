@@ -2,7 +2,6 @@ name: integration-tests
 
 on:
   workflow_dispatch:
-    # Allow manual trigger from Actions tab or gh CLI
   schedule:
     # Run daily at 9 AM UTC
     - cron: '0 9 * * *'
