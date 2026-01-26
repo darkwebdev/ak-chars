@@ -1,6 +1,6 @@
 name: Integration Tests
 
-on:
+"on":
   workflow_dispatch:
     # Manual trigger
   schedule:
@@ -37,18 +37,18 @@ jobs:
             echo "Cache file exists"
             echo "File size: $(wc -c < tests/integration/.credentials_cache.json) bytes"
             echo "Cache structure (without sensitive data):"
-            python3 -c "
-import json
-with open('tests/integration/.credentials_cache.json') as f:
-    data = json.load(f)
-    print(f\"  Email: {data.get('email', 'MISSING')}\")
-    print(f\"  Server: {data.get('server', 'MISSING')}\")
-    print(f\"  Timestamp: {data.get('timestamp', 'MISSING')}\")
-    print(f\"  Has credentials: {'credentials' in data}\")
-    if 'credentials' in data:
-        print(f\"  Has channel_uid: {'channel_uid' in data['credentials']}\")
-        print(f\"  Has yostar_token: {'yostar_token' in data['credentials']}\")
-" || echo "Failed to parse cache JSON"
+            python3 << 'PYEOF'
+          import json
+          with open('tests/integration/.credentials_cache.json') as f:
+              data = json.load(f)
+              print(f"  Email: {data.get('email', 'MISSING')}")
+              print(f"  Server: {data.get('server', 'MISSING')}")
+              print(f"  Timestamp: {data.get('timestamp', 'MISSING')}")
+              print(f"  Has credentials: {'credentials' in data}")
+              if 'credentials' in data:
+                  print(f"  Has channel_uid: {'channel_uid' in data['credentials']}")
+                  print(f"  Has yostar_token: {'yostar_token' in data['credentials']}")
+          PYEOF
           else
             echo "ERROR: Cache file does not exist"
           fi

@@ -7,7 +7,7 @@ has the correct format and structure.
 import json
 import pytest
 from datetime import datetime, timedelta
-from tests.integration.credential_cache import CACHE_DURATION
+from .credential_cache import CACHE_DURATION
 
 
 class TestGitHubSecretFormat:
