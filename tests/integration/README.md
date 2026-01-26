@@ -52,6 +52,48 @@ Configure the following secrets in repository settings → Secrets and variables
 - `TEST_ACCOUNT_EMAIL` - Your Mail.tm email address
 - `TEST_ACCOUNT_EMAIL_PASSWORD` - Your Mail.tm password
 
+## Automatic Credential Management
+
+**New in 2026:** Tests now use an **automatic credential caching system** to avoid rate limiting:
+
+### How Caching Works
+
+1. **First Run**: Tests perform full auth flow and cache credentials for 7 days
+2. **Subsequent Runs**: Tests use cached credentials (no email verification needed)
+3. **Expired Cache**: Tests automatically detect expiration and refresh via full auth flow
+4. **No Manual Steps**: Everything happens automatically during test execution
+
+### GitHub Actions Integration
+
+The workflow automatically:
+- Checks cache age before running tests
+- Deletes expired cache to trigger refresh
+- Detects when credentials were refreshed during tests
+- Uploads refreshed credentials as artifacts for secret update
+
+**To update the GitHub secret after automatic refresh:**
+```bash
+.github/scripts/update-cached-credentials.sh
+```
+
+### Cache File Structure
+
+```json
+{
+  "email": "test@mail.tm",
+  "server": "en",
+  "timestamp": "2026-01-26T15:08:08.998492",
+  "credentials": {
+    "channel_uid": "...",
+    "yostar_token": "..."
+  }
+}
+```
+
+**Cache Duration:** 7 days (configured in `credential_cache.py`)
+**Cache Location:** `tests/integration/.credentials_cache.json` (gitignored)
+**GitHub Secret:** `CACHED_CREDENTIALS` (manually updated when refreshed)
+
 ## How It Works
 
 ### Mail.tm API Flow
