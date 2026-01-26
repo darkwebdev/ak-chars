@@ -88,7 +88,7 @@ def api_base_url() -> str:
     return os.getenv("API_BASE_URL", "http://127.0.0.1:8000")
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 async def mail_tm_client():
     """Create Mail.tm API client.
 
@@ -100,7 +100,7 @@ async def mail_tm_client():
     await client.close()
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 async def mail_tm_token(mail_tm_client, test_email, test_email_password) -> str:
     """Login to Mail.tm and get JWT token.
 
