@@ -4,7 +4,7 @@ import json
 import pytest
 from pathlib import Path
 from datetime import datetime, timedelta
-from tests.integration.credential_cache import (
+from .credential_cache import (
     save_credentials,
     load_credentials,
     clear_cache,
