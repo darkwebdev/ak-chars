@@ -174,43 +174,63 @@ async def game_credentials(api_base_url, mail_tm_client, mail_tm_token, test_ema
 
     logger.info(f"No valid cache found. Starting authentication flow for {test_email} on {test_server}")
 
-    async with httpx.AsyncClient(base_url=api_base_url, timeout=30.0) as client:
-        # Request authentication code
-        logger.info("Requesting verification code from /auth/game-code")
-        response = await client.post(
-            "/auth/game-code",
-            json={"email": test_email, "server": test_server}
-        )
-        response.raise_for_status()
-        logger.info(f"Code request successful: {response.json()}")
+    # Retry logic for transient failures
+    max_retries = 3
+    last_error = None
 
-        # Wait for verification code in email
-        logger.info("Waiting for verification code in email (timeout: 90s)")
-        fetcher = MailTmCodeFetcher(mail_tm_client, mail_tm_token)
-        code = await fetcher.wait_for_code(timeout=90)
-        logger.info(f"Code received: {code}")
+    for attempt in range(1, max_retries + 1):
+        try:
+            logger.info(f"Authentication attempt {attempt}/{max_retries}")
 
-        # Exchange code for game token
-        logger.info("Exchanging code for game token via /auth/game-token")
-        response = await client.post(
-            "/auth/game-token",
-            json={
-                "email": test_email,
-                "code": code,
-                "server": test_server
-            }
-        )
-        response.raise_for_status()
-        data = response.json()
-        logger.info(f"Token exchange successful. Channel UID: {data['channel_uid'][:20]}...")
+            async with httpx.AsyncClient(base_url=api_base_url, timeout=30.0) as client:
+                # Request authentication code
+                logger.info("Requesting verification code from /auth/game-code")
+                response = await client.post(
+                    "/auth/game-code",
+                    json={"email": test_email, "server": test_server}
+                )
+                response.raise_for_status()
+                logger.info(f"Code request successful: {response.json()}")
 
-        credentials = {
-            "channel_uid": data["channel_uid"],
-            "yostar_token": data["yostar_token"]
-        }
+                # Wait for verification code in email
+                logger.info("Waiting for verification code in email (timeout: 90s)")
+                fetcher = MailTmCodeFetcher(mail_tm_client, mail_tm_token)
+                code = await fetcher.wait_for_code(timeout=90)
+                logger.info(f"Code received: {code}")
 
-        # Cache credentials for future tests
-        save_credentials(credentials, test_email, test_server)
-        logger.info("Credentials cached for future tests")
+                # Exchange code for game token
+                logger.info("Exchanging code for game token via /auth/game-token")
+                response = await client.post(
+                    "/auth/game-token",
+                    json={
+                        "email": test_email,
+                        "code": code,
+                        "server": test_server
+                    }
+                )
+                response.raise_for_status()
+                data = response.json()
+                logger.info(f"Token exchange successful. Channel UID: {data['channel_uid'][:20]}...")
 
-        return credentials
+                credentials = {
+                    "channel_uid": data["channel_uid"],
+                    "yostar_token": data["yostar_token"]
+                }
+
+                # Cache credentials for future tests
+                save_credentials(credentials, test_email, test_server)
+                logger.info("Credentials cached for future tests")
+
+                return credentials
+
+        except Exception as e:
+            last_error = e
+            logger.warning(f"Attempt {attempt} failed: {e}")
+            if attempt < max_retries:
+                import asyncio
+                wait_time = attempt * 5  # Exponential backoff: 5s, 10s, 15s
+                logger.info(f"Retrying in {wait_time} seconds...")
+                await asyncio.sleep(wait_time)
+            else:
+                logger.error(f"All {max_retries} authentication attempts failed")
+                raise last_error

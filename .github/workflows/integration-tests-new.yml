@@ -72,7 +72,7 @@ jobs:
 
           timestamp = datetime.fromisoformat(data['timestamp'])
           age = datetime.now() - timestamp
-          cache_duration = timedelta(days=7)
+          cache_duration = timedelta(days=1)  # Daily refresh
 
           print(f"Cache age: {age.days} days, {age.seconds // 3600} hours")
           print(f"Cache expires in: {cache_duration - age}")
