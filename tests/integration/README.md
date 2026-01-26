@@ -58,10 +58,11 @@ Configure the following secrets in repository settings → Secrets and variables
 
 ### How Caching Works
 
-1. **First Run**: Tests perform full auth flow and cache credentials for 7 days
+1. **First Run**: Tests perform full auth flow and cache credentials for 24 hours
 2. **Subsequent Runs**: Tests use cached credentials (no email verification needed)
-3. **Expired Cache**: Tests automatically detect expiration and refresh via full auth flow
-4. **No Manual Steps**: Everything happens automatically during test execution
+3. **Daily Refresh**: Cache expires after 24 hours, triggering automatic refresh
+4. **Retry Logic**: 3 retry attempts with exponential backoff (5s, 10s, 15s)
+5. **No Manual Steps**: Everything happens automatically during test execution
 
 ### GitHub Actions Integration
 
@@ -90,7 +91,7 @@ The workflow automatically:
 }
 ```
 
-**Cache Duration:** 7 days (configured in `credential_cache.py`)
+**Cache Duration:** 1 day (configured in `credential_cache.py`)
 **Cache Location:** `tests/integration/.credentials_cache.json` (gitignored)
 **GitHub Secret:** `CACHED_CREDENTIALS` (manually updated when refreshed)
 
