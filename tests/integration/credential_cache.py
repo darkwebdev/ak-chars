@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 
 CACHE_FILE = Path(__file__).parent / ".credentials_cache.json"
-CACHE_DURATION = timedelta(days=1)  # Credentials valid for 1 day
+CACHE_DURATION = timedelta(days=7)  # Credentials valid for 7 days
 
 
 def save_credentials(credentials: dict, email: str, server: str):
