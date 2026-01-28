@@ -42,11 +42,17 @@ jobs:
             echo "Cache structure (without sensitive data):"
             python3 << 'PYEOF'
           import json
+          from datetime import datetime, timedelta
           with open('tests/integration/.credentials_cache.json') as f:
               data = json.load(f)
               print(f"  Email: {data.get('email', 'MISSING')}")
               print(f"  Server: {data.get('server', 'MISSING')}")
               print(f"  Timestamp: {data.get('timestamp', 'MISSING')}")
+              if 'timestamp' in data:
+                  ts = datetime.fromisoformat(data['timestamp'])
+                  age = datetime.now() - ts
+                  print(f"  Age: {age.days} days, {age.seconds // 3600} hours")
+                  print(f"  Cache valid: {age < timedelta(days=1)}")
               print(f"  Has credentials: {'credentials' in data}")
               if 'credentials' in data:
                   print(f"  Has channel_uid: {'channel_uid' in data['credentials']}")
@@ -55,38 +61,6 @@ jobs:
           else
             echo "ERROR: Cache file does not exist"
           fi
-
-      - name: Check and refresh credentials if needed
-        run: |
-          python3 << 'PYEOF'
-          import json
-          import os
-          from datetime import datetime, timedelta
-          from pathlib import Path
-
-          cache_file = Path('tests/integration/.credentials_cache.json')
-
-          if not cache_file.exists():
-              print("No cache file exists - tests will perform full auth flow")
-              exit(0)
-
-          with open(cache_file) as f:
-              data = json.load(f)
-
-          timestamp = datetime.fromisoformat(data['timestamp'])
-          age = datetime.now() - timestamp
-          cache_duration = timedelta(days=1)  # Daily refresh
-
-          print(f"Cache age: {age.days} days, {age.seconds // 3600} hours")
-          print(f"Cache expires in: {cache_duration - age}")
-
-          if age > cache_duration:
-              print("⚠️  Cache expired - tests will perform full auth flow")
-              # Delete expired cache so tests know to refresh
-              cache_file.unlink()
-          else:
-              print("✓ Cache is valid - tests will use cached credentials")
-          PYEOF
 
       - name: Verify production server is ready
         run: |

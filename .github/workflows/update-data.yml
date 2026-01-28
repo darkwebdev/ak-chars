@@ -25,6 +25,9 @@ jobs:
       - name: Extract tiers
         run: CI=1 yarn extract-tiers
 
+      - name: Fetch professions
+        run: CI=1 yarn fetch-professions
+
       - name: Fetch chars
         run: CI=1 yarn fetch-chars
 
