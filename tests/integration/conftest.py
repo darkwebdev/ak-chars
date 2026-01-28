@@ -8,7 +8,7 @@ import json
 from typing import Optional
 from dotenv import load_dotenv
 from .email_helper import MailTmClient, MailTmCodeFetcher
-from .credential_cache import save_credentials, load_credentials
+from .credential_cache import save_credentials, load_credentials, should_attempt_refresh, mark_refresh_attempt
 
 # Load environment variables from .env file
 load_dotenv()
@@ -247,6 +247,21 @@ async def game_credentials(api_base_url, mail_tm_client, mail_tm_token, test_ema
         logger.info(f"Using cached credentials for {test_email}")
         return cached
 
+    # Check if we should attempt refresh (prevents retry storms)
+    if not should_attempt_refresh(test_email, test_server):
+        logger.warning(
+            "Recent refresh attempt failed. Using expired cached credentials to avoid rate limiting. "
+            "Will retry after cooldown period (2 hours)."
+        )
+        expired_creds = load_credentials(test_email, test_server, allow_expired=True)
+        if expired_creds:
+            return expired_creds
+        logger.error("No cached credentials available and refresh is on cooldown")
+        raise RuntimeError(
+            "Cannot authenticate: recent refresh attempt failed (rate limited) "
+            "and no cached credentials available. Wait 2 hours before retrying."
+        )
+
     logger.info(f"No valid cache found. Starting authentication flow for {test_email} on {test_server}")
 
     # Retry logic for transient failures
@@ -294,6 +309,8 @@ async def game_credentials(api_base_url, mail_tm_client, mail_tm_token, test_ema
 
                 # Cache credentials for future tests
                 save_credentials(credentials, test_email, test_server)
+                # Mark successful refresh
+                mark_refresh_attempt(test_email, test_server, failed=False)
                 logger.info("Credentials cached for future tests")
 
                 return credentials
@@ -304,10 +321,14 @@ async def game_credentials(api_base_url, mail_tm_client, mail_tm_token, test_ema
 
             # Circuit breaker: detect rate limiting and fail immediately
             if is_rate_limit_error(e):
+                # Mark that we failed due to rate limiting
+                mark_refresh_attempt(test_email, test_server, failed=True)
+
                 logger.error(
                     "⚠️  RATE LIMIT DETECTED (error code 100302)\n"
                     "The Yostar API has rate limited email code requests.\n"
                     "This typically happens when too many codes are requested in a short time.\n"
+                    "Marked failed refresh attempt - will not retry for 2 hours.\n"
                     "Attempting to use expired cached credentials as fallback...\n"
                     f"Error details: {e}"
                 )
@@ -323,7 +344,7 @@ async def game_credentials(api_base_url, mail_tm_client, mail_tm_token, test_ema
 
                 raise RuntimeError(
                     "Yostar API rate limit exceeded (error code 100302). "
-                    "Please wait 1-2 hours before requesting new authentication codes. "
+                    "Please wait 2 hours before requesting new authentication codes. "
                     "No cached credentials available as fallback."
                 ) from e
 
