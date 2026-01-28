@@ -4,6 +4,7 @@ import os
 import pytest
 import httpx
 import logging
+import json
 from typing import Optional
 from dotenv import load_dotenv
 from .email_helper import MailTmClient, MailTmCodeFetcher
@@ -14,6 +15,50 @@ load_dotenv()
 
 # Configure logging for integration tests
 logger = logging.getLogger("integration_tests")
+
+
+def is_rate_limit_error(error: Exception) -> bool:
+    """Check if an error is a Yostar rate limit error.
+
+    Yostar API returns error code 100302 when rate limited:
+    {"Code": 100302, "Msg": "邮件发送频率上限,错误代码:1"}
+
+    This can manifest as:
+    - HTTPStatusError with 500 status containing the error in response body
+    - RuntimeError or other exceptions with the message in the error text
+
+    Args:
+        error: The exception to check
+
+    Returns:
+        True if this is a rate limit error, False otherwise
+    """
+    error_str = str(error).lower()
+
+    # Check for explicit error code
+    if '100302' in error_str:
+        return True
+
+    # Check for Chinese rate limit message
+    if '邮件发送频率' in error_str or '频率上限' in error_str:
+        return True
+
+    # For HTTPStatusError, check response body
+    if isinstance(error, httpx.HTTPStatusError):
+        try:
+            body = error.response.json()
+            if isinstance(body, dict):
+                # Check for error code in response
+                if body.get('Code') == 100302:
+                    return True
+                # Check for error message
+                msg = body.get('Msg', '') or body.get('message', '') or body.get('detail', '')
+                if '100302' in str(msg) or '频率上限' in str(msg):
+                    return True
+        except (json.JSONDecodeError, ValueError, AttributeError):
+            pass
+
+    return False
 
 
 def pytest_configure(config):
@@ -226,6 +271,22 @@ async def game_credentials(api_base_url, mail_tm_client, mail_tm_token, test_ema
         except Exception as e:
             last_error = e
             logger.warning(f"Attempt {attempt} failed: {e}")
+
+            # Circuit breaker: detect rate limiting and fail immediately
+            if is_rate_limit_error(e):
+                logger.error(
+                    "⚠️  RATE LIMIT DETECTED (error code 100302)\n"
+                    "The Yostar API has rate limited email code requests.\n"
+                    "This typically happens when too many codes are requested in a short time.\n"
+                    "Recommendation: Wait 1-2 hours before retrying, or use cached credentials.\n"
+                    f"Error details: {e}"
+                )
+                raise RuntimeError(
+                    "Yostar API rate limit exceeded (error code 100302). "
+                    "Please wait 1-2 hours before requesting new authentication codes. "
+                    "Consider using cached credentials or increasing cache duration."
+                ) from e
+
             if attempt < max_retries:
                 import asyncio
                 wait_time = attempt * 5  # Exponential backoff: 5s, 10s, 15s
