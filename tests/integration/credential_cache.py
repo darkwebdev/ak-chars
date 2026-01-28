@@ -23,8 +23,18 @@ def save_credentials(credentials: dict, email: str, server: str):
         json.dump(cache_data, f)
 
 
-def load_credentials(email: str, server: str) -> dict | None:
-    """Load credentials from cache if valid."""
+def load_credentials(email: str, server: str, allow_expired: bool = False) -> dict | None:
+    """Load credentials from cache if valid.
+
+    Args:
+        email: Email address to match
+        server: Server code to match
+        allow_expired: If True, return expired credentials instead of None.
+                      Useful when rate limited and can't refresh.
+
+    Returns:
+        Credentials dict if found, None otherwise
+    """
     if not CACHE_FILE.exists():
         return None
 
@@ -39,6 +49,9 @@ def load_credentials(email: str, server: str) -> dict | None:
         # Check if cache is still valid (within 1 day)
         timestamp = datetime.fromisoformat(cache_data["timestamp"])
         if datetime.now() - timestamp > CACHE_DURATION:
+            # Return expired credentials if allowed (e.g., when rate limited)
+            if allow_expired:
+                return cache_data.get("credentials")
             return None
 
         return cache_data.get("credentials")
