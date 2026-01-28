@@ -58,6 +58,46 @@ class TestCircuitBreaker:
 
         assert is_rate_limit_error(error) is True
 
+    def test_detects_structured_error_from_server(self):
+        """Circuit breaker detects rate limit in structured server error."""
+        response = Mock(spec=httpx.Response)
+        response.status_code = 500
+        response.json.return_value = {
+            "detail": {
+                "error": "Error sending code",
+                "code": 100302,
+                "message": "邮件发送频率上限,错误代码:1",
+                "raw": '{"Code": 100302, "Msg": "..."}'
+            }
+        }
+
+        error = httpx.HTTPStatusError(
+            "Server error",
+            request=Mock(),
+            response=response
+        )
+
+        assert is_rate_limit_error(error) is True
+
+    def test_detects_structured_error_with_message_only(self):
+        """Circuit breaker detects rate limit in structured error message."""
+        response = Mock(spec=httpx.Response)
+        response.status_code = 500
+        response.json.return_value = {
+            "detail": {
+                "error": "Error sending code",
+                "message": "频率上限"
+            }
+        }
+
+        error = httpx.HTTPStatusError(
+            "Server error",
+            request=Mock(),
+            response=response
+        )
+
+        assert is_rate_limit_error(error) is True
+
     def test_ignores_other_http_errors(self):
         """Circuit breaker does not trigger on other HTTP errors."""
         response = Mock(spec=httpx.Response)
