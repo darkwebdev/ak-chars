@@ -100,7 +100,7 @@ async def my_status(req: MyStatusRequest):
 @router.post('/auth/game-code')
 async def game_code(payload: GameCodeRequest):
     """Request a game authentication code from Yostar.
-    
+
     Sends a verification code to the email address associated with your game account.
     Use this code with /auth/game-token to get your game credentials.
     """
@@ -110,7 +110,25 @@ async def game_code(payload: GameCodeRequest):
         return {'ok': True, 'message': 'Code sent to email'}
     except Exception as e:
         logger.exception('Error sending game auth code: %s', e)
-        raise HTTPException(status_code=500, detail=f'Error sending code: {e}')
+        # Preserve error structure from arkprts for better error handling
+        error_str = str(e)
+        # Try to parse arkprts error JSON
+        import json
+        try:
+            error_data = json.loads(error_str)
+            # Return structured error with code
+            raise HTTPException(
+                status_code=500,
+                detail={
+                    'error': 'Error sending code',
+                    'code': error_data.get('Code'),
+                    'message': error_data.get('Msg'),
+                    'raw': error_str
+                }
+            )
+        except (json.JSONDecodeError, ValueError):
+            # Fallback to generic error
+            raise HTTPException(status_code=500, detail=f'Error sending code: {e}')
 
 
 @router.post('/auth/game-token')
