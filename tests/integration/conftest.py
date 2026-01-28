@@ -153,7 +153,12 @@ async def mail_tm_client():
     """
     client = MailTmClient()
     yield client
-    await client.close()
+    try:
+        await client.close()
+    except RuntimeError:
+        # Ignore "Event loop is closed" error during teardown
+        # This can happen with session-scoped async fixtures in pytest-asyncio
+        pass
 
 
 @pytest.fixture(scope="session")
