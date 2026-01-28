@@ -48,11 +48,22 @@ def is_rate_limit_error(error: Exception) -> bool:
         try:
             body = error.response.json()
             if isinstance(body, dict):
-                # Check for error code in response
+                # Check for error code in response (arkprts direct format)
                 if body.get('Code') == 100302:
                     return True
-                # Check for error message
-                msg = body.get('Msg', '') or body.get('message', '') or body.get('detail', '')
+
+                # Check for structured error from server (new format)
+                detail = body.get('detail', {})
+                if isinstance(detail, dict):
+                    if detail.get('code') == 100302:
+                        return True
+                    # Check message in structured error
+                    msg = detail.get('message', '')
+                    if '100302' in str(msg) or '频率上限' in str(msg):
+                        return True
+
+                # Check for error message in other fields (fallback)
+                msg = body.get('Msg', '') or body.get('message', '') or str(detail)
                 if '100302' in str(msg) or '频率上限' in str(msg):
                     return True
         except (json.JSONDecodeError, ValueError, AttributeError):
