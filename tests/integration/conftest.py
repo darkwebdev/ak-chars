@@ -289,13 +289,23 @@ async def game_credentials(api_base_url, mail_tm_client, mail_tm_token, test_ema
                     "⚠️  RATE LIMIT DETECTED (error code 100302)\n"
                     "The Yostar API has rate limited email code requests.\n"
                     "This typically happens when too many codes are requested in a short time.\n"
-                    "Recommendation: Wait 1-2 hours before retrying, or use cached credentials.\n"
+                    "Attempting to use expired cached credentials as fallback...\n"
                     f"Error details: {e}"
                 )
+
+                # Fallback: try to use expired credentials
+                expired_creds = load_credentials(test_email, test_server, allow_expired=True)
+                if expired_creds:
+                    logger.warning(
+                        "Using expired cached credentials as fallback due to rate limiting. "
+                        "These credentials may still work with the game API even though cache is expired."
+                    )
+                    return expired_creds
+
                 raise RuntimeError(
                     "Yostar API rate limit exceeded (error code 100302). "
                     "Please wait 1-2 hours before requesting new authentication codes. "
-                    "Consider using cached credentials or increasing cache duration."
+                    "No cached credentials available as fallback."
                 ) from e
 
             if attempt < max_retries:
