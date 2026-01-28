@@ -11,8 +11,7 @@ jobs:
   integration-test:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      secrets: write
+      contents: write
 
     steps:
       - name: Checkout repository
