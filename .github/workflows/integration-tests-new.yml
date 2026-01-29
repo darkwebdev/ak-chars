@@ -83,7 +83,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ -f tests/integration/.credentials_cache.json ]; then
-            echo "Credentials cache exists - checking if it was updated during tests"
+            echo "Credentials cache exists - checking if it should be updated"
             python3 << 'PYEOF'
           import json
           import os
@@ -97,9 +97,19 @@ jobs:
           timestamp = datetime.fromisoformat(data['timestamp'])
           age = datetime.now() - timestamp
 
-          # If cache was updated in the last 5 minutes, it was refreshed during this test run
-          if age < timedelta(minutes=5):
-              print("✓ Credentials were refreshed during this test run")
+          # Check if cache has last_failed_refresh marker (means we hit rate limit)
+          has_failure_marker = 'last_failed_refresh' in data
+          recently_refreshed = age < timedelta(minutes=5)
+
+          # Update secret if credentials were refreshed OR if failure marker was added
+          should_update = recently_refreshed or has_failure_marker
+
+          if should_update:
+              if recently_refreshed:
+                  print("✓ Credentials were refreshed during this test run")
+              if has_failure_marker:
+                  print("⚠️  Failed refresh attempt marked - updating secret to persist cooldown")
+
               print("📤 Automatically updating CACHED_CREDENTIALS secret...")
 
               # Automatically update the secret
@@ -120,13 +130,17 @@ jobs:
                   print(f"   Timestamp: {data['timestamp']}")
                   print(f"   Email: {data.get('email', 'REDACTED')}")
                   print(f"   Server: {data.get('server', 'N/A')}")
+                  if has_failure_marker:
+                      print(f"   Last failed refresh: {data.get('last_failed_refresh', 'N/A')}")
 
                   # Create notification file for artifact
                   with open('CREDENTIALS_UPDATED.txt', 'w') as f:
-                      f.write("✅ Credentials were automatically updated!\n")
+                      f.write("✅ Credentials cache updated!\n")
                       f.write(f"\nTimestamp: {data['timestamp']}\n")
                       f.write(f"Email: {data.get('email', 'N/A')}\n")
                       f.write(f"Server: {data.get('server', 'N/A')}\n")
+                      if has_failure_marker:
+                          f.write(f"Last failed refresh: {data.get('last_failed_refresh', 'N/A')}\n")
 
               except subprocess.CalledProcessError as e:
                   print(f"❌ Failed to update secret: {e}")
@@ -137,15 +151,17 @@ jobs:
                   # Create file to signal manual update needed
                   with open('CREDENTIALS_UPDATE_NEEDED.txt', 'w') as f:
                       f.write("⚠️  Automatic secret update failed.\n")
-                      f.write("Credentials were refreshed during this test run.\n")
+                      f.write("Cache file has important updates that need to be persisted.\n")
                       f.write("Update the CACHED_CREDENTIALS secret with the contents of .credentials_cache.json\n")
                       f.write(f"\nTimestamp: {data['timestamp']}\n")
                       f.write(f"Email: {data.get('email', 'N/A')}\n")
                       f.write(f"Server: {data.get('server', 'N/A')}\n")
+                      if has_failure_marker:
+                          f.write(f"Last failed refresh: {data.get('last_failed_refresh', 'N/A')}\n")
                       f.write("\nCommand to update manually:\n")
                       f.write("  cat tests/integration/.credentials_cache.json | gh secret set CACHED_CREDENTIALS\n")
           else:
-              print("Cache was not updated during this run")
+              print("Cache was not updated during this run (no refresh or failure marker)")
           PYEOF
           else
             echo "No credentials cache file found"
