@@ -356,12 +356,17 @@
   },
   {
     "subProfessionId": "counsellor",
-    "subProfessionName": "counsellor",
+    "subProfessionName": "Strategist",
     "subProfessionCatagory": 72
   },
   {
     "subProfessionId": "mercenary",
     "subProfessionName": "mercenary",
     "subProfessionCatagory": 73
+  },
+  {
+    "subProfessionId": "skybreaker",
+    "subProfessionName": "skybreaker",
+    "subProfessionCatagory": 74
   }
 ]
