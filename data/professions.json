@@ -368,5 +368,10 @@
     "subProfessionId": "skybreaker",
     "subProfessionName": "skybreaker",
     "subProfessionCatagory": 74
+  },
+  {
+    "subProfessionId": "watchman",
+    "subProfessionName": "watchman",
+    "subProfessionCatagory": 75
   }
 ]

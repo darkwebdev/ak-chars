@@ -2709,11 +2709,25 @@
     "subProfessionId": "skybreaker"
   },
   {
+    "id": "char_4222_taraxa",
+    "name": "Taraxacum",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "watchman"
+  },
+  {
     "id": "char_4207_branch",
     "name": "Веточки",
     "rarity": "TIER_5",
     "profession": "TANK",
     "subProfessionId": "unyield"
+  },
+  {
+    "id": "char_4221_ju",
+    "name": "Ju",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "siegesniper"
   },
   {
     "id": "char_4211_snhunt",
@@ -2786,6 +2800,13 @@
     "subProfessionId": "craftsman"
   },
   {
+    "id": "char_2027_wang",
+    "name": "Wang",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "traper"
+  },
+  {
     "id": "char_4056_titi",
     "name": "Titi",
     "rarity": "TIER_6",
@@ -2798,6 +2819,13 @@
     "rarity": "TIER_6",
     "profession": "WARRIOR",
     "subProfessionId": "lord"
+  },
+  {
+    "id": "char_1050_chen3",
+    "name": "Ch'en the Dawnstreak",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "artsfghter"
   },
   {
     "id": "char_4214_cairn",
