@@ -945,6 +945,13 @@
     "subProfessionId": "primguard"
   },
   {
+    "id": "char_4185_amoris",
+    "name": "Nyamu Yūtenji",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "hammer"
+  },
+  {
     "id": "char_129_bluep",
     "name": "Blue Poison",
     "rarity": "TIER_5",
@@ -1673,6 +1680,13 @@
     "subProfessionId": "bard"
   },
   {
+    "id": "char_4184_dolris",
+    "name": "Uika Misumi",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "bard"
+  },
+  {
     "id": "char_343_tknogi",
     "name": "Tsukinogi",
     "rarity": "TIER_5",
@@ -1729,6 +1743,13 @@
     "subProfessionId": "stalker"
   },
   {
+    "id": "char_4186_tmoris",
+    "name": "Umiri Yahata",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "stalker"
+  },
+  {
     "id": "char_241_panda",
     "name": "FEater",
     "rarity": "TIER_5",
@@ -1780,6 +1801,13 @@
   {
     "id": "char_4124_iana",
     "name": "Iana",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "dollkeeper"
+  },
+  {
+    "id": "char_4183_mortis",
+    "name": "Mutsumi Wakaba",
     "rarity": "TIER_5",
     "profession": "SPECIAL",
     "subProfessionId": "dollkeeper"
@@ -2471,6 +2499,13 @@
     "subProfessionId": "lord"
   },
   {
+    "id": "char_4182_oblvns",
+    "name": "Sakiko Togawa",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "lord"
+  },
+  {
     "id": "char_4088_hodrer",
     "name": "Hoederer",
     "rarity": "TIER_6",
@@ -2688,13 +2723,6 @@
     "subProfessionId": "centurion"
   },
   {
-    "id": "char_4185_amoris",
-    "name": "Yūtenji Nyamu",
-    "rarity": "TIER_5",
-    "profession": "WARRIOR",
-    "subProfessionId": "hammer"
-  },
-  {
     "id": "char_394_hadiya",
     "name": "Hadiya",
     "rarity": "TIER_5",
@@ -2737,32 +2765,11 @@
     "subProfessionId": "hunter"
   },
   {
-    "id": "char_4184_dolris",
-    "name": "Misumi Uika",
-    "rarity": "TIER_5",
-    "profession": "SUPPORT",
-    "subProfessionId": "bard"
-  },
-  {
     "id": "char_1022_flwr2",
     "name": "Perfumer the Distilled",
     "rarity": "TIER_5",
     "profession": "SUPPORT",
     "subProfessionId": "blessing"
-  },
-  {
-    "id": "char_4186_tmoris",
-    "name": "Yahata Umiri",
-    "rarity": "TIER_5",
-    "profession": "SPECIAL",
-    "subProfessionId": "stalker"
-  },
-  {
-    "id": "char_4183_mortis",
-    "name": "Wakaba Mutsumi",
-    "rarity": "TIER_5",
-    "profession": "SPECIAL",
-    "subProfessionId": "dollkeeper"
   },
   {
     "id": "char_1045_svash2",
@@ -2812,13 +2819,6 @@
     "rarity": "TIER_6",
     "profession": "MEDIC",
     "subProfessionId": "incantationmedic"
-  },
-  {
-    "id": "char_4182_oblvns",
-    "name": "Togawa Sakiko",
-    "rarity": "TIER_6",
-    "profession": "WARRIOR",
-    "subProfessionId": "lord"
   },
   {
     "id": "char_1050_chen3",
