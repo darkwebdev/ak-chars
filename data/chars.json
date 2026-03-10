@@ -2737,6 +2737,13 @@
     "subProfessionId": "skybreaker"
   },
   {
+    "id": "char_4031_liesel",
+    "name": "Ripresa",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "splashcaster"
+  },
+  {
     "id": "char_4222_taraxa",
     "name": "Taraxacum",
     "rarity": "TIER_5",
@@ -2819,6 +2826,13 @@
     "rarity": "TIER_6",
     "profession": "MEDIC",
     "subProfessionId": "incantationmedic"
+  },
+  {
+    "id": "char_4037_demetr",
+    "name": "Bellone",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "fighter"
   },
   {
     "id": "char_1050_chen3",
