@@ -2758,6 +2758,13 @@
     "subProfessionId": "splashcaster"
   },
   {
+    "id": "char_4224_turdus",
+    "name": "Укусик",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "chainhealer"
+  },
+  {
     "id": "char_4222_taraxa",
     "name": "Taraxacum",
     "rarity": "TIER_5",
@@ -2784,6 +2791,13 @@
     "rarity": "TIER_5",
     "profession": "SUPPORT",
     "subProfessionId": "blessing"
+  },
+  {
+    "id": "char_4223_botany",
+    "name": "Ботани",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "ritualist"
   },
   {
     "id": "char_1045_svash2",
@@ -2833,6 +2847,13 @@
     "rarity": "TIER_6",
     "profession": "WARRIOR",
     "subProfessionId": "fighter"
+  },
+  {
+    "id": "char_1051_headb2",
+    "name": "Zima the Raging Tide",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "hammer"
   },
   {
     "id": "char_1050_chen3",
