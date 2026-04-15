@@ -224,6 +224,13 @@
     "subProfessionId": "splashcaster"
   },
   {
+    "id": "char_4051_akkord",
+    "name": "Akkord",
+    "rarity": "TIER_4",
+    "profession": "CASTER",
+    "subProfessionId": "blastcaster"
+  },
+  {
     "id": "char_328_cammou",
     "name": "Click",
     "rarity": "TIER_4",
@@ -959,6 +966,13 @@
     "subProfessionId": "hammer"
   },
   {
+    "id": "char_394_hadiya",
+    "name": "Hadiya",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "mercenary"
+  },
+  {
     "id": "char_129_bluep",
     "name": "Blue Poison",
     "rarity": "TIER_5",
@@ -1575,6 +1589,13 @@
     "subProfessionId": "hunter"
   },
   {
+    "id": "char_4211_snhunt",
+    "name": "Snow Hunter",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "hunter"
+  },
+  {
     "id": "char_4177_brigid",
     "name": "Brigid",
     "rarity": "TIER_5",
@@ -2009,6 +2030,13 @@
     "subProfessionId": "tactician"
   },
   {
+    "id": "char_1045_svash2",
+    "name": "SilverAsh the Reignfrost",
+    "rarity": "TIER_6",
+    "profession": "PIONEER",
+    "subProfessionId": "counsellor"
+  },
+  {
     "id": "char_4087_ines",
     "name": "Ines",
     "rarity": "TIER_6",
@@ -2093,6 +2121,13 @@
     "subProfessionId": "phalanx"
   },
   {
+    "id": "char_1046_sbell2",
+    "name": "Pramanix the Prerita",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "phalanx"
+  },
+  {
     "id": "char_377_gdglow",
     "name": "Goldenglow",
     "rarity": "TIER_6",
@@ -2158,6 +2193,13 @@
   {
     "id": "char_358_lisa",
     "name": "Suzuran",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "slower"
+  },
+  {
+    "id": "char_1047_halo2",
+    "name": "Astgenne the Lightchaser",
     "rarity": "TIER_6",
     "profession": "SUPPORT",
     "subProfessionId": "slower"
@@ -2723,25 +2765,11 @@
     "subProfessionId": "fearless"
   },
   {
-    "id": "char_4051_akkord",
-    "name": "Akkord",
-    "rarity": "TIER_4",
-    "profession": "CASTER",
-    "subProfessionId": "blastcaster"
-  },
-  {
     "id": "char_4166_varkis",
     "name": "Varkáris",
     "rarity": "TIER_5",
     "profession": "WARRIOR",
     "subProfessionId": "centurion"
-  },
-  {
-    "id": "char_394_hadiya",
-    "name": "Hadiya",
-    "rarity": "TIER_5",
-    "profession": "WARRIOR",
-    "subProfessionId": "mercenary"
   },
   {
     "id": "char_4213_skybx",
@@ -2779,13 +2807,6 @@
     "subProfessionId": "siegesniper"
   },
   {
-    "id": "char_4211_snhunt",
-    "name": "Snow Hunter",
-    "rarity": "TIER_5",
-    "profession": "SNIPER",
-    "subProfessionId": "hunter"
-  },
-  {
     "id": "char_1022_flwr2",
     "name": "Perfumer the Distilled",
     "rarity": "TIER_5",
@@ -2798,27 +2819,6 @@
     "rarity": "TIER_5",
     "profession": "SUPPORT",
     "subProfessionId": "ritualist"
-  },
-  {
-    "id": "char_1045_svash2",
-    "name": "SilverAsh the Reignfrost",
-    "rarity": "TIER_6",
-    "profession": "PIONEER",
-    "subProfessionId": "counsellor"
-  },
-  {
-    "id": "char_1046_sbell2",
-    "name": "Pramanix the Prerita",
-    "rarity": "TIER_6",
-    "profession": "CASTER",
-    "subProfessionId": "phalanx"
-  },
-  {
-    "id": "char_1047_halo2",
-    "name": "Astgenne the Lightchaser",
-    "rarity": "TIER_6",
-    "profession": "SUPPORT",
-    "subProfessionId": "slower"
   },
   {
     "id": "char_4212_nasti",
