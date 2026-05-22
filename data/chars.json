@@ -1057,6 +1057,13 @@
     "subProfessionId": "reaperrange"
   },
   {
+    "id": "char_4213_skybx",
+    "name": "Skybox",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "skybreaker"
+  },
+  {
     "id": "char_002_amiya",
     "name": "Amiya",
     "rarity": "TIER_5",
@@ -2261,6 +2268,13 @@
     "subProfessionId": "craftsman"
   },
   {
+    "id": "char_4212_nasti",
+    "name": "Nasti",
+    "rarity": "TIER_6",
+    "profession": "SUPPORT",
+    "subProfessionId": "craftsman"
+  },
+  {
     "id": "char_245_cello",
     "name": "Virtuosa",
     "rarity": "TIER_6",
@@ -2709,6 +2723,13 @@
     "subProfessionId": "librator"
   },
   {
+    "id": "char_4214_cairn",
+    "name": "Cairn",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "primprotector"
+  },
+  {
     "id": "char_230_savage",
     "name": "Savage",
     "rarity": "TIER_5",
@@ -2779,13 +2800,6 @@
     "subProfessionId": "centurion"
   },
   {
-    "id": "char_4213_skybx",
-    "name": "Skybox",
-    "rarity": "TIER_5",
-    "profession": "SNIPER",
-    "subProfessionId": "skybreaker"
-  },
-  {
     "id": "char_4031_liesel",
     "name": "Ripresa",
     "rarity": "TIER_5",
@@ -2849,13 +2863,6 @@
     "subProfessionId": "mystic"
   },
   {
-    "id": "char_4212_nasti",
-    "name": "Nasti",
-    "rarity": "TIER_6",
-    "profession": "SUPPORT",
-    "subProfessionId": "craftsman"
-  },
-  {
     "id": "char_2027_wang",
     "name": "Wang",
     "rarity": "TIER_6",
@@ -2896,12 +2903,5 @@
     "rarity": "TIER_6",
     "profession": "WARRIOR",
     "subProfessionId": "artsfghter"
-  },
-  {
-    "id": "char_4214_cairn",
-    "name": "Cairn",
-    "rarity": "TIER_5",
-    "profession": "TANK",
-    "subProfessionId": "primprotector"
   }
 ]
