@@ -2793,11 +2793,25 @@
     "subProfessionId": "corecaster"
   },
   {
+    "id": "char_4215_buddy",
+    "name": "Rhodes Island Recon",
+    "rarity": "TIER_1",
+    "profession": "PIONEER",
+    "subProfessionId": "tactician"
+  },
+  {
     "id": "char_4166_varkis",
     "name": "Varkáris",
     "rarity": "TIER_5",
     "profession": "WARRIOR",
     "subProfessionId": "centurion"
+  },
+  {
+    "id": "char_1049_catap2",
+    "name": "Zinogre S Catapult",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "mercenary"
   },
   {
     "id": "char_4031_liesel",
@@ -2847,6 +2861,13 @@
     "rarity": "TIER_5",
     "profession": "SUPPORT",
     "subProfessionId": "ritualist"
+  },
+  {
+    "id": "char_1048_orchd2",
+    "name": "Violet Mizutsune Orchid",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "closerange"
   },
   {
     "id": "char_4228_closur",
