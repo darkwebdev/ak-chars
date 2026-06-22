@@ -896,6 +896,13 @@
     "subProfessionId": "centurion"
   },
   {
+    "id": "char_4166_varkis",
+    "name": "Varkáris",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "centurion"
+  },
+  {
     "id": "char_274_astesi",
     "name": "Astesia",
     "rarity": "TIER_5",
@@ -1757,6 +1764,13 @@
     "subProfessionId": "blessing"
   },
   {
+    "id": "char_1022_flwr2",
+    "name": "Perfumer the Distilled",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "blessing"
+  },
+  {
     "id": "char_4102_threye",
     "name": "Valarqvin",
     "rarity": "TIER_5",
@@ -2443,6 +2457,13 @@
     "subProfessionId": "incantationmedic"
   },
   {
+    "id": "char_4056_titi",
+    "name": "Titi",
+    "rarity": "TIER_6",
+    "profession": "MEDIC",
+    "subProfessionId": "incantationmedic"
+  },
+  {
     "id": "char_4179_monstr",
     "name": "Mon3tr",
     "rarity": "TIER_6",
@@ -2800,13 +2821,6 @@
     "subProfessionId": "tactician"
   },
   {
-    "id": "char_4166_varkis",
-    "name": "Varkáris",
-    "rarity": "TIER_5",
-    "profession": "WARRIOR",
-    "subProfessionId": "centurion"
-  },
-  {
     "id": "char_1049_catap2",
     "name": "Zinogre S Catapult",
     "rarity": "TIER_5",
@@ -2849,13 +2863,6 @@
     "subProfessionId": "siegesniper"
   },
   {
-    "id": "char_1022_flwr2",
-    "name": "Perfumer the Distilled",
-    "rarity": "TIER_5",
-    "profession": "SUPPORT",
-    "subProfessionId": "blessing"
-  },
-  {
     "id": "char_4223_botany",
     "name": "Ботани",
     "rarity": "TIER_5",
@@ -2889,13 +2896,6 @@
     "rarity": "TIER_6",
     "profession": "SPECIAL",
     "subProfessionId": "traper"
-  },
-  {
-    "id": "char_4056_titi",
-    "name": "Titi",
-    "rarity": "TIER_6",
-    "profession": "MEDIC",
-    "subProfessionId": "incantationmedic"
   },
   {
     "id": "char_1052_kalts2",
