@@ -373,5 +373,10 @@
     "subProfessionId": "watchman",
     "subProfessionName": "watchman",
     "subProfessionCatagory": 75
+  },
+  {
+    "subProfessionId": "supportiveranger",
+    "subProfessionName": "supportiveranger",
+    "subProfessionCatagory": 76
   }
 ]

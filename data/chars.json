@@ -2870,6 +2870,13 @@
     "subProfessionId": "ritualist"
   },
   {
+    "id": "char_4234_pedro",
+    "name": "Pedro",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "supportiveranger"
+  },
+  {
     "id": "char_1048_orchd2",
     "name": "Violet Mizutsune Orchid",
     "rarity": "TIER_6",
@@ -2882,6 +2889,13 @@
     "rarity": "TIER_6",
     "profession": "PIONEER",
     "subProfessionId": "tactician"
+  },
+  {
+    "id": "char_4229_aphris",
+    "name": "Aphrissa",
+    "rarity": "TIER_6",
+    "profession": "CASTER",
+    "subProfessionId": "blastcaster"
   },
   {
     "id": "char_4226_veen",
