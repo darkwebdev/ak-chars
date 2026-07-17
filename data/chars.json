@@ -1365,6 +1365,13 @@
     "subProfessionId": "chainhealer"
   },
   {
+    "id": "char_4222_taraxa",
+    "name": "Taraxacum",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "watchman"
+  },
+  {
     "id": "char_148_nearl",
     "name": "Nearl",
     "rarity": "TIER_5",
@@ -1584,6 +1591,13 @@
   {
     "id": "char_4043_erato",
     "name": "Erato",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "siegesniper"
+  },
+  {
+    "id": "char_4221_ju",
+    "name": "Ju",
     "rarity": "TIER_5",
     "profession": "SNIPER",
     "subProfessionId": "siegesniper"
@@ -2408,6 +2422,13 @@
     "subProfessionId": "traper"
   },
   {
+    "id": "char_2027_wang",
+    "name": "Wang",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "traper"
+  },
+  {
     "id": "char_1039_thorn2",
     "name": "Thorns the Lodestar",
     "rarity": "TIER_6",
@@ -2681,6 +2702,13 @@
     "subProfessionId": "artsfghter"
   },
   {
+    "id": "char_1050_chen3",
+    "name": "Ch'en the Dawnstreak",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "artsfghter"
+  },
+  {
     "id": "char_188_helage",
     "name": "Hellagur",
     "rarity": "TIER_6",
@@ -2842,25 +2870,11 @@
     "subProfessionId": "chainhealer"
   },
   {
-    "id": "char_4222_taraxa",
-    "name": "Taraxacum",
-    "rarity": "TIER_5",
-    "profession": "MEDIC",
-    "subProfessionId": "watchman"
-  },
-  {
     "id": "char_4225_tanya",
     "name": "Crackborne",
     "rarity": "TIER_5",
     "profession": "TANK",
     "subProfessionId": "primprotector"
-  },
-  {
-    "id": "char_4221_ju",
-    "name": "Ju",
-    "rarity": "TIER_5",
-    "profession": "SNIPER",
-    "subProfessionId": "siegesniper"
   },
   {
     "id": "char_4223_botany",
@@ -2905,13 +2919,6 @@
     "subProfessionId": "mystic"
   },
   {
-    "id": "char_2027_wang",
-    "name": "Wang",
-    "rarity": "TIER_6",
-    "profession": "SPECIAL",
-    "subProfessionId": "traper"
-  },
-  {
     "id": "char_1052_kalts2",
     "name": "Kal'tsit·Esperanta",
     "rarity": "TIER_6",
@@ -2931,12 +2938,5 @@
     "rarity": "TIER_6",
     "profession": "WARRIOR",
     "subProfessionId": "hammer"
-  },
-  {
-    "id": "char_1050_chen3",
-    "name": "Ch'en the Dawnstreak",
-    "rarity": "TIER_6",
-    "profession": "WARRIOR",
-    "subProfessionId": "artsfghter"
   }
 ]
