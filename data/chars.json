@@ -2926,6 +2926,13 @@
     "subProfessionId": "watchman"
   },
   {
+    "id": "char_4230_mcnist",
+    "name": "Mechanist",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "shotprotector"
+  },
+  {
     "id": "char_4037_demetr",
     "name": "Bellone",
     "rarity": "TIER_6",
