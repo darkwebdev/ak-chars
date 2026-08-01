@@ -2849,6 +2849,13 @@
     "subProfessionId": "tactician"
   },
   {
+    "id": "char_4237_jcinta",
+    "name": "Jacinta",
+    "rarity": "TIER_5",
+    "profession": "PIONEER",
+    "subProfessionId": "bearer"
+  },
+  {
     "id": "char_1049_catap2",
     "name": "Zinogre S Catapult",
     "rarity": "TIER_5",
@@ -2861,6 +2868,13 @@
     "rarity": "TIER_5",
     "profession": "CASTER",
     "subProfessionId": "splashcaster"
+  },
+  {
+    "id": "char_4236_tmslot",
+    "name": "Timeslot",
+    "rarity": "TIER_5",
+    "profession": "CASTER",
+    "subProfessionId": "funnel"
   },
   {
     "id": "char_4224_turdus",
@@ -2919,6 +2933,13 @@
     "subProfessionId": "mystic"
   },
   {
+    "id": "char_1015_aglna2",
+    "name": "Angelina the Mellow Wish",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "skywalker"
+  },
+  {
     "id": "char_1052_kalts2",
     "name": "Kal'tsit·Esperanta",
     "rarity": "TIER_6",
@@ -2931,6 +2952,13 @@
     "rarity": "TIER_6",
     "profession": "TANK",
     "subProfessionId": "shotprotector"
+  },
+  {
+    "id": "char_4235_thumpy",
+    "name": "Thumpy",
+    "rarity": "TIER_6",
+    "profession": "TANK",
+    "subProfessionId": "primprotector"
   },
   {
     "id": "char_4037_demetr",
