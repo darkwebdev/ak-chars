@@ -16,3 +16,25 @@ jobs:
       - run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Ensure machines are running
+        # fly.toml sets auto_start_machines = false (to avoid cold starts),
+        # which means nothing brings a machine back up if a deploy's
+        # rolling update leaves it in a stopped state - this has left the
+        # app fully unreachable after a deploy before. Explicitly start any
+        # machine that isn't already started as a safety net.
+        if: always()
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        run: |
+          flyctl machine list --json | python3 -c "
+          import json, sys, subprocess
+          machines = json.load(sys.stdin)
+          for m in machines:
+              state = m.get('state')
+              machine_id = m.get('id')
+              print(f'Machine {machine_id}: {state}')
+              if state != 'started':
+                  print(f'  Starting {machine_id}...')
+                  subprocess.run(['flyctl', 'machine', 'start', machine_id], check=True)
+          "
