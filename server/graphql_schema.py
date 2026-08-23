@@ -121,6 +121,25 @@ class UserStatus:
     uid: str
 
 
+# Arknights item IDs (per ArknightsGameData item_table.json) for the
+# currencies exposed via myInventory.
+ITEM_ID_ORUNDUM = "4003"
+ITEM_ID_ORIGINITE_PRIME = "4002"
+ITEM_ID_HEADHUNTING_PERMIT = "7003"
+
+
+@strawberry.type
+class Inventory:
+    """Authenticated user's currency counts.
+
+    Yostar's save data omits inventory entries with a zero count, so any
+    of these may legitimately be 0 for an account that has none.
+    """
+    orundum: int
+    originite_prime: int
+    headhunting_permits: int
+
+
 @strawberry.type
 class Player:
     """Player information from search/expand."""
@@ -333,6 +352,24 @@ class Query:
             exp=status_data.get('exp', 0),
             social_point=status_data.get('socialPoint', 0),
             uid=status_data.get('uid', ''),
+        )
+
+    @strawberry.field
+    async def my_inventory(
+        self,
+        channel_uid: str,
+        yostar_token: str,
+        server: str = "en"
+    ) -> Inventory:
+        """Get authenticated user's currency counts (Orundum, Originite Prime,
+        Headhunting Permits) from their raw inventory."""
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server)
+        inventory = user_data.get('inventory', {}) or {}
+
+        return Inventory(
+            orundum=inventory.get(ITEM_ID_ORUNDUM, 0),
+            originite_prime=inventory.get(ITEM_ID_ORIGINITE_PRIME, 0),
+            headhunting_permits=inventory.get(ITEM_ID_HEADHUNTING_PERMIT, 0),
         )
 
     @strawberry.field

@@ -348,6 +348,31 @@ class TestGraphQLAuthentication:
         assert "uid" in status
         assert status["level"] > 0
 
+    def test_my_inventory(self):
+        """Test querying user's currency inventory via GraphQL."""
+        query = """
+        {
+          myInventory(channelUid: "test", yostarToken: "test") {
+            orundum
+            originitePrime
+            headhuntingPermits
+          }
+        }
+        """
+        response = client.post("/graphql", json={"query": query})
+        assert response.status_code == 200
+
+        data = response.json()
+        assert "data" in data
+        assert "myInventory" in data["data"]
+        inventory = data["data"]["myInventory"]
+        assert "orundum" in inventory
+        assert "originitePrime" in inventory
+        assert "headhuntingPermits" in inventory
+        assert isinstance(inventory["orundum"], int)
+        assert isinstance(inventory["originitePrime"], int)
+        assert isinstance(inventory["headhuntingPermits"], int)
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
