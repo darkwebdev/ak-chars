@@ -110,6 +110,7 @@ async def test_graphql_operators_query(api_client, game_credentials, test_server
 
     # Verify GraphQL response structure
     assert "data" in data
+    assert data["data"] is not None, f"GraphQL query returned no data: {data.get('errors')}"
     assert "myRoster" in data["data"]
 
     # Verify operators returned
@@ -176,6 +177,7 @@ async def test_roster_filtering(api_client, game_credentials, test_server):
 
     assert response.status_code == 200
     data = response.json()
+    assert data["data"] is not None, f"GraphQL query returned no data: {data.get('errors')}"
     operators = data["data"]["myRoster"]
 
     # Test client-side filtering
