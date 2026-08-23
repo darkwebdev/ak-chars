@@ -144,6 +144,6 @@ app.include_router(fixtures_router)
 # Mount GraphQL endpoint with CORS support
 graphql_app = GraphQLRouter(
     schema,
-    graphiql=True,
+    graphql_ide="graphiql",
 )
 app.include_router(graphql_app, prefix="/graphql")
