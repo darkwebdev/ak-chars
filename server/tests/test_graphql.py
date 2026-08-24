@@ -5,6 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 import pytest
+from unittest.mock import patch
 from fastapi.testclient import TestClient
 from server.main import app
 
@@ -374,14 +375,55 @@ class TestGraphQLAuthentication:
         assert isinstance(inventory["headhuntingPermits"], int)
 
         # Real values from the fixture's status block (diamondShard=12890,
-        # payDiamond=0, freeDiamond=545, recruitLicense=21). Pinned as exact
+        # payDiamond=0, freeDiamond=545, gachaTicket=0). Pinned as exact
         # values, not just type checks - a prior version of this resolver
         # read from the generic per-item inventory map instead of these
         # dedicated status fields and silently always returned 0 for all
-        # three, which type-only assertions didn't catch.
+        # three, which type-only assertions didn't catch. headhuntingPermits
+        # is 0 here deliberately, not a leftover placeholder: an earlier fix
+        # wired this to status.recruitLicense (21 in this fixture), which
+        # reads sensibly but is actually Recruitment Permit, a different
+        # resource - status.gachaTicket is the real Headhunting Permit
+        # field, and happens to be 0 for this account.
         assert inventory["orundum"] == 12890
         assert inventory["originitePrime"] == 545
-        assert inventory["headhuntingPermits"] == 21
+        assert inventory["headhuntingPermits"] == 0
+
+    @patch('server.graphql_schema.get_user_data_with_auth')
+    @pytest.mark.asyncio
+    async def test_my_inventory_reads_the_right_status_fields(self, mock_get_data):
+        """Distinguish the correct status fields from similarly-named
+        neighbors with a mock, rather than relying on the real fixture's
+        values (which happen to be 0 for headhuntingPermits, so an earlier
+        version of this test couldn't have caught headhuntingPermits being
+        wired to the wrong field - it was, twice, in production)."""
+        mock_get_data.return_value = {
+            'status': {
+                'diamondShard': 111,      # orundum
+                'payDiamond': 22,
+                'freeDiamond': 33,        # originitePrime = 22 + 33 = 55
+                'gachaTicket': 444,       # headhuntingPermits - real Headhunting Permit
+                'recruitLicense': 999,    # decoy: Recruitment Permit, a different resource
+            },
+            'inventory': {},
+        }
+
+        query = """
+        {
+          myInventory(channelUid: "test", yostarToken: "test") {
+            orundum
+            originitePrime
+            headhuntingPermits
+          }
+        }
+        """
+        response = client.post("/graphql", json={"query": query})
+        assert response.status_code == 200
+
+        inventory = response.json()["data"]["myInventory"]
+        assert inventory["orundum"] == 111
+        assert inventory["originitePrime"] == 55
+        assert inventory["headhuntingPermits"] == 444
 
 
 if __name__ == "__main__":

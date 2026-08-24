@@ -150,8 +150,17 @@ class Inventory:
     These are dedicated fields on the account status block, not entries in
     the generic per-item inventory map (item ids 4003/4002/7003 look right
     per Arknights' item catalog, but that's not where the game actually
-    tracks a live balance of these three - confirmed against arkprts'
-    own status model). Any of these may legitimately be 0.
+    tracks a live balance of these three). The authoritative mapping is
+    arkprts' own `PlayerStatus.basic_item_inventory` property
+    (arkprts/models/data.py), which pairs each item id with the exact
+    status field backing it - check that directly for any of these
+    three (or any other item-catalog id that isn't in the generic
+    inventory map) rather than guessing from field-name similarity:
+    "recruitLicense" (item 7001) sounds like it could mean Headhunting
+    Permit but is actually Recruitment Permit, an unrelated resource -
+    "gachaTicket" (item 7003) is the real Headhunting Permit field, a
+    mistake this code already made once. Any of these may legitimately
+    be 0.
     """
     orundum: int
     originite_prime: int
@@ -390,7 +399,7 @@ class Query:
         return Inventory(
             orundum=status.get('diamondShard', 0),
             originite_prime=status.get('payDiamond', 0) + status.get('freeDiamond', 0),
-            headhunting_permits=status.get('recruitLicense', 0),
+            headhunting_permits=status.get('gachaTicket', 0),
         )
 
     @strawberry.field
