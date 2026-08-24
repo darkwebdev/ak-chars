@@ -30,6 +30,10 @@ allowed_origins = [
     "http://127.0.0.1:5173",
     "http://127.0.0.1:5193",
     "http://127.0.0.1:5194",
+    # GitHub Pages serves every darkwebdev project off this one origin
+    # (ak-chars at /ak-chars/, ak-events at /ak-events/, etc.) - CORS
+    # matches on origin only, so this covers all of them regardless of path.
+    "https://darkwebdev.github.io",
 ]
 # Add production origin if CORS_ORIGIN env var is set
 if os.getenv("CORS_ORIGIN"):
@@ -38,6 +42,9 @@ if os.getenv("CORS_ORIGIN"):
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
+    # Client dev servers (Vite, etc.) pick a random free port each run, so
+    # match any localhost/127.0.0.1 port rather than hardcoding a list.
+    allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
