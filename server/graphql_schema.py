@@ -18,8 +18,12 @@ def load_fixture_data():
         return json.load(f)
 
 
-async def get_user_data_with_auth(channel_uid: str, yostar_token: str, server: str, info: Optional[Info] = None):
+async def get_user_data_with_auth(channel_uid: str, yostar_token: str, server: str, info: Optional[Info] = None, device_id: Optional[str] = None):
     """Get user data using authentication credentials.
+
+    device_id, if supplied (from getAuthToken's response), is reused
+    instead of generating a fresh random device identity for this call -
+    see ark_client.generate_device_id's docstring for why that matters.
 
     When called with `info`, the live upstream fetch is memoized on the
     request context and shared with any other resolver in the same
@@ -39,13 +43,13 @@ async def get_user_data_with_auth(channel_uid: str, yostar_token: str, server: s
     from .ark_client import get_user_data
 
     if info is not None:
-        cache_key = (channel_uid, yostar_token, server)
+        cache_key = (channel_uid, yostar_token, server, device_id)
         cache = info.context.setdefault('_user_data_cache', {})
         if cache_key not in cache:
-            cache[cache_key] = asyncio.ensure_future(get_user_data(channel_uid, yostar_token, server))
+            cache[cache_key] = asyncio.ensure_future(get_user_data(channel_uid, yostar_token, server, device_id))
         full_data = await cache[cache_key]
     else:
-        full_data = await get_user_data(channel_uid, yostar_token, server)
+        full_data = await get_user_data(channel_uid, yostar_token, server, device_id)
 
     return full_data.get('user', {})
 
@@ -59,10 +63,11 @@ async def send_auth_code(email: str, server: str):
 async def get_token_from_code(email: str, code: str, server: str):
     """Get authentication token from email code."""
     from .ark_client import get_game_token_from_code
-    channel_uid, token = await get_game_token_from_code(email, code, server)
+    channel_uid, token, device_id = await get_game_token_from_code(email, code, server)
     return {
         'channelUid': channel_uid,
         'yostarToken': token,
+        'deviceId': device_id,
         'server': server
     }
 
@@ -326,10 +331,11 @@ class Query:
         info: Info,
         channel_uid: str,
         yostar_token: str,
-        server: str = "en"
+        server: str = "en",
+        device_id: Optional[str] = None
     ) -> List[Operator]:
         """Get authenticated user's roster (equivalent to GET /my/roster)."""
-        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info)
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info, device_id)
         chars_dict = user_data.get('troop', {}).get('chars', {})
         
         operators = []
@@ -365,10 +371,11 @@ class Query:
         info: Info,
         channel_uid: str,
         yostar_token: str,
-        server: str = "en"
+        server: str = "en",
+        device_id: Optional[str] = None
     ) -> Optional[UserStatus]:
         """Get authenticated user's status (equivalent to GET /my/status)."""
-        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info)
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info, device_id)
         status_data = user_data.get('status', {})
 
         if not status_data:
@@ -389,11 +396,12 @@ class Query:
         info: Info,
         channel_uid: str,
         yostar_token: str,
-        server: str = "en"
+        server: str = "en",
+        device_id: Optional[str] = None
     ) -> Inventory:
         """Get authenticated user's currency counts (Orundum, Originite Prime,
         Headhunting Permits) from their account status."""
-        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info)
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info, device_id)
         status = user_data.get('status', {}) or {}
 
         return Inventory(
@@ -553,6 +561,7 @@ class AuthTokenResult:
     success: bool
     channel_uid: Optional[str] = None
     yostar_token: Optional[str] = None
+    device_id: Optional[str] = None
     server: Optional[str] = None
     error: Optional[str] = None
 
@@ -588,6 +597,7 @@ class Mutation:
                 success=True,
                 channel_uid=result.get('channelUid'),
                 yostar_token=result.get('yostarToken'),
+                device_id=result.get('deviceId'),
                 server=result.get('server')
             )
         except Exception as e:

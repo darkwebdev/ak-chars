@@ -28,12 +28,14 @@ class MyRosterRequest(BaseModel):
     channel_uid: str
     yostar_token: str
     server: str = 'en'
+    device_id: str = None
 
 
 class MyStatusRequest(BaseModel):
     channel_uid: str
     yostar_token: str
     server: str = 'en'
+    device_id: str = None
 
 
 class GameCodeRequest(BaseModel):
@@ -63,7 +65,7 @@ async def my_roster(req: MyRosterRequest):
             logger.info('Returning fixture roster data (%d operators)', len(chars))
             return {'ok': True, 'chars': chars}
         
-        data = await get_user_data(req.channel_uid, req.yostar_token, req.server)
+        data = await get_user_data(req.channel_uid, req.yostar_token, req.server, req.device_id)
         chars = data.get('user', {}).get('troop', {}).get('chars', {})
         logger.info('Fetched roster for server=%s (%d operators)', req.server, len(chars))
         return {'ok': True, 'chars': chars}
@@ -88,7 +90,7 @@ async def my_status(req: MyStatusRequest):
             logger.info('Returning fixture status data')
             return {'ok': True, 'status': status}
         
-        data = await get_user_data(req.channel_uid, req.yostar_token, req.server)
+        data = await get_user_data(req.channel_uid, req.yostar_token, req.server, req.device_id)
         status = data.get('user', {}).get('status', {})
         logger.info('Fetched user status for server=%s', req.server)
         return {'ok': True, 'status': status}
@@ -143,12 +145,13 @@ async def game_token(payload: GameTokenRequest):
     Store these securely client-side and never log or expose them.
     """
     try:
-        channel_uid, token = await get_game_token_from_code(payload.email, payload.code, payload.server)
+        channel_uid, token, device_id = await get_game_token_from_code(payload.email, payload.code, payload.server)
         logger.info('Generated game token for server %s', payload.server)
         return {
             'ok': True,
             'channel_uid': channel_uid,
             'yostar_token': token,
+            'device_id': device_id,
             'server': payload.server
         }
     except Exception as e:
