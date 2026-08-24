@@ -77,7 +77,7 @@ If you need to get fresh credentials:
    # Set environment variables
    export TEST_ACCOUNT_EMAIL="your_test_account@example.com"
    export TEST_ACCOUNT_EMAIL_PASSWORD="your_email_password"
-   export API_BASE_URL="https://ak-chars-api.fly.dev"
+   export API_BASE_URL="https://ak-account-api-705516204230.us-central1.run.app"
 
    # Run a single integration test to generate credentials
    pytest tests/integration/test_auth_flow.py::test_complete_auth_flow -v

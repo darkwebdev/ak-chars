@@ -25,8 +25,9 @@ yarn test
 ```
 
 API-level integration/smoke tests against the deployed backend
-(https://ak-chars-api.fly.dev) live in [darkwebdev/ak-account](https://github.com/darkwebdev/ak-account),
-the project the backend was extracted into - not in this repo.
+(https://ak-account-api-705516204230.us-central1.run.app) live in
+[darkwebdev/ak-account](https://github.com/darkwebdev/ak-account), the
+project the backend was extracted into - not in this repo.
 
 ## Deployment (GitHub Pages)
 

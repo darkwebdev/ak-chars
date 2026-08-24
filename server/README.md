@@ -30,28 +30,35 @@ python-dotenv):
 
 ## Production Deployment
 
-The server is deployed to Fly.io at **https://ak-chars-api.fly.dev**
+This copy of the server (kept here since it was extracted into
+[darkwebdev/ak-account](https://github.com/darkwebdev/ak-account)) is
+**not itself deployed anywhere anymore** - the Fly.io app this used to
+run on (`ak-chars-api.fly.dev`) was deleted. The live instance everything
+now points at is deployed from the ak-account repo, on Google Cloud Run:
+**https://ak-account-api-705516204230.us-central1.run.app**
 
-Deployment is automated via GitHub Actions on every push to `main` (see `.github/workflows/fly-deploy.yml`).
+`.github/workflows/fly-deploy.yml` still exists in this repo but will
+fail on push since its target Fly app no longer exists - see that repo
+or ak-account's README for current deployment info.
 
 **Production endpoints:**
 
 ```bash
 # GraphQL playground (interactive)
-open https://ak-chars-api.fly.dev/graphql
+open https://ak-account-api-705516204230.us-central1.run.app/graphql
 
 # Get game authentication code
-curl -X POST https://ak-chars-api.fly.dev/auth/game-code \
+curl -X POST https://ak-account-api-705516204230.us-central1.run.app/auth/game-code \
   -H "Content-Type: application/json" \
   -d '{"email":"your-email@example.com","server":"en"}'
 
 # Exchange code for credentials
-curl -X POST https://ak-chars-api.fly.dev/auth/game-token \
+curl -X POST https://ak-account-api-705516204230.us-central1.run.app/auth/game-token \
   -H "Content-Type: application/json" \
   -d '{"email":"your-email@example.com","code":"123456","server":"en"}'
 
 # Get your operator roster
-curl -X POST https://ak-chars-api.fly.dev/my/roster \
+curl -X POST https://ak-account-api-705516204230.us-central1.run.app/my/roster \
   -H "Content-Type: application/json" \
   -d '{"channel_uid":"...","yostar_token":"...","server":"en"}'
 ```

@@ -1,10 +1,16 @@
 # See https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/
+#
+# Manual-trigger only, not on every push: the Fly app this deployed
+# (ak-chars-api) was deleted - the live deployment is now
+# ak-account-api on Google Cloud Run (see server/README.md and
+# darkwebdev/ak-account). This workflow would just fail against a
+# nonexistent app if left on the push trigger. Kept, not deleted, in
+# case Fly is ever wanted again - run it manually via workflow_dispatch
+# after recreating the app (`fly.toml`'s app name) if so.
 
 name: Fly Deploy
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 jobs:
   deploy:
     name: Deploy app

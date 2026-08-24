@@ -63,7 +63,7 @@ jobs:
 
       - name: Verify production server is ready
         run: |
-          curl -f https://ak-chars-api.fly.dev/graphql \
+          curl -f https://ak-account-api-705516204230.us-central1.run.app/graphql \
             -H "Content-Type: application/json" \
             -d '{"query": "{ __typename }"}'
 
@@ -74,7 +74,7 @@ jobs:
         # real signal that Yostar's public API contract changed or broke,
         # which is exactly what this workflow exists to catch.
         env:
-          API_BASE_URL: https://ak-chars-api.fly.dev
+          API_BASE_URL: https://ak-account-api-705516204230.us-central1.run.app
         run: |
           pytest tests/integration/test_public_api_contract.py -v -m integration --timeout=120 --tb=short
 
@@ -83,7 +83,7 @@ jobs:
           TEST_ACCOUNT_EMAIL: ${{ secrets.TEST_ACCOUNT_EMAIL }}
           TEST_ACCOUNT_EMAIL_PASSWORD: ${{ secrets.TEST_ACCOUNT_EMAIL_PASSWORD }}
           TEST_ACCOUNT_SERVER: en
-          API_BASE_URL: https://ak-chars-api.fly.dev
+          API_BASE_URL: https://ak-account-api-705516204230.us-central1.run.app
         run: |
           echo "🔐 Running authentication tests to ensure credentials are fresh..."
           pytest tests/integration/test_auth_flow.py -v --timeout=300 --tb=short || echo "⚠️  Auth tests had failures, continuing..."
@@ -99,7 +99,7 @@ jobs:
           TEST_ACCOUNT_EMAIL: ${{ secrets.TEST_ACCOUNT_EMAIL }}
           TEST_ACCOUNT_EMAIL_PASSWORD: ${{ secrets.TEST_ACCOUNT_EMAIL_PASSWORD }}
           TEST_ACCOUNT_SERVER: en
-          API_BASE_URL: https://ak-chars-api.fly.dev
+          API_BASE_URL: https://ak-account-api-705516204230.us-central1.run.app
         run: |
           echo "🧪 Running remaining integration tests with fresh credentials..."
           pytest tests/integration/ -v -m integration --timeout=300 --tb=short \
