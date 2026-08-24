@@ -373,6 +373,16 @@ class TestGraphQLAuthentication:
         assert isinstance(inventory["originitePrime"], int)
         assert isinstance(inventory["headhuntingPermits"], int)
 
+        # Real values from the fixture's status block (diamondShard=12890,
+        # payDiamond=0, freeDiamond=545, recruitLicense=21). Pinned as exact
+        # values, not just type checks - a prior version of this resolver
+        # read from the generic per-item inventory map instead of these
+        # dedicated status fields and silently always returned 0 for all
+        # three, which type-only assertions didn't catch.
+        assert inventory["orundum"] == 12890
+        assert inventory["originitePrime"] == 545
+        assert inventory["headhuntingPermits"] == 21
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

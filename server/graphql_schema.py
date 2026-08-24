@@ -143,19 +143,15 @@ class UserStatus:
     uid: str
 
 
-# Arknights item IDs (per ArknightsGameData item_table.json) for the
-# currencies exposed via myInventory.
-ITEM_ID_ORUNDUM = "4003"
-ITEM_ID_ORIGINITE_PRIME = "4002"
-ITEM_ID_HEADHUNTING_PERMIT = "7003"
-
-
 @strawberry.type
 class Inventory:
     """Authenticated user's currency counts.
 
-    Yostar's save data omits inventory entries with a zero count, so any
-    of these may legitimately be 0 for an account that has none.
+    These are dedicated fields on the account status block, not entries in
+    the generic per-item inventory map (item ids 4003/4002/7003 look right
+    per Arknights' item catalog, but that's not where the game actually
+    tracks a live balance of these three - confirmed against arkprts'
+    own status model). Any of these may legitimately be 0.
     """
     orundum: int
     originite_prime: int
@@ -387,14 +383,14 @@ class Query:
         server: str = "en"
     ) -> Inventory:
         """Get authenticated user's currency counts (Orundum, Originite Prime,
-        Headhunting Permits) from their raw inventory."""
+        Headhunting Permits) from their account status."""
         user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info)
-        inventory = user_data.get('inventory', {}) or {}
+        status = user_data.get('status', {}) or {}
 
         return Inventory(
-            orundum=inventory.get(ITEM_ID_ORUNDUM, 0),
-            originite_prime=inventory.get(ITEM_ID_ORIGINITE_PRIME, 0),
-            headhunting_permits=inventory.get(ITEM_ID_HEADHUNTING_PERMIT, 0),
+            orundum=status.get('diamondShard', 0),
+            originite_prime=status.get('payDiamond', 0) + status.get('freeDiamond', 0),
+            headhunting_permits=status.get('recruitLicense', 0),
         )
 
     @strawberry.field
