@@ -67,6 +67,17 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{"query": "{ __typename }"}'
 
+      - name: Run public API contract tests (no login required)
+        # Anonymous Yostar endpoints (player search/expand) - no test-account
+        # credentials involved, so none of the login-rate-limit fragility
+        # below applies. Deliberately NOT soft-failed: a failure here is a
+        # real signal that Yostar's public API contract changed or broke,
+        # which is exactly what this workflow exists to catch.
+        env:
+          API_BASE_URL: https://ak-chars-api.fly.dev
+        run: |
+          pytest tests/integration/test_public_api_contract.py -v -m integration --timeout=120 --tb=short
+
       - name: Run auth tests first (to refresh credentials if needed)
         env:
           TEST_ACCOUNT_EMAIL: ${{ secrets.TEST_ACCOUNT_EMAIL }}
@@ -92,7 +103,8 @@ jobs:
         run: |
           echo "🧪 Running remaining integration tests with fresh credentials..."
           pytest tests/integration/ -v -m integration --timeout=300 --tb=short \
-            --ignore=tests/integration/test_auth_flow.py
+            --ignore=tests/integration/test_auth_flow.py \
+            --ignore=tests/integration/test_public_api_contract.py
 
       - name: Update credentials secret if refreshed
         # Runs after ALL live-credential-touching tests (auth tests +
