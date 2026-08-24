@@ -1,6 +1,8 @@
 """GraphQL schema for Arknights character data."""
 import strawberry
+from strawberry.types import Info
 from typing import Optional, List
+import asyncio
 import os
 import json
 from pathlib import Path
@@ -16,15 +18,35 @@ def load_fixture_data():
         return json.load(f)
 
 
-async def get_user_data_with_auth(channel_uid: str, yostar_token: str, server: str):
-    """Get user data using authentication credentials."""
+async def get_user_data_with_auth(channel_uid: str, yostar_token: str, server: str, info: Optional[Info] = None):
+    """Get user data using authentication credentials.
+
+    When called with `info`, the live upstream fetch is memoized on the
+    request context and shared with any other resolver in the same
+    GraphQL request using the same credentials. Sibling fields (e.g.
+    myStatus + myInventory in one query) execute concurrently, and
+    without this, each independently re-authenticates with Yostar using
+    the same token at nearly the same time - if Yostar enforces a single
+    active session per token, the second handshake can invalidate the
+    first mid-flight, surfacing as a spurious "session expired"-shaped
+    error on whichever field loses the race.
+    """
     if USE_FIXTURES:
         fixture_data = load_fixture_data()
         return fixture_data.get('data', {}).get('user', {})
-    
+
     # Import here to avoid circular dependency
     from .ark_client import get_user_data
-    full_data = await get_user_data(channel_uid, yostar_token, server)
+
+    if info is not None:
+        cache_key = (channel_uid, yostar_token, server)
+        cache = info.context.setdefault('_user_data_cache', {})
+        if cache_key not in cache:
+            cache[cache_key] = asyncio.ensure_future(get_user_data(channel_uid, yostar_token, server))
+        full_data = await cache[cache_key]
+    else:
+        full_data = await get_user_data(channel_uid, yostar_token, server)
+
     return full_data.get('user', {})
 
 
@@ -296,12 +318,13 @@ class Query:
     @strawberry.field
     async def my_roster(
         self,
+        info: Info,
         channel_uid: str,
         yostar_token: str,
         server: str = "en"
     ) -> List[Operator]:
         """Get authenticated user's roster (equivalent to GET /my/roster)."""
-        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server)
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info)
         chars_dict = user_data.get('troop', {}).get('chars', {})
         
         operators = []
@@ -334,12 +357,13 @@ class Query:
     @strawberry.field
     async def my_status(
         self,
+        info: Info,
         channel_uid: str,
         yostar_token: str,
         server: str = "en"
     ) -> Optional[UserStatus]:
         """Get authenticated user's status (equivalent to GET /my/status)."""
-        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server)
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info)
         status_data = user_data.get('status', {})
 
         if not status_data:
@@ -357,13 +381,14 @@ class Query:
     @strawberry.field
     async def my_inventory(
         self,
+        info: Info,
         channel_uid: str,
         yostar_token: str,
         server: str = "en"
     ) -> Inventory:
         """Get authenticated user's currency counts (Orundum, Originite Prime,
         Headhunting Permits) from their raw inventory."""
-        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server)
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info)
         inventory = user_data.get('inventory', {}) or {}
 
         return Inventory(
