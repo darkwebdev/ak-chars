@@ -23,8 +23,10 @@ yarn test              # Jest unit/component tests
 yarn test:e2e          # Playwright E2E tests
 yarn test:e2e:ui       # Playwright E2E tests with UI
 yarn test:e2e:headed   # Playwright E2E tests in headed mode
-yarn test:smoke        # Python smoke tests for production API
 ```
+
+Backend API smoke/integration tests live in the darkwebdev/ak-account
+repo now, not here.
 
 ### Development
 ```bash
