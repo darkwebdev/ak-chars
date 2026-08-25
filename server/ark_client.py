@@ -19,12 +19,11 @@ except Exception:
 def generate_device_id() -> str:
     """Generate a fresh device identity, JSON-encoded as an opaque string.
 
-    Callers are expected to persist this alongside channel_uid/yostar_token
-    and pass it back on every subsequent authenticated call (see
-    get_user_data's device_id param) - without this, every call generates
-    its own random device identity and presents as a brand-new device to
-    Yostar on every request, which we have reason to believe is what
-    triggers Yostar kicking a user's live game session on each fetch.
+    NOTE: tested live and confirmed this alone does NOT stop Yostar from
+    kicking the user's live game session on every fetch - kept because
+    it's harmless and still used for the very first login (before any
+    session exists to resume, see get_user_data's session param below),
+    but session resumption is the mechanism actually expected to help.
     """
     from arkprts.auth import create_random_device_ids
     return json.dumps(create_random_device_ids())
@@ -43,6 +42,29 @@ def _apply_device_id(auth, device_id) -> None:
             auth.device_ids = tuple(ids)
     except (TypeError, ValueError):
         pass
+
+
+def _session_to_json(auth) -> str:
+    """Serialize an Auth's live session (uid/secret/seqnum) to an opaque
+    string, to be persisted by the caller and passed to a later call's
+    `session` param via _resume_session, so that call can skip the login
+    handshake entirely instead of just varying its device identity."""
+    s = auth.session
+    return json.dumps({'uid': s.uid, 'secret': s.secret, 'seqnum': s.seqnum})
+
+
+def _parse_session(session: str):
+    """Parse a persisted session string back into a dict, or None if
+    missing/malformed (falls back to a fresh login in that case)."""
+    if not session:
+        return None
+    try:
+        data = json.loads(session)
+        if isinstance(data, dict) and {'uid', 'secret', 'seqnum'} <= data.keys():
+            return data
+    except (TypeError, ValueError):
+        pass
+    return None
 
 
 def _require_client_class():
@@ -204,14 +226,25 @@ async def get_game_token_from_code(email: str, code: str, server: str = 'en') ->
     return channel_uid, token, generate_device_id()
 
 
-async def get_user_data(channel_uid: str, yostar_token: str, server: str = 'en', device_id: str = None) -> dict:
+async def get_user_data(channel_uid: str, yostar_token: str, server: str = 'en', device_id: str = None, session: str = None) -> tuple:
     """Get authenticated user's full game data including complete operator roster.
 
-    Requires game credentials (channelUid and yostar token). If device_id
-    (from get_game_token_from_code) is supplied, reuses that persisted
-    device identity instead of generating a new random one for this call -
-    see generate_device_id's docstring for why that matters.
-    Returns raw game data with all operators, inventory, and account info.
+    Requires game credentials (channelUid and yostar token).
+
+    If `session` (from a previous call's returned session, see below) is
+    valid, resumes that session via YostarAuth.from_session() instead of
+    logging in at all - login itself, not device identity, is suspected to
+    be what makes Yostar kick the user's live game session (device_id
+    alone was tried and confirmed not to help - see generate_device_id's
+    docstring). Falls back to a fresh login (using device_id if supplied)
+    when no valid session is given, e.g. on the first call after
+    obtaining channel_uid/yostar_token.
+
+    Returns a (data, session) tuple. `session` is the JSON-encoded, opaque
+    live session (uid/secret/seqnum) after this call - the seqnum
+    increments on every authenticated request, so callers must persist
+    and pass back the returned value, not the one they sent in, or the
+    *next* call will use a stale seqnum.
     """
     Client = _require_client_class()
 
@@ -220,24 +253,39 @@ async def get_user_data(channel_uid: str, yostar_token: str, server: str = 'en',
     if YostarAuth is None:
         raise RuntimeError('arkprts.YostarAuth not found - authentication not supported')
 
-    # Build the authenticated client manually rather than via the
-    # from_token() convenience wrapper, so we can override the randomly
-    # generated device_ids with a persisted one first.
-    auth = YostarAuth(server=server)
-    _apply_device_id(auth, device_id)
-    await auth.login_with_token(channel_uid, yostar_token)
+    parsed_session = _parse_session(session)
+    if parsed_session is not None:
+        network = arkprts.NetworkSession(default_server=server)
+        auth = await YostarAuth.from_session(
+            server=server,
+            uid=parsed_session['uid'],
+            secret=parsed_session['secret'],
+            seqnum=parsed_session['seqnum'],
+            network=network,
+        )
+    else:
+        # Build the authenticated client manually rather than via the
+        # from_token() convenience wrapper, so we can override the
+        # randomly generated device_ids with a persisted one first.
+        auth = YostarAuth(server=server)
+        _apply_device_id(auth, device_id)
+        await auth.login_with_token(channel_uid, yostar_token)
+
     client = Client(auth=auth, server=server, assets=False)
-    
+
     # Get full user data
     if hasattr(client, 'get_raw_data'):
-        return await client.get_raw_data()
+        data = await client.get_raw_data()
     elif hasattr(client, 'get_data'):
-        data = await client.get_data()
+        raw = await client.get_data()
         # Convert model to dict if needed
-        if hasattr(data, 'dict'):
-            return data.dict()
-        elif hasattr(data, '__dict__'):
-            return data.__dict__
-        return data
+        if hasattr(raw, 'dict'):
+            data = raw.dict()
+        elif hasattr(raw, '__dict__'):
+            data = raw.__dict__
+        else:
+            data = raw
     else:
         raise RuntimeError('arkprts client does not expose get_data or get_raw_data')
+
+    return data, _session_to_json(auth)

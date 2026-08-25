@@ -48,6 +48,11 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    # Custom response headers aren't readable by browser JS cross-origin
+    # unless explicitly exposed - myRoster/myStatus/myInventory return the
+    # live session to persist via X-Ak-Session (see auth.py), which is
+    # useless to a browser client without this.
+    expose_headers=["X-Ak-Session"],
 )
 
 

@@ -99,14 +99,14 @@ class TestDeviceIdReachesUpstreamCall:
     @patch('server.ark_client.get_user_data', new_callable=AsyncMock)
     @pytest.mark.asyncio
     async def test_my_status_passes_device_id_through(self, mock_get_user_data):
-        mock_get_user_data.return_value = {
+        mock_get_user_data.return_value = ({
             'user': {
                 'status': {
                     'nickName': 'Test', 'nickNumber': '0000', 'level': 1,
                     'exp': 0, 'socialPoint': 0, 'uid': '1',
                 }
             }
-        }
+        }, '{"uid": "1", "secret": "s", "seqnum": 1}')
 
         query = """
         {
@@ -118,8 +118,9 @@ class TestDeviceIdReachesUpstreamCall:
         response = client.post("/graphql", json={"query": query})
         assert response.status_code == 200
         assert response.json()["data"]["myStatus"]["uid"] == "1"
+        assert response.headers["x-ak-session"] == '{"uid": "1", "secret": "s", "seqnum": 1}'
 
-        mock_get_user_data.assert_awaited_once_with("x", "y", "en", '["d1","d2","d3"]')
+        mock_get_user_data.assert_awaited_once_with("x", "y", "en", '["d1","d2","d3"]', None)
 
 
 if __name__ == "__main__":

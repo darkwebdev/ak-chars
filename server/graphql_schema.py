@@ -18,12 +18,18 @@ def load_fixture_data():
         return json.load(f)
 
 
-async def get_user_data_with_auth(channel_uid: str, yostar_token: str, server: str, info: Optional[Info] = None, device_id: Optional[str] = None):
+async def get_user_data_with_auth(channel_uid: str, yostar_token: str, server: str, info: Optional[Info] = None, device_id: Optional[str] = None, session: Optional[str] = None):
     """Get user data using authentication credentials.
 
     device_id, if supplied (from getAuthToken's response), is reused
     instead of generating a fresh random device identity for this call -
     see ark_client.generate_device_id's docstring for why that matters.
+
+    session, if supplied (from a previous myRoster/myStatus/myInventory
+    call's X-Ak-Session response header), resumes that session instead
+    of logging in at all - see ark_client.get_user_data's docstring. The
+    updated session is set on info.context['response'].headers so the
+    caller can persist it for the next call.
 
     When called with `info`, the live upstream fetch is memoized on the
     request context and shared with any other resolver in the same
@@ -43,13 +49,14 @@ async def get_user_data_with_auth(channel_uid: str, yostar_token: str, server: s
     from .ark_client import get_user_data
 
     if info is not None:
-        cache_key = (channel_uid, yostar_token, server, device_id)
+        cache_key = (channel_uid, yostar_token, server, device_id, session)
         cache = info.context.setdefault('_user_data_cache', {})
         if cache_key not in cache:
-            cache[cache_key] = asyncio.ensure_future(get_user_data(channel_uid, yostar_token, server, device_id))
-        full_data = await cache[cache_key]
+            cache[cache_key] = asyncio.ensure_future(get_user_data(channel_uid, yostar_token, server, device_id, session))
+        full_data, new_session = await cache[cache_key]
+        info.context['response'].headers['X-Ak-Session'] = new_session
     else:
-        full_data = await get_user_data(channel_uid, yostar_token, server, device_id)
+        full_data, new_session = await get_user_data(channel_uid, yostar_token, server, device_id, session)
 
     return full_data.get('user', {})
 
@@ -332,10 +339,15 @@ class Query:
         channel_uid: str,
         yostar_token: str,
         server: str = "en",
-        device_id: Optional[str] = None
+        device_id: Optional[str] = None,
+        session: Optional[str] = None
     ) -> List[Operator]:
-        """Get authenticated user's roster (equivalent to GET /my/roster)."""
-        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info, device_id)
+        """Get authenticated user's roster (equivalent to GET /my/roster).
+
+        The (possibly updated) session is returned via the X-Ak-Session
+        response header - persist and pass back on the next call.
+        """
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info, device_id, session)
         chars_dict = user_data.get('troop', {}).get('chars', {})
         
         operators = []
@@ -372,10 +384,15 @@ class Query:
         channel_uid: str,
         yostar_token: str,
         server: str = "en",
-        device_id: Optional[str] = None
+        device_id: Optional[str] = None,
+        session: Optional[str] = None
     ) -> Optional[UserStatus]:
-        """Get authenticated user's status (equivalent to GET /my/status)."""
-        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info, device_id)
+        """Get authenticated user's status (equivalent to GET /my/status).
+
+        The (possibly updated) session is returned via the X-Ak-Session
+        response header - persist and pass back on the next call.
+        """
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info, device_id, session)
         status_data = user_data.get('status', {})
 
         if not status_data:
@@ -397,11 +414,16 @@ class Query:
         channel_uid: str,
         yostar_token: str,
         server: str = "en",
-        device_id: Optional[str] = None
+        device_id: Optional[str] = None,
+        session: Optional[str] = None
     ) -> Inventory:
         """Get authenticated user's currency counts (Orundum, Originite Prime,
-        Headhunting Permits) from their account status."""
-        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info, device_id)
+        Headhunting Permits) from their account status.
+
+        The (possibly updated) session is returned via the X-Ak-Session
+        response header - persist and pass back on the next call.
+        """
+        user_data = await get_user_data_with_auth(channel_uid, yostar_token, server, info, device_id, session)
         status = user_data.get('status', {}) or {}
 
         return Inventory(

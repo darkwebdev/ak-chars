@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Response
 from pydantic import BaseModel, EmailStr
 import os
 import json
@@ -29,6 +29,7 @@ class MyRosterRequest(BaseModel):
     yostar_token: str
     server: str = 'en'
     device_id: str = None
+    session: str = None
 
 
 class MyStatusRequest(BaseModel):
@@ -36,6 +37,7 @@ class MyStatusRequest(BaseModel):
     yostar_token: str
     server: str = 'en'
     device_id: str = None
+    session: str = None
 
 
 class GameCodeRequest(BaseModel):
@@ -50,13 +52,18 @@ class GameTokenRequest(BaseModel):
 
 
 @router.post('/my/roster')
-async def my_roster(req: MyRosterRequest):
+async def my_roster(req: MyRosterRequest, response: Response):
     """Get the authenticated user's operator roster.
-    
+
     Returns only user.troop.chars - the complete operator roster with stats.
-    
+
     In development mode (USE_FIXTURES=true), returns fixture data.
     In production, requires game credentials to authenticate with the game API.
+
+    The response carries an X-Ak-Session header with the (possibly
+    updated) session to pass as `session` on your next authenticated
+    call - see ark_client.get_user_data's docstring. Always use the
+    latest value returned, not the one you sent.
     """
     try:
         if USE_FIXTURES:
@@ -64,8 +71,9 @@ async def my_roster(req: MyRosterRequest):
             chars = fixture_data.get('data', {}).get('user', {}).get('troop', {}).get('chars', {})
             logger.info('Returning fixture roster data (%d operators)', len(chars))
             return {'ok': True, 'chars': chars}
-        
-        data = await get_user_data(req.channel_uid, req.yostar_token, req.server, req.device_id)
+
+        data, session = await get_user_data(req.channel_uid, req.yostar_token, req.server, req.device_id, req.session)
+        response.headers['X-Ak-Session'] = session
         chars = data.get('user', {}).get('troop', {}).get('chars', {})
         logger.info('Fetched roster for server=%s (%d operators)', req.server, len(chars))
         return {'ok': True, 'chars': chars}
@@ -75,13 +83,15 @@ async def my_roster(req: MyRosterRequest):
 
 
 @router.post('/my/status')
-async def my_status(req: MyStatusRequest):
+async def my_status(req: MyStatusRequest, response: Response):
     """Get the authenticated user's status information.
-    
+
     Returns only user.status - player status including level, AP, nickName, etc.
-    
+
     In development mode (USE_FIXTURES=true), returns fixture data.
     In production, requires game credentials to authenticate with the game API.
+
+    The response carries an X-Ak-Session header - see my_roster's docstring.
     """
     try:
         if USE_FIXTURES:
@@ -89,8 +99,9 @@ async def my_status(req: MyStatusRequest):
             status = fixture_data.get('data', {}).get('user', {}).get('status', {})
             logger.info('Returning fixture status data')
             return {'ok': True, 'status': status}
-        
-        data = await get_user_data(req.channel_uid, req.yostar_token, req.server, req.device_id)
+
+        data, session = await get_user_data(req.channel_uid, req.yostar_token, req.server, req.device_id, req.session)
+        response.headers['X-Ak-Session'] = session
         status = data.get('user', {}).get('status', {})
         logger.info('Fetched user status for server=%s', req.server)
         return {'ok': True, 'status': status}
