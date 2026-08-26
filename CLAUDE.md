@@ -81,49 +81,28 @@ yarn install
 yarn dev
 ```
 
-## Python Backend
+## Backend API
 
-The project includes a Python FastAPI backend in the `server/` directory.
+ak-chars is frontend-only - it has no backend of its own. It talks to
+the Arknights/Yostar auth API hosted in the separate darkwebdev/ak-account
+repo, over GraphQL (`src/client/utils/graphqlClient.ts`, `VITE_API_BASE`
+env var, defaults to `http://localhost:8000`).
 
-### Python Setup
-```bash
-# Create virtual environment (from repo root)
-python3 -m venv .venv
+For local development, clone and run darkwebdev/ak-account locally on
+port 8000 (see that repo's README) - this gives fixture-backed dev data
+(`USE_FIXTURES=true`) without needing real Yostar credentials. The
+production build points at the live Cloud Run deployment instead (set
+via `VITE_API_BASE` in `.github/workflows/gh-pages.yml`).
 
-# Activate virtual environment
-source .venv/bin/activate  # macOS/Linux
-# or
-.venv\Scripts\activate     # Windows
-
-# Install Python dependencies
-pip install -r server/requirements.txt
-
-# Run server
-python -m uvicorn server.main:app --reload --host 127.0.0.1 --port 8000
-```
-
-### Python Tests
-```bash
-# Activate venv first
-source .venv/bin/activate
-
-# Run all tests
-pytest server/tests/ -v
-
-# Run specific test file
-pytest server/tests/test_sanitization.py -v
-
-# Run integration tests
-pytest tests/integration/ -v -m integration
-```
+All backend code, its unit tests, and the live-credential integration
+test suite live in darkwebdev/ak-account now, not here.
 
 ## Important Notes
 
 1. **Always use yarn**, never npm
 2. **Source nvm** before running yarn commands if using nvm
 3. **Enable corepack** to ensure yarn is available: `corepack enable`
-4. **Python backend** requires separate virtual environment setup
-5. **Integration tests** require environment variables (see `tests/integration/README.md`)
+4. **Backend API** lives in the separate darkwebdev/ak-account repo - run it locally for fixture-backed dev
 
 ## Project Structure
 
@@ -132,10 +111,6 @@ ak-chars/
 ├── src/                    # Frontend React/TypeScript code
 │   ├── client/            # Client-side components
 │   └── types/             # TypeScript types
-├── server/                # Python FastAPI backend
-│   ├── tests/            # Python unit tests
-│   └── main.py           # FastAPI app entry point
-├── tests/integration/     # Integration tests
 ├── data/                  # Static game data (chars, tiers, etc.)
 ├── scripts/               # Build and data fetch scripts
 └── .claude/               # Claude Code configuration
@@ -145,22 +120,12 @@ ak-chars/
 
 ## Environment Variables
 
-### Frontend
-No environment variables required for basic development.
-
-### Backend
-Create `server/.env` for local development:
-```bash
-USE_FIXTURES=true          # Use fixture data (default)
-ARKPRTS_API_KEY=           # Optional: Real API key for production
-CORS_ORIGIN=               # Optional: Production frontend URL
-```
-
-### Integration Tests
-See `tests/integration/README.md` for required environment variables.
+No environment variables required for basic development. Set
+`VITE_API_BASE` to point the frontend at a non-default backend (see
+"Backend API" above).
 
 ## Getting Help
 
 - Check package.json `scripts` section for all available commands
-- Check `server/README.md` for backend-specific documentation
 - Check `.claude/skills/test/SKILL.md` for test skill documentation
+- Check darkwebdev/ak-account's README for backend API documentation
