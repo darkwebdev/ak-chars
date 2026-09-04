@@ -2849,6 +2849,13 @@
     "subProfessionId": "fearless"
   },
   {
+    "id": "char_4220_kormr",
+    "name": "Koromaru",
+    "rarity": "TIER_1",
+    "profession": "WARRIOR",
+    "subProfessionId": "sword"
+  },
+  {
     "id": "char_4227_gallus",
     "name": "GALLUS²",
     "rarity": "TIER_1",
@@ -2877,6 +2884,13 @@
     "subProfessionId": "mercenary"
   },
   {
+    "id": "char_4218_aigis",
+    "name": "Aegis",
+    "rarity": "TIER_5",
+    "profession": "SNIPER",
+    "subProfessionId": "skybreaker"
+  },
+  {
     "id": "char_4236_tmslot",
     "name": "Timeslot",
     "rarity": "TIER_5",
@@ -2903,6 +2917,13 @@
     "rarity": "TIER_5",
     "profession": "SUPPORT",
     "subProfessionId": "ritualist"
+  },
+  {
+    "id": "char_4219_yukari",
+    "name": "Yukari Takeba",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "supportiveranger"
   },
   {
     "id": "char_4234_pedro",
@@ -2938,6 +2959,13 @@
     "rarity": "TIER_6",
     "profession": "CASTER",
     "subProfessionId": "mystic"
+  },
+  {
+    "id": "char_4217_makoto",
+    "name": "Makoto Yuki",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "dollkeeper"
   },
   {
     "id": "char_1015_aglna2",
