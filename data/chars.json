@@ -1372,6 +1372,13 @@
     "subProfessionId": "chainhealer"
   },
   {
+    "id": "char_4224_turdus",
+    "name": "Ukusik",
+    "rarity": "TIER_5",
+    "profession": "MEDIC",
+    "subProfessionId": "chainhealer"
+  },
+  {
     "id": "char_4222_taraxa",
     "name": "Taraxacum",
     "rarity": "TIER_5",
@@ -1801,6 +1808,13 @@
   {
     "id": "char_487_bobb",
     "name": "Bobbing",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "ritualist"
+  },
+  {
+    "id": "char_4223_botany",
+    "name": "Botani",
     "rarity": "TIER_5",
     "profession": "SUPPORT",
     "subProfessionId": "ritualist"
@@ -2660,6 +2674,13 @@
     "subProfessionId": "hammer"
   },
   {
+    "id": "char_1051_headb2",
+    "name": "Zima the Raging Tide",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "hammer"
+  },
+  {
     "id": "char_010_chen",
     "name": "Ch'en",
     "rarity": "TIER_6",
@@ -2898,25 +2919,11 @@
     "subProfessionId": "funnel"
   },
   {
-    "id": "char_4224_turdus",
-    "name": "Укусик",
-    "rarity": "TIER_5",
-    "profession": "MEDIC",
-    "subProfessionId": "chainhealer"
-  },
-  {
     "id": "char_4225_tanya",
     "name": "Crackborne",
     "rarity": "TIER_5",
     "profession": "TANK",
     "subProfessionId": "primprotector"
-  },
-  {
-    "id": "char_4223_botany",
-    "name": "Ботани",
-    "rarity": "TIER_5",
-    "profession": "SUPPORT",
-    "subProfessionId": "ritualist"
   },
   {
     "id": "char_4219_yukari",
@@ -2994,12 +3001,5 @@
     "rarity": "TIER_6",
     "profession": "TANK",
     "subProfessionId": "primprotector"
-  },
-  {
-    "id": "char_1051_headb2",
-    "name": "Zima the Raging Tide",
-    "rarity": "TIER_6",
-    "profession": "WARRIOR",
-    "subProfessionId": "hammer"
   }
 ]
