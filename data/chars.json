@@ -2926,6 +2926,13 @@
     "subProfessionId": "primprotector"
   },
   {
+    "id": "char_393_toledo",
+    "name": "de Toledo",
+    "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "underminer"
+  },
+  {
     "id": "char_4219_yukari",
     "name": "Yukari Takeba",
     "rarity": "TIER_5",
@@ -2938,6 +2945,13 @@
     "rarity": "TIER_5",
     "profession": "SUPPORT",
     "subProfessionId": "supportiveranger"
+  },
+  {
+    "id": "char_4232_hbound",
+    "name": "Homebound",
+    "rarity": "TIER_5",
+    "profession": "SPECIAL",
+    "subProfessionId": "alchemist"
   },
   {
     "id": "char_1048_orchd2",
@@ -3001,5 +3015,12 @@
     "rarity": "TIER_6",
     "profession": "TANK",
     "subProfessionId": "primprotector"
+  },
+  {
+    "id": "char_4231_clemnt",
+    "name": "Clementia",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "primguard"
   }
 ]
