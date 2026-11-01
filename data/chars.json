@@ -2919,11 +2919,25 @@
     "subProfessionId": "tactician"
   },
   {
+    "id": "char_4170_hdbell",
+    "name": "Herdbells",
+    "rarity": "TIER_4",
+    "profession": "SPECIAL",
+    "subProfessionId": "dispatcher"
+  },
+  {
     "id": "char_4237_jcinta",
     "name": "Jacinta",
     "rarity": "TIER_5",
     "profession": "PIONEER",
     "subProfessionId": "bearer"
+  },
+  {
+    "id": "char_4245_alga",
+    "name": "Ольга",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "instructor"
   },
   {
     "id": "char_1049_catap2",
@@ -2947,6 +2961,13 @@
     "subProfessionId": "funnel"
   },
   {
+    "id": "char_4169_caledo",
+    "name": "Caleido",
+    "rarity": "TIER_5",
+    "profession": "TANK",
+    "subProfessionId": "primprotector"
+  },
+  {
     "id": "char_393_toledo",
     "name": "de Toledo",
     "rarity": "TIER_5",
@@ -2964,6 +2985,13 @@
     "id": "char_4234_pedro",
     "name": "Pedro",
     "rarity": "TIER_5",
+    "profession": "SUPPORT",
+    "subProfessionId": "supportiveranger"
+  },
+  {
+    "id": "char_4244_tocka",
+    "name": "Тоска",
+    "rarity": "TIER_6",
     "profession": "SUPPORT",
     "subProfessionId": "supportiveranger"
   },
@@ -2987,6 +3015,13 @@
     "rarity": "TIER_6",
     "profession": "CASTER",
     "subProfessionId": "blastcaster"
+  },
+  {
+    "id": "char_4246_dminon",
+    "name": "Территория",
+    "rarity": "TIER_6",
+    "profession": "SPECIAL",
+    "subProfessionId": "stalker"
   },
   {
     "id": "char_4217_makoto",
@@ -3015,6 +3050,13 @@
     "rarity": "TIER_6",
     "profession": "TANK",
     "subProfessionId": "primprotector"
+  },
+  {
+    "id": "char_4247_oxi",
+    "name": "Talulah",
+    "rarity": "TIER_6",
+    "profession": "WARRIOR",
+    "subProfessionId": "primguard"
   },
   {
     "id": "char_4231_clemnt",

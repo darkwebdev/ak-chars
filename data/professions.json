@@ -378,5 +378,10 @@
     "subProfessionId": "supportiveranger",
     "subProfessionName": "supportiveranger",
     "subProfessionCatagory": 76
+  },
+  {
+    "subProfessionId": "dispatcher",
+    "subProfessionName": "dispatcher",
+    "subProfessionCatagory": 77
   }
 ]
