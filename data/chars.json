@@ -70,6 +70,13 @@
     "subProfessionId": "corecaster"
   },
   {
+    "id": "char_4215_buddy",
+    "name": "Rhodes Island Recon",
+    "rarity": "TIER_1",
+    "profession": "PIONEER",
+    "subProfessionId": "tactician"
+  },
+  {
     "id": "char_502_nblade",
     "name": "Yato",
     "rarity": "TIER_2",
@@ -982,6 +989,13 @@
   {
     "id": "char_394_hadiya",
     "name": "Hadiya",
+    "rarity": "TIER_5",
+    "profession": "WARRIOR",
+    "subProfessionId": "mercenary"
+  },
+  {
+    "id": "char_1049_catap2",
+    "name": "Zinogre S Catapult",
     "rarity": "TIER_5",
     "profession": "WARRIOR",
     "subProfessionId": "mercenary"
@@ -1967,6 +1981,13 @@
     "subProfessionId": "closerange"
   },
   {
+    "id": "char_1048_orchd2",
+    "name": "Violet Mizutsune Orchid",
+    "rarity": "TIER_6",
+    "profession": "SNIPER",
+    "subProfessionId": "closerange"
+  },
+  {
     "id": "char_430_fartth",
     "name": "Fartooth",
     "rarity": "TIER_6",
@@ -2912,13 +2933,6 @@
     "subProfessionId": "sword"
   },
   {
-    "id": "char_4215_buddy",
-    "name": "Rhodes Island Recon",
-    "rarity": "TIER_1",
-    "profession": "PIONEER",
-    "subProfessionId": "tactician"
-  },
-  {
     "id": "char_4170_hdbell",
     "name": "Herdbells",
     "rarity": "TIER_4",
@@ -2938,13 +2952,6 @@
     "rarity": "TIER_5",
     "profession": "WARRIOR",
     "subProfessionId": "instructor"
-  },
-  {
-    "id": "char_1049_catap2",
-    "name": "Zinogre S Catapult",
-    "rarity": "TIER_5",
-    "profession": "WARRIOR",
-    "subProfessionId": "mercenary"
   },
   {
     "id": "char_4218_aigis",
@@ -3001,13 +3008,6 @@
     "rarity": "TIER_5",
     "profession": "SPECIAL",
     "subProfessionId": "alchemist"
-  },
-  {
-    "id": "char_1048_orchd2",
-    "name": "Violet Mizutsune Orchid",
-    "rarity": "TIER_6",
-    "profession": "SNIPER",
-    "subProfessionId": "closerange"
   },
   {
     "id": "char_4229_aphris",
